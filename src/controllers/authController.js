@@ -1,10 +1,14 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
+const { sendWelcomeEmail, sendResetEmail} = require('../emails/authEmails.js')
+const crypto = require('crypto')
+//const { resolve } = require('path')
+//const { use } = require('../routes/authRoutes')
 
 // Handle errors
 const handleErrors = (err) => {
     console.log(err.message, err.code)
-    let errors = {email: '', password: ''}
+    let errors = {email: '', username: '', password: ''}
 
     // dublicate error code
     if(err.code === 11000){
@@ -20,6 +24,11 @@ const handleErrors = (err) => {
     // incorrect password
     if(err.message === 'incorrect password'){
         errors.password = 'that password is incorrect'
+    }
+
+    // no username
+    if(err.message === 'incorrect username'){
+        errors.password = 'please provide a name'
     }
 
 
@@ -41,22 +50,23 @@ const createToken = (id) => {
  
 module.exports.signup_get = (req,res) => {
     const csrfToken = req.csrfToken()
-    res.render('signup', {csrfToken})
+    res.render('auth/signup', {csrfToken})
 }
 
 module.exports.login_get = (req,res) => {
     const csrfToken = req.csrfToken()
-    //res.locals.csrfToken = csrfToken
-    res.render('login', {csrfToken})
+   
+    res.render('auth/login', {csrfToken})
 }
 
 module.exports.signup_post = async (req,res) => {
     
-    const {email, password} = req.body
+    const {email, password, username} = req.body
     
     try{
-        const user = await User.create({email, password})
+        const user = await User.create({email, password, username})
         const token = createToken(user._id)
+        sendWelcomeEmail(user.email, user.username)
         res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000})
         res.status(201).json({user: user._id})
     }
@@ -67,12 +77,12 @@ module.exports.signup_post = async (req,res) => {
 }
 
 module.exports.login_post = async (req,res) => {
-    console.log('Login post')
+
     const {email, password} = req.body
 
    try{
     const user = await User.login(email, password)
-    console.log(user)
+
     const token = createToken(user._id)
     res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000})
     res.status(200).json({user: user._id})
@@ -86,4 +96,91 @@ module.exports.login_post = async (req,res) => {
 module.exports.logout_get = (req, res) => {
     res.cookie('jwt', '', {maxAge:1})
     res.redirect('/')
+}
+
+module.exports.recover_pass_get =(req, res) => {
+    const csrfToken = req.csrfToken()
+    res.render('auth/recover_pass', {csrfToken})
+}
+
+module.exports.recover_pass_post = async (req, res) => {
+
+    const {email} = req.body
+
+    const user = await User.findOne({email})
+    
+    if(user){
+        res.status(200).json({user: user.email})
+
+        const token = await getResetToken()
+
+        user.resetPasswordToken = token
+        user.resetPasswordExpires = Date.now() + 3600000
+        //user.resetPasswordExpires = Date.now() + 20000
+        await user.save()
+        sendResetEmail(user.email, user.name, token, req.headers.host)
+
+        
+
+    }
+    else{
+        const errors = {email:'User with this email does not exist'}
+        res.status(400).send({ errors })
+    }
+    
+
+}
+
+module.exports.new_pass_get = async(req, res) => {
+    const csrfToken = req.csrfToken()
+
+    const user = await User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: new Date() }})
+
+    if(!user){
+        res.render('auth/no_token')
+    }
+    else{
+        res.render('auth/new_pass', {csrfToken, resetToken: req.params.token})
+    }
+}
+
+module.exports.new_pass_post = async (req, res) => {
+    const {resetToken, password} = req.body
+
+
+    const user = await User.findOne({ resetPasswordToken: resetToken, resetPasswordExpires: { $gt: new Date() }})
+    if(user){
+        try{
+
+            user.password = password
+            await user.save()
+            res.status(200).json({user: user.email})
+        }catch(err){
+            const errors = handleErrors(err)
+            res.status(400).send({ errors })
+        }
+
+    }else{
+        const errors = {password:'Reset token is invalid or outdated. Please try again.'}
+        res.status(400).send({ errors })
+    }
+}
+
+
+
+
+/// function to get reset pass token with await syntaxis
+const getResetToken = () => {
+    return new Promise((resolve, reject) => {
+        crypto.randomBytes(24, function(err, buffer) {
+            var token = buffer.toString('hex');
+            if(token){
+                resolve(token);
+            }
+            else {
+                reject(err)
+            }
+        });
+    })
+    
 }

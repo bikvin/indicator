@@ -22,6 +22,7 @@ app.set('views', path.join(__dirname, '/views'))
 app.use(baseRoutes)
 app.use(authRoutes)
 
+
 app.listen(process.env.PORT, () => {
   console.log('Server is up on port ' + process.env.PORT)
 })

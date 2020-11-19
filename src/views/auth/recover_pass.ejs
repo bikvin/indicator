@@ -1,0 +1,60 @@
+<%- include('../partials/header'); -%>
+
+<meta name="csrf-token" content="<%= csrfToken %>">
+
+<form>
+    <h2>Password recovery</h2>
+    <div class = 'form_body'>
+        <label for="email">Enter your email to recover password</label>
+        <input type="text" name="email" required>
+        <div class="email error"></div>
+    
+        <button>Submit</button> 
+    </div>
+
+    
+
+</form>
+
+<script>
+    const form = document.querySelector('form')
+    const emailError = document.querySelector('.email.error')
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    const formBody = document.querySelector('.form_body')
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        // reset errors
+        emailError.textContent = ""
+
+        // get the values
+        const email = form.email.value  
+
+        try{
+            const res = await fetch('/recover_pass', {
+                credentials: 'same-origin',
+                method: 'POST',
+                body: JSON.stringify({email}),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'CSRF-Token': token // <-- is the csrf token as a header
+                }
+            })
+            const data = await res.json()
+            
+            if(data.errors) {
+                emailError.textContent = data.errors.email
+            }
+            if(data.user){
+                console.log(data.user)
+                formBody.innerHTML = '<p class="success_message">We sent you an email to reset your password.</p>'
+            }
+        }
+        catch (err) {
+            console.log(err) 
+        }
+    })
+</script>
+
+<%- include('../partials/footer'); -%>

@@ -137,3 +137,19 @@ footer{
   margin-top: 120px;
   color: #aaa;
 }
+
+.password_link{
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 0.8em;
+  
+}
+
+.success_message{
+  color: #16a596;
+}
+
+.login-link{
+  color: blue;
+  text-decoration: underline;
+}

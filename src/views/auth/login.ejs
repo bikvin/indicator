@@ -1,8 +1,9 @@
-<%- include('partials/header'); -%>
+<%- include('../partials/header'); -%>
+
 <meta name="csrf-token" content="<%= csrfToken %>">
 
 <form>
-    <h2>Sign up</h2>
+    <h2>Log in</h2>
     <label for="email">Email</label>
     <input type="text" name="email" required>
     <div class="email error"></div>
@@ -10,15 +11,21 @@
     <label for="password">Password</label>
     <input type="password" name="password" required>
     <div class="password error"></div>
-    <button>Sign up</button>
+    <button>Log in</button> 
+    
+    <a class='password_link' href="/recover_pass">Forgot your password?</a>
+    
 
 </form>
-    
+
+
+
 <script>
     const form = document.querySelector('form')
     const emailError = document.querySelector('.email.error')
     const passwordError = document.querySelector('.password.error')
     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault()
@@ -30,9 +37,10 @@
         // get the values
         const email = form.email.value
         const password = form.password.value
+        
 
         try{
-            const res = await fetch('/signup', {
+            const res = await fetch('/login', {
                 credentials: 'same-origin',
                 method: 'POST',
                 body: JSON.stringify({email, password}),
@@ -54,9 +62,7 @@
         catch (err) {
             console.log(err) 
         }
-
-        
     })
 </script>
 
-<%- include('partials/footer'); -%>
+<%- include('../partials/footer'); -%>
