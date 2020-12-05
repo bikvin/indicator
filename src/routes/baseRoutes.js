@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const baseController = require('../controllers/baseController');
 const { requireAuth, checkUser} = require('../middleware/authMiddleware');
-const { addBaseHeader} = require('../middleware/baseMiddleware');
+const { addBaseHeader} = require('../middleware/supportMiddleware');
 
 
 const router = Router();
