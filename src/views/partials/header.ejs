@@ -1,21 +1,61 @@
-<html lang="en">
+
+
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7858388e9b.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href='/css/style.css'>
+    <title><%= header %></title>
+    
 </head>
-<body>
-  <nav>
-    <h1><a href="/">Ninja Smoothies</a></h1>
-    <ul>
-      <% if (user) { %>
-        <li>Welcome, <%= user.username %></li>
-        <li><a href="/logout">Log out</a></li>
-      <% } else { %>
-        <li><a href="/login">Log in</a></li>
-        <li><a href="/signup" class="btn">Sign up</a></li>
-      <% } %>
-    </ul>
-  </nav>
+<body id='home' data-target='#main-nav'>
+    <nav class="navbar navbar-expand-md navbar-light mb-5" id='main-nav'>
+        <div class="container">
+            <a href="/" class="navbar-brand">
+                
+                
+
+                <h3 class="d-inline align-middle text-warning">IndicatorGames</h3>
+                
+            </a>
+            <button class="navbar-toggler" data-toggle='collapse' data-target='#navbarCollapse'>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    
+                  <% if (user) { %>
+                    
+                    <span class="navbar-text mr-3">
+                      Привет, <%= user.username %>
+                    </span>
+                    <li class="nav-item">
+                      <a href="/logout" class="nav-link btn btn-primary mr-3">Выйти</a>
+                    </li>
+                  <% } else { %>
+                    <li class="nav-item">
+                      <a href="/login" class="nav-link btn btn-primary mr-3">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/signup" class="nav-link btn btn-primary-outline">Зарегистрироваться</a>
+                    </li>
+                  <% } %> 
+                  
+                    
+                    
+
+                </ul>
+            </div>
+            
+        </div>
+    </nav>
   

@@ -2,7 +2,7 @@
 
 <meta name="csrf-token" content="<%= csrfToken %>">
 
-<form>
+<!-- <form>
     <h2>Log in</h2>
     <label for="email">Email</label>
     <input type="text" name="email" required>
@@ -16,8 +16,44 @@
     <a class='password_link' href="/recover_pass">Forgot your password?</a>
     
 
-</form>
+</form> -->
 
+<div id="wrap">
+    <div id="main" class="container">
+      
+    <div class="p-5"></div>
+       
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card shadow">
+                    
+                    <div class="card-body">
+                        <h2 class="mb-3" >Войти в аккаунт</h2>
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text"  name="email" class="form-control" required>
+                                <div class="email error input-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" >Пароль</label>
+                                <input type="password" name="password" class="form-control" required>
+                                <div class="password error input-error"></div>
+                            </div>
+                            <button class="btn btn-primary btn-block mt-5 mb-2">Войти</button> 
+                            
+                            <a href="/recover_pass" class="text-muted">Забыли пароль?</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+      
+        
+    </div>
+</div>
 
 
 <script>
@@ -28,6 +64,7 @@
     
 
     form.addEventListener('submit', async (e) => {
+        console.log('form submited')
         e.preventDefault()
 
         // reset errors
@@ -51,8 +88,10 @@
             })
             const data = await res.json()
             
+            console.log(data)
+
             if(data.errors) {
-                emailError.textContent = data.errors.email
+                emailError.innerHTML = data.errors.email
                 passwordError.textContent = data.errors.password
             }
             if(data.user){

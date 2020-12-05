@@ -2,16 +2,40 @@
 <meta name="csrf-token" content="<%= csrfToken %>">
 <meta name="reset-token" content="<%= resetToken %>">
 
-<form>
-    <h2>Set a new password</h2>
 
-    
-    <label for="password">New password</label>
-    <input type="password" name="password" required>
-    <div class="password error"></div>
-    <button>Change password</button>
 
-</form>
+<div id="wrap">
+    <div id="main" class="container">
+      
+    <div class="p-5"></div>
+       
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card shadow">
+                    
+                    <div class="card-body">
+                        <h2 class="mb-3" >Установите новый пароль</h2>
+                        <form>
+                            <div class="form-group ">
+                                <label for="email">Новый пароль</label>
+                                <input type="password" class="form-control" name="password" required >
+                                <div class="password error input-error"></div>
+                            </div>
+                            
+                            
+                            <button class="btn btn-primary btn-block mt-5 mb-2">Сменить пароль</button> 
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+      
+        
+    </div>
+</div>
     
 <script>
     
@@ -48,7 +72,8 @@
                 passwordError.textContent = data.errors.password
             }
             if(data.user){
-                form.innerHTML = `<p>Your password has been changed. You can now <a class='login-link' href='/login'>login</a> with it.</p>`
+                //form.innerHTML = `<p class='text-success'>Your password has been changed. You can now <a class='login-link' href='/login'>login</a> with it.</p>`
+                form.innerHTML = `<p class='text-warning'>Ваш пароль изменен. Теперь вы можете <u><a href='/login'>войти</a></u> с помощью него.</p>`
             }
         }
         catch (err) {

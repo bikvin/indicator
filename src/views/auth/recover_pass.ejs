@@ -2,19 +2,40 @@
 
 <meta name="csrf-token" content="<%= csrfToken %>">
 
-<form>
-    <h2>Password recovery</h2>
-    <div class = 'form_body'>
-        <label for="email">Enter your email to recover password</label>
-        <input type="text" name="email" required>
-        <div class="email error"></div>
-    
-        <button>Submit</button> 
+
+
+<div id="wrap">
+    <div id="main" class="container">
+      
+    <div class="p-5"></div>
+       
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card shadow">
+                    
+                    <div class="card-body">
+                        <h2 class="mb-3" >Восстановление пароля</h2>
+                        <form  class="form_body">
+                            <div class="form-group ">
+                                <label for="email">Введите ваш Email для восстановления пароля</label>
+                                <input type="text" class="form-control" name="email" required >
+                                <div class="email error input-error"></div>
+                            </div>
+                            
+                            
+                            <button class="btn btn-primary btn-block mt-5 mb-2">Отправить письмо для восстановления</button> 
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+      
+        
     </div>
-
-    
-
-</form>
+</div>
 
 <script>
     const form = document.querySelector('form')
@@ -48,7 +69,8 @@
             }
             if(data.user){
                 console.log(data.user)
-                formBody.innerHTML = '<p class="success_message">We sent you an email to reset your password.</p>'
+                //formBody.innerHTML = '<p class="success_message">We sent you an email to reset your password.</p>'
+                formBody.innerHTML = '<p class="text-warning">Мы отправили вам письмо для восстановления пароля.</p>'
             }
         }
         catch (err) {

@@ -12,23 +12,27 @@ const handleErrors = (err) => {
 
     // dublicate error code
     if(err.code === 11000){
-        errors.email = 'that email is already registered'
+        //errors.email = 'that email is already registered'
+        errors.email = 'эта почта уже зарегистрирована'
         return errors
     }
 
     // incorrect email
     if(err.message === 'incorrect email'){
-        errors.email = 'that email is not registered'
+        //errors.email = 'that email is not registered'
+        errors.email = 'эта почта не зарегистрирована'
     }
 
     // incorrect password
     if(err.message === 'incorrect password'){
-        errors.password = 'that password is incorrect'
+        //errors.password = 'that password is incorrect'
+        errors.password = 'неверный пароль'
     }
 
     // no username
     if(err.message === 'incorrect username'){
-        errors.password = 'please provide a name'
+        //errors.password = 'please provide a name'
+        errors.password = 'пожалуйста укажите имя'
     }
 
 
@@ -50,12 +54,13 @@ const createToken = (id) => {
  
 module.exports.signup_get = (req,res) => {
     const csrfToken = req.csrfToken()
+    res.locals.header = 'Indicator Games - Регистрация'
     res.render('auth/signup', {csrfToken})
 }
 
 module.exports.login_get = (req,res) => {
     const csrfToken = req.csrfToken()
-   
+    res.locals.header = 'Indicator Games - Вход'
     res.render('auth/login', {csrfToken})
 }
 
@@ -79,8 +84,10 @@ module.exports.signup_post = async (req,res) => {
 module.exports.login_post = async (req,res) => {
 
     const {email, password} = req.body
+    console.log(req.body)
 
    try{
+    console.log("try")
     const user = await User.login(email, password)
 
     const token = createToken(user._id)
@@ -88,6 +95,7 @@ module.exports.login_post = async (req,res) => {
     res.status(200).json({user: user._id})
    }
    catch (err) {
+       console.log('catch')
     const errors = handleErrors(err)
     res.status(400).json({errors})
    }
@@ -100,6 +108,7 @@ module.exports.logout_get = (req, res) => {
 
 module.exports.recover_pass_get =(req, res) => {
     const csrfToken = req.csrfToken()
+    res.locals.header = 'Indicator Games - Восстановление пароля'
     res.render('auth/recover_pass', {csrfToken})
 }
 
@@ -124,7 +133,8 @@ module.exports.recover_pass_post = async (req, res) => {
 
     }
     else{
-        const errors = {email:'User with this email does not exist'}
+        // const errors = {email:'User with this email does not exist'}
+        const errors = {email:'Пользователь с такой почтой не существует'}
         res.status(400).send({ errors })
     }
     
@@ -133,7 +143,7 @@ module.exports.recover_pass_post = async (req, res) => {
 
 module.exports.new_pass_get = async(req, res) => {
     const csrfToken = req.csrfToken()
-
+    res.locals.header = 'Indicator Games - Новый пароль'
     const user = await User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: new Date() }})
 
     if(!user){
@@ -161,7 +171,8 @@ module.exports.new_pass_post = async (req, res) => {
         }
 
     }else{
-        const errors = {password:'Reset token is invalid or outdated. Please try again.'}
+        //const errors = {password:'Reset token is invalid or outdated. Please try again.'}
+        const errors = {password:'Токен для восстановления неверный или просрочен. Пожалуйста попробуйте еще раз'}
         res.status(400).send({ errors })
     }
 }
