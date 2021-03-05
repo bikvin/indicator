@@ -1,36 +1,37 @@
-<%- include('partials/header'); -%>
+<%- include('partials/header', {pageCss:'main.css'}); -%>
 
 
 
-  <div id="main" class="container">
+  <div class="main">
     
-      
-     
-      <div class="row">
-          <div class="col-md-6 mx-auto mb-5">
-              <div class="card game-intro shadow-sm">
-                  <div class="card-body">
-                      <h1 class="text-center">Дурак</h1>
-                      <h6 class="text-center">Тот самый. Подкидной.</h6>
-                      <div class="text-center">
-                          <img src="img/joker.jpeg " >
-                      </div>
-                      
-                      <div class="text-center">
-                          <a href="/durak" class="btn btn-lg btn-warning text-center">Играть</a>
-                      </div>
-                      
-                  </div>
-                  
+
+              <div class="card game-intro">
+                    <h1>Дурак</h1>
+                    <h6>Подкидной.</h6>                                         
+                    <img src="img/joker.jpeg " >                     
+                                         
+                    <div>
+                        <a href="/durak" class="btn btn-lg btn-violet">Играть</a> 
+                    </div>  
               </div>
+
+              <div class="card game-intro">
+                <h1>Дурак</h1>
+                <h6>Подкидной.</h6>                                         
+                <img src="img/joker.jpeg " >                     
+                                     
+                <div>
+                    <a href="/durak" class="btn btn-lg btn-violet">Играть</a> 
+                </div>  
           </div>
 
-      </div>
+              
+       
       
       
     
       
   </div>
 
-<%- include('partials/copyright'); -%>
+
 <%- include('partials/footer'); -%>

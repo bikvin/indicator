@@ -1,48 +1,37 @@
-<%- include('../partials/header'); -%>
+<%- include('../partials/header', {pageCss:'centered-forms.css'}); -%>
 <meta name="csrf-token" content="<%= csrfToken %>">
 
 
-<div id="wrap">
-    <div id="main" class="container">
-      
-    <div class="p-5"></div>
-       
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <div class="card shadow">
+<div class="main">
+
+                <div class="card form-card">
                     
-                    <div class="card-body">
-                        <h2 class="mb-3" >Зарегистрироваться</h2>
+                        <h2>Регистрация</h2>
                         <form>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" class="form-control " required>
+                                <input type="text" name="email" required>
                                 <div class="email error input-error"></div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Имя или никнейм</label>
-                                <input type="text" name="username" class="form-control" required>
+                                <input type="text" name="username" required>
                                 <div class="username error input-error"></div>
                             </div>
                             <div class="form-group">
                                 <label for="password">Пароль</label>
-                                <input type="password" name="password" class="form-control" required>
+                                <input type="password" name="password" required>
                                 <div class="password error input-error"></div>
                             </div>
                             
-                            <button class="btn btn-primary btn-block mt-5 mb-2">Зарегистрироваться</button>
+                            <button class="btn btn-green btn-block mt-3 mb-1">Зарегистрироваться</button>
                             
                         </form>
 
-                    </div>
+
                 </div>
 
-            </div>
-            
-          
-            
-        </div>
-    </div>
+</div>
 
 
 

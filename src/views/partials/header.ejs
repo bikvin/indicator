@@ -12,50 +12,71 @@
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
     <link rel="manifest" href="img/favicon/site.webmanifest">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href='/css/style.css'>
+    <link rel="stylesheet" href='/css/shared.css'>
+    <% if(typeof pageCss != 'undefined'){ %>
+      <link rel="stylesheet" href="/css/<%= pageCss %>">
+    <%}%>
+
     <title><%= header %></title>
     
 </head>
 <body id='home' data-target='#main-nav'>
-    <nav class="navbar navbar-expand-md navbar-light mb-5" id='main-nav'>
-        <div class="container">
-            <a href="/" class="navbar-brand">
-                
-                
-
-                <h3 class="d-inline align-middle text-warning">IndicatorGames</h3>
-                
-            </a>
-            <button class="navbar-toggler" data-toggle='collapse' data-target='#navbarCollapse'>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    
-                  <% if (user) { %>
-                    
-                    <span class="navbar-text mr-3">
-                      Привет, <%= user.username %>
-                    </span>
-                    <li class="nav-item">
-                      <a href="/logout" class="nav-link btn btn-primary mr-3">Выйти</a>
-                    </li>
-                  <% } else { %>
-                    <li class="nav-item">
-                      <a href="/login" class="nav-link btn btn-primary mr-3">Войти</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/signup" class="nav-link btn btn-primary-outline">Зарегистрироваться</a>
-                    </li>
-                  <% } %> 
-                  
-                    
-                    
-
-                </ul>
-            </div>
-            
+    <div class="backdrop"></div>
+    <header class="main-header">
+      <div class="main-header_brand-holder">
+        <a class="mobile-menu__toggle-button">
+          <i class="fas fa-bars"></i>
+        </a>
+        <div class="main-header__brand">
+          <a href="/">IndicatorGames</a>
         </div>
+        
+      </div>
+
+        <nav class="main-nav">
+          <ul class="main-nav__items">
+            <% if (user) { %>
+                      
+              <span class="text-muted mr-1">
+                Привет, <%= user.username %>
+              </span>
+              <li class="nav-item">
+                <a href="/logout" class="main-nav__item btn btn-green">Выйти</a>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a href="/login" class="main-nav__item btn btn-green">Войти</a>
+              </li>
+              <li class="nav-item">
+                <a href="/signup" class="main-nav__item  btn btn-white">Зарегистрироваться</a>
+              </li>
+            <% } %> 
+          </ul>
+        </nav>
+        
+
+
+
+    </header>
+    <nav class="mobile-nav">
+      
+        <ul class="mobile-nav__items">
+          <% if (user) { %>
+                    
+            <span class="text-muted mr-1">
+              Привет, <%= user.username %>
+            </span>
+            <li class="nav-item">
+              <a href="/logout" class="mobile-nav__item ">Выйти</a>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a href="/login" class="mobile-nav__item ">Войти</a>
+            </li>
+            <li class="nav-item">
+              <a href="/signup" class="mobile-nav__item">Зарегистрироваться</a>
+            </li>
+          <% } %> 
+        </ul>
     </nav>
   

@@ -1,20 +1,11 @@
-<%- include('../partials/header'); -%>
+<%- include('../partials/header', {pageCss:'centered-forms.css'}); -%>
 
-<div id="wrap">
-    <div id="main" class="container">
-      
-    <div class="p-5"></div>
-       
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-
-                
-                <div class="alert alert-danger text-center" role="alert">
-                    Токен для восстановления пароля неверный или просрочен. Пожалуйста попробуйте снова.
-                </div>
-            </div>         
-        </div>
+<div class="main">
+               
+    <div class="card error-card">
+        Токен для восстановления пароля неверный или просрочен. Пожалуйста попробуйте снова.
     </div>
+  
 </div>
 
 
