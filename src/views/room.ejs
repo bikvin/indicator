@@ -1,5 +1,5 @@
 <%- include('partials/header'); -%>
-<script src="/js/clientRoom.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0/build/global/luxon.min.js"></script>
 
 <meta name="csrf-token" content="<%= csrfToken %>"> 
@@ -8,6 +8,8 @@
 
 <div class="main">
 
+    
+    
    
     <% if (typeof error !== 'undefined') { %>
         <div class="card error-card">Упс. Кажется такой комнаты не существует</div>
@@ -62,6 +64,8 @@
 
 </div>
 
+<%- include('partials/common-js'); -%>
+<script src="/js/clientRoom.js"></script>
 <script src="../js/clientChat.js"></script>
 
 <%- include('partials/footer'); -%>

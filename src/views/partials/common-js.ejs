@@ -1,0 +1,6 @@
+<script src="/js/shared.js"></script>
+ <!-- connect to socket only if the user is logged -->
+ <% if (user) { %>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/clientConnectSocket.js"></script>
+ <% } %> 

@@ -102,6 +102,22 @@
   bottom: 0 !important;
 }
 
+.room-error-message {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.room-error-message p {
+  text-align: center;
+}
+
 @media (max-width: 40rem) {
   .chat {
     width: 95%;

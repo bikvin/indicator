@@ -16,6 +16,10 @@ const messagesWindow = document.querySelector('.chat-messages')
 updateChatMessages(messages) // set initial messages
 messagesWindow.scrollTop = messagesWindow.scrollHeight // scroll messages to the bottom
 
+
+
+
+
 minimizeButton.addEventListener('click', () => {
     //console.log(screenMedia.matches);
     if(screenMedia.matches){
@@ -78,6 +82,8 @@ function autoscroll() {
 
 
 }
+
+
 
 // messageForm.addEventListener('submit', async (e) => {
 

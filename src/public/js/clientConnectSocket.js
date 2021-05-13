@@ -24,17 +24,19 @@ socket.on('connected', () => {
 
 
 
-
 socket.on("connect_error", (err) => {
   //console.log(err instanceof Error); // true
-  alert(err.message); // not authorized
+  console.log('connect_error') // not authorized
+  createErrorMessage(err)
   //console.log(err.data); // { content: "Please retry later" }
 });
 
 socket.on('custom_error', (err) => {
-  alert(err)
-  
+
+  console.log('custom error')
+  createErrorMessage(err)
 })
+
 
 
 function getTokenFromCookie() {

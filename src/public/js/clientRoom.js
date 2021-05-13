@@ -3,7 +3,14 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const roomName = window.location.pathname.split('/')[2]
 
+
+
+//createErrorMessage('message')
+
 console.log('Join room', roomName)
+
+
+
 
 socket.emit('joinRoom', roomName, JWToken)
 
@@ -20,14 +27,8 @@ socket.on('userLeft', (players) => {
   })  
 
 
-socket.on('messageReceived', (messages) => {
-    console.log('Message received')
-    console.log(messages)
-})
 
-socket.onAny((eventName, ...args) => {
-    console.log('Any event')
-  });
+
 
 // socket.on('userJoined', (user) => {
 //     console.log('Someone joined the room. Its ', user.username)
