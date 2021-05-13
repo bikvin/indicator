@@ -1,0 +1,79 @@
+<%- include('partials/header', {pageCss:'main.css'}); -%>
+<meta name="csrf-token" content="<%= csrfToken %>">
+
+<div class="main">
+    <div class="card form-card">
+        
+        <h2>Создать комнату</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Название</label>
+                <input type="text"  name="name" required>
+                <div class="name error input-error"></div>
+            </div>
+            <!-- <div class="form-group">
+                <label for="password" >Пароль</label>
+                <input type="password" name="password" required>
+                <div class="password error input-error"></div>
+            </div> -->
+            <button class="btn btn-green btn-block mt-3 mb-1">Создать</button> 
+
+        </form>
+        
+</div>
+
+</div>
+
+<script>
+    const form = document.querySelector('form')
+    const nameError = document.querySelector('.name.error')
+    //const passwordError = document.querySelector('.password.error')
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    
+
+
+    form.addEventListener('submit', async (e) => {
+        //console.log('form submited')
+        e.preventDefault()
+
+        // reset errors
+        nameError.textContent = ""
+        //passwordError.textContent = ""
+
+        // get the values
+        const name = form.name.value
+        //const password = form.password.value
+        
+
+        try{
+            const res = await fetch('/create_room', {
+                credentials: 'same-origin',
+                method: 'POST',
+                body: JSON.stringify({name}),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'CSRF-Token': token // <-- is the csrf token as a header
+                }
+            })
+            const data = await res.json()
+            
+            //console.log(data)
+
+            if(data.errors) {
+                nameError.innerHTML = data.errors.email
+                //passwordError.textContent = data.errors.password
+            }
+            if(data.room){
+                console.log(data.room)
+                console.log(`/room/${data.room}`)
+                location.assign(`/room/${data.room}`)
+            }
+        }
+        catch (err) {
+            console.log(err) 
+        }
+    })
+</script>
+
+
+<%- include('partials/footer'); -%>

@@ -2,7 +2,7 @@ const backdrop = document.querySelector(".backdrop");
 const mobileNav = document.querySelector(".mobile-nav");
 const mobileMenuButton = document.querySelector(".mobile-menu__toggle-button");
 
-console.log('shared.js')
+
 
 mobileMenuButton.addEventListener("click", function() {
 

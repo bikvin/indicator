@@ -9,11 +9,11 @@ const requireAuth = (req, res, next) => {
    if(token){
         jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
             if(err){
-                console.log(err.message)
+                //console.log(err.message)
                 res.redirect('/login')
             }
             else{
-                console.log(decodedToken)
+                //console.log(decodedToken)
                 next()
             }
         })
@@ -25,19 +25,26 @@ const requireAuth = (req, res, next) => {
 
 // check current user
 const checkUser = async (req, res, next) => {
+   
     const token = req.cookies.jwt
 
     if(token){
         jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
             if(err){
-                console.log(err.message)
+                //console.log(err.message)
                 res.locals.user = null
                 next()
             }
             else{
-                console.log(decodedToken)
+                //console.log(decodedToken)
                 let user = await User.findById(decodedToken.id)
-                res.locals.user = user
+                user = {// keeping only _id and username properties to pass to client
+                    _id: user._id,
+                    username: user.username,
+
+                }
+                //console.log(user)
+                res.locals.user = JSON.stringify(user)
                 next()
             }
         })

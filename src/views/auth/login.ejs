@@ -35,6 +35,7 @@
     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     
 
+
     form.addEventListener('submit', async (e) => {
         console.log('form submited')
         e.preventDefault()
@@ -75,5 +76,6 @@
         }
     })
 </script>
+
 
 <%- include('../partials/footer'); -%>

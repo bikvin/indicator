@@ -129,29 +129,26 @@ a{
 
   padding: 2rem 1rem;
   word-break: break-word;
-  
-
-  h1,h2,h3,h4,h5,h6 {
-    margin-bottom: 0.5rem;
-    font-family: "Comfortaa", cursive;
-    font-weight: 500;
-    line-height: 1.2;
-  }
-  h1{
-    font-size: 2.5rem;
-  }
-  h2{
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  h6{
-    font-size: 1rem;
-  }
 
 
-  
 
+}
 
+h1,h2,h3,h4,h5,h6 {
+  margin-bottom: 0.5rem;
+  font-family: "Comfortaa", cursive;
+  font-weight: 500;
+  line-height: 1.2;
+}
+h1{
+  font-size: 2.5rem;
+}
+h2{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+h6{
+  font-size: 1rem;
 }
 
 
@@ -214,6 +211,9 @@ input{
   
 }
 
-
+.muted{
+  font-size: 0.8rem;
+  color: $grey-color;
+}
 
   

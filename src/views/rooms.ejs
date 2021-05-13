@@ -1,0 +1,50 @@
+<%- include('partials/header', {pageCss:'rooms.css'}); -%>
+<div class="main">
+    <h2>Комнаты</h2>
+    
+    <div class="room-list">
+        <% if (typeof rooms !== 'undefined' && JSON.parse(rooms).length > 0) { %>
+            <% JSON.parse(rooms).forEach(function(room) {%>
+                <div class="room-description card">
+                    <div class="game">
+                        <p class="muted" >Морской бой</p>
+                        <img src="img/ships.png" >  
+                    </div>
+                    <div class="description">
+                        <div class="description-text">
+                            <div> <span class="muted">название: </span> <%= room.name %> </div>
+                            <div><span class="muted">создатель: </span> <%= room.creator.username %></div>
+                            <div><span class="muted">тип:</span>  открытая для всех</div>
+                        </div>
+
+                    </div>
+                    
+                    
+                    <div class="join">
+                        <a href="/room/<%= room._id %>" class="btn btn-violet">Войти</a>
+                    </div> 
+                </div>
+                
+             <% }); %>
+            <!-- <%= rooms %>  -->
+
+        <% }
+        else{ %>
+            <div>Пока комнат нет</div>
+            
+        <% } %>
+
+    </div>
+    
+
+    <div>
+        <a href="/create_room" class="btn btn-lg btn-violet">Создать комнату</a>
+    </div> 
+    
+    
+
+
+</div>
+
+
+<%- include('partials/footer'); -%>

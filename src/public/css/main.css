@@ -12,6 +12,10 @@
   margin-bottom: 3rem;
   max-width: 30rem;
 }
+.game-intro img {
+  width: 100%;
+  margin-bottom: 2rem;
+}
 
 @media (max-width: 40rem) {
   .game-intro {

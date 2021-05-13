@@ -1,0 +1,67 @@
+<%- include('partials/header'); -%>
+<script src="/js/clientRoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0/build/global/luxon.min.js"></script>
+
+<meta name="csrf-token" content="<%= csrfToken %>"> 
+
+
+
+<div class="main">
+
+   
+    <% if (typeof error !== 'undefined') { %>
+        <div class="card error-card">Упс. Кажется такой комнаты не существует</div>
+    <% }
+    else{ %>
+
+   
+
+    <script>
+        let players = <%- players %>;
+        let messages = <%- messages %>;
+        
+    </script>
+     
+
+    
+       
+
+    
+    
+
+    <div class="chat">
+        <div class="chat-header">
+            <div class="chat-users" id='chat-users'>
+                
+            </div>
+            <div class="minimize-chat-icon">
+                <span>_</span>
+            </div>
+        </div>
+           
+        
+        <div class="chat-messages">
+            
+
+        </div>
+        
+        <form id='message-form'>
+            <div class="input-group">
+                <input type="text" class="form-control" id='message-input'>
+                <button class="btn btn-green" id='send-message-button'>
+                    <i class="fas fa-angle-double-right"></i>
+                </button>
+            </div>
+        </form>
+     
+
+        
+    </div>
+
+    <% } %>
+
+</div>
+
+<script src="../js/clientChat.js"></script>
+
+<%- include('partials/footer'); -%>
