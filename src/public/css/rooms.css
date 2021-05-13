@@ -1,0 +1,52 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+}
+
+.room-list {
+  margin: 3rem 0;
+}
+
+.room-description {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.room-description img {
+  width: 100%;
+  border-radius: 5px;
+}
+.room-description .description, .room-description .join {
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.room-description .description .description-text, .room-description .join .description-text {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+.room-description .join {
+  width: 30%;
+}
+.room-description .game {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.room-description .game p {
+  margin: 0;
+}
+
+/*# sourceMappingURL=rooms.css.map */
