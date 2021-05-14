@@ -18,12 +18,13 @@ backdrop.addEventListener("click", function() {
 
 function createErrorMessage(message) {
     console.log('create error message')
-    //document.querySelector('.main').innerHTML = `<div class="card room-error-message"><p>Упс. Ошибочка вышла. Попробуйте перезагрузить страницу.</p><p>${message}</p><a class="btn btn-green"> Ok</a></div>`
-    //console.log(documentMain)
-    //document.querySelector('.main').innerHtml += '<div class="card room-error-message"><p>Упс. Ошибочка вышла</p><p>Текст ошибочки</p><a class="btn btn-green btn-error-message"> Ok</a></div>'
 
-    document.querySelector('.main').insertAdjacentHTML("afterbegin", `<div class="card room-error-message"><p>Упс. Ошибочка вышла. Попробуйте перезагрузить страницу.</p><p>${message}</p><a class="btn btn-green btn-error-message"> Ok</a></div>`);
+    if(!document.querySelector(".room-error-message"))
+    {
+        document.querySelector('.main').insertAdjacentHTML("afterbegin", `<div class="card room-error-message"><p>Упс. Ошибочка вышла. Попробуйте перезагрузить страницу.</p><p>${message}</p><a class="btn btn-green btn-error-message"> Ok</a></div>`);
+    }
 }
+    
 
 document.querySelector('.main').addEventListener('click', (event) => {
     if(event.target.classList.contains('btn-error-message')){
