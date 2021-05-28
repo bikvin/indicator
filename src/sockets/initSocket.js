@@ -99,7 +99,7 @@ module.exports = (io) => {
     
                 io.to(socket.playroom).emit('userLeft', room.players)
 
-            }catch{
+            }catch(err){
                 console.log("Error leaving the room")
                 console.log(err)
                 

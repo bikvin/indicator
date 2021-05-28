@@ -1,4 +1,4 @@
-<%- include('partials/header'); -%>
+<%- include('partials/header', {pageCss:'room.css'}); -%>
 
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0/build/global/luxon.min.js"></script>
 
@@ -7,9 +7,21 @@
 
 
 <div class="main">
+    <div id="phaser-game-container">
+        <div id="phaser-game"></div>
+        <!-- <canvas id='phaser-game'></canvas> -->
+    </div>
+   
+<!--     
+    <script src="../games/battleship/assets/scripts/libs/phaser.js"></script>
 
-    
-    
+
+    <script src="../games/battleship/assets/scripts/scenes/BootScene.js"></script>
+    <script src="../games/battleship/assets/scripts/scenes/PreloadScene.js"></script>
+
+    <script src="../games/battleship/assets/scripts/main.js"></script> -->
+
+    <script src='../games/battleship/bundle.js'></script>
    
     <% if (typeof error !== 'undefined') { %>
         <div class="card error-card">Упс. Кажется такой комнаты не существует</div>
@@ -68,4 +80,4 @@
 <script src="/js/clientRoom.js"></script>
 <script src="../js/clientChat.js"></script>
 
-<%- include('partials/footer'); -%>
+

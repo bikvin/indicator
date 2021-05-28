@@ -1,0 +1,30 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.game-intro {
+    width:50%;
+    min-height: 200px; 
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 30rem;
+
+    img{
+        
+        width: 100%;
+        margin-bottom: rem;
+    }
+
+}
+
+@media (max-width: 40rem) {
+    .game-intro {
+        width:95%;
+    }
+
+}

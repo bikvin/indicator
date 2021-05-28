@@ -1,0 +1,168 @@
+
+.chat{
+    width: 20%;
+    height: 70vh;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    // border: 1px solid $light-grey-color;
+    padding: 0;
+    border-radius: 0.5rem 0 0 0;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+    // transition-property: bottom;
+    // transition-duration: 2s;
+    transition: bottom 2s;
+  
+    input{
+      display: inline-block;
+      width: 80%;
+      border-radius: 0.5rem 0 0 0.5rem;
+      height: 2.5rem;
+      margin: 0;
+      
+    }
+  
+    .input-group{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      padding: 0.25rem;
+      
+      border-left: 1px solid $light-grey-color;
+      height: 3rem;
+      background-color: white;
+  
+      
+    }
+  
+    button{
+      display: inline-block;
+      width: 15%;
+      height: 2.5rem;
+      border-radius: 0 1.25rem 1.25rem 0;
+      padding: 0;
+      
+      
+  
+    }
+  
+  }
+  
+  .chat-messages{
+    overflow: scroll;
+    height: calc(100% - 3rem - 2.5rem);
+    border-left: 1px solid $light-grey-color;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    background-color: white;
+  
+    .chat-messages__name{
+      color: $violet-color;
+      margin:0;
+    }
+  
+    .chat-messages__time{
+      color: $grey-color;
+      font-size: 0.6rem;
+    }
+  
+    p{
+      margin:0;
+      
+    }
+
+    .chat-message{
+      margin-bottom: 1rem;
+    }
+  
+  }
+  
+  .chat-header{
+    margin:0;
+    background-color: $green-color;
+
+    border-radius: 0.5rem 0 0 0;
+    padding: 0;
+    font-family: 'Comfortaa', cursive;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  
+  
+    .chat-users{
+  
+      width: 85%;
+      height:80%;
+  
+      margin-left: 0.25rem;
+      overflow: hidden;
+      display: flex;
+      
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      padding: 0.25rem;
+    }
+  
+    .minimize-chat-icon{
+  
+      width: 10%;
+      height:80%;
+      border: 1px solid $violet-color;
+      color: $violet-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.25rem;
+  
+      cursor: pointer;
+      border-radius: 0.25rem;
+      
+      &:hover{
+        background-color: $violet-color;
+        color: white;
+      }
+  
+  
+    }
+  }
+
+.chat-hidden{
+  bottom: calc(2.5rem - 70vh);
+
+}
+
+.chat-open{
+  bottom: 0 !important;
+}
+
+.room-error-message{
+  color: $red-color;
+  background-color: $light-pink-color;
+  border-color: $dark-pink-color;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    text-align: center;
+  }
+  
+}
+
+
+@media (max-width: 40rem) {
+  .chat{
+    width: 95%;
+    bottom: calc(2.5rem - 70vh);
+  }
+
+}

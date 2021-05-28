@@ -1,4 +1,5 @@
-let obj = {'key1': 'item1', 'key2':'item2'}
-console.log(obj)
-obj.key3 = 'item3'
-console.log(obj)
+for (var i = 0; i < 10; i++) { 
+    setTimeout(function() { 
+        console.log(this)
+    }.bind(i), 1000)
+}
