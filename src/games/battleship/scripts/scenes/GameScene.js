@@ -9,7 +9,7 @@ export default class GameScene extends Phaser.Scene {
         super("Game");
 
         this.shipStartPositions = []
-        this.shipSprites = []
+        this.ships = []
 
         this.drag = false
 
@@ -44,14 +44,17 @@ export default class GameScene extends Phaser.Scene {
     setShipSprites(){
 
         this.shipStartPositions.forEach(shipStartPosition => {
-            new Ship({scene: this , 
+            this.ships.push(
+                new Ship({scene: this , 
+                id: shipStartPosition.id,
                 length: shipStartPosition.length,
                 x: shipStartPosition.x, 
                 y: shipStartPosition.y, 
                 sprite: shipStartPosition.sprite,
                 originX: shipStartPosition.originX,
                 originY: shipStartPosition.originY
-            })
+                })
+            )
         })
 
     }
@@ -60,16 +63,16 @@ export default class GameScene extends Phaser.Scene {
         const centerWidth = this.game.config.width/2
 
         this.shipStartPositions = [
-            {length: 4, x:centerWidth+110, y: this.seaPaddingTop, sprite: 'ship4', originX: 0.87, originY: 0.5},
-            {length: 3, x:centerWidth+60, y: this.seaPaddingTop + 120, sprite: 'ship3_1', originX: 0.83, originY: 0.5},
-            {length: 3, x:centerWidth+60, y: this.seaPaddingTop + 230, sprite: 'ship3_2', originX: 0.83, originY: 0.5},
-            {length: 2, x:centerWidth+40, y: this.seaPaddingTop + 330, sprite: 'ship2', originX: 0.75, originY: 0.5},
-            {length: 2, x:centerWidth+40, y: this.seaPaddingTop + 430, sprite: 'ship2', originX: 0.75, originY: 0.5},
-            {length: 2, x:centerWidth+40, y: this.seaPaddingTop + 530, sprite: 'ship2', originX: 0.75, originY: 0.5},
-            {length: 1, x:centerWidth-50, y: this.seaPaddingTop + 630, sprite: 'ship1', originX: 0.5, originY: 0.5},
-            {length: 1, x:centerWidth+50, y: this.seaPaddingTop + 630, sprite: 'ship1', originX: 0.5, originY: 0.5},
-            {length: 1, x:centerWidth-50, y: this.seaPaddingTop + 710, sprite: 'ship1', originX: 0.5, originY: 0.5},
-            {length: 1, x:centerWidth+50, y: this.seaPaddingTop + 710, sprite: 'ship1', originX: 0.5, originY: 0.5},
+            {id: 1, length: 4, x:centerWidth+110, y: this.seaPaddingTop, sprite: 'ship4', originX: 0.87, originY: 0.5},
+            {id: 2, length: 3, x:centerWidth+60, y: this.seaPaddingTop + 120, sprite: 'ship3_1', originX: 0.83, originY: 0.5},
+            {id: 3, length: 3, x:centerWidth+60, y: this.seaPaddingTop + 230, sprite: 'ship3_2', originX: 0.83, originY: 0.5},
+            {id: 4, length: 2, x:centerWidth+40, y: this.seaPaddingTop + 330, sprite: 'ship2', originX: 0.75, originY: 0.5},
+            {id: 5, length: 2, x:centerWidth+40, y: this.seaPaddingTop + 430, sprite: 'ship2', originX: 0.75, originY: 0.5},
+            {id: 6, length: 2, x:centerWidth+40, y: this.seaPaddingTop + 530, sprite: 'ship2', originX: 0.75, originY: 0.5},
+            {id: 7, length: 1, x:centerWidth-50, y: this.seaPaddingTop + 630, sprite: 'ship1', originX: 0.5, originY: 0.5},
+            {id: 8, length: 1, x:centerWidth+50, y: this.seaPaddingTop + 630, sprite: 'ship1', originX: 0.5, originY: 0.5},
+            {id: 9, length: 1, x:centerWidth-50, y: this.seaPaddingTop + 710, sprite: 'ship1', originX: 0.5, originY: 0.5},
+            {id: 10, length: 1, x:centerWidth+50, y: this.seaPaddingTop + 710, sprite: 'ship1', originX: 0.5, originY: 0.5},
         ]
     }
     

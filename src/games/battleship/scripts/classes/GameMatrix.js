@@ -41,91 +41,27 @@ export default class GameMatrix {
     }
 
     snapShip(ship){
-        console.log('Snap Ship')
-        //ship.snapped=false
+        //console.log('Snap Ship')
+       
 
         this.matrix.forEach(matrixRow => {
 
             matrixRow.forEach(matrixPoint => { 
-                //this.add.circle(snapPoint.x, snapPoint.y, 3, 0xff0000)
+              
                 const dist = Phaser.Math.Distance.BetweenPoints(ship, matrixPoint)
                 if(dist <= 50){
                     
-                    // /console.log('Snappp', ' row: ', matrixPoint.row, ' col: ', matrixPoint.col)
+            
                     ship.x = matrixPoint.x
                     ship.y = matrixPoint.y
                     ship.firstPos = {row: matrixPoint.row, col: matrixPoint.col}
-                    //console.log('snap')
-                    // console.log(this.scene)
-                    // console.log(this.scene.input.x)
-                    // console.log(this.scene.input.y)
-
-                    //this.placeShipToMatrix(ship, matrixPoint)
-                    //console.log('row: ' + matrixPoint.row)
-                    //console.log('col: ' + matrixPoint.col)
-                    //ship.setPosition(matrixPoint)
-                    //ship.setPos(matrixPoint)
                     
-                    //ship.snapped = true
                 }
             })
         })
     }
 
-    setMargins(){
-        console.log('Set margins')
-        
-        this.clearMargins()
-        
-        const marginCoords = [
-                            {row: -1, col: -1},
-                            {row: -1, col:  0},
-                            {row: -1, col: 1},
-                            {row: 0, col: -1},
-                            {row: 0, col: 1},
-                            {row: 1, col: -1},
-                            {row: 1, col: 0},
-                            {row: 1, col: 1},
-                        ]
-        
-        for(let row=0; row < 10; row++){
-            
-            for(let col=0; col < 10; col++){
-                //debugger
-                if(this.matrix[row][col].ship instanceof Ship){
-                    //this.matrix[row][col].ship = null
-                    console.log('shiip')
-                    
-                    marginCoords.forEach(matrixCoord => {
-
-                        const starRow = row + matrixCoord.row
-                        const starCol = col + matrixCoord.col
-
-                        if(starRow < 0 || starRow >= 10 || starCol < 0 || starCol >=10) return
-
-                        if(this.matrix[starRow][starCol].ship instanceof Ship) return
-
-                        this.matrix[starRow][starCol].ship = "*"
-                        //console.log(this.matrix[row + matrixCoord.row][col + matrixCoord.col].ship)
-                        //console.log('row: ', row + matrixCoord.row , 'col: ', col + matrixCoord.col )
-                        //debugger
-                        //console.log(matrixCoord)
-                        
-                        //this.matrix[row + matrixCoord.row][col + matrixCoord.col].ship = '*'
-                    })
-
-                    //console.log('row: ', row, 'col: ', col)
-                    //this.matrix[row + 1][col - 1].ship = "*"
-                    //console.log(this.matrix[row][col].ship instanceof Ship)
-                    //console.log(this.matrix[row + 1][col - 1].ship instanceof Ship)
-                }
-
-                //console.log(this.matrix[row][col].ship)
-            }
-        }
-
-    }
-
+    
     clearMargins(){
         console.log('Clear Margins')
         for(let row=0; row < 10; row++){
@@ -136,9 +72,65 @@ export default class GameMatrix {
             }
         }
     }
-    // placeShipToMatrix(ship, matrixPoint){
-    //     console.log(ship)
-    //     console.log(matrixPoint)
-    //     this.matrix
-    // }
+
+    check(){
+        this.resetShips()
+        //console.log('Matrix check')
+        const marginCoords = [
+            {row: -1, col: -1},
+            {row: -1, col:  0},
+            {row: -1, col: 1},
+            {row: 0, col: -1},
+            {row: 0, col: 1},
+            {row: 1, col: -1},
+            {row: 1, col: 0},
+            {row: 1, col: 1},
+        ]
+        for(let row=0; row < 10; row++){
+            
+            for(let col=0; col < 10; col++){
+                const checkCellShip = this.matrix[row][col].ship
+
+                marginCoords.forEach(matrixCoord => {
+                    const checkMarginRow = Math.max(Math.min(row + matrixCoord.row, 9), 0)
+                    const checkMarginCol = Math.max(Math.min(col + matrixCoord.col, 9), 0)
+                    const checkMarginShip = this.matrix[checkMarginRow][checkMarginCol].ship
+                    
+                    
+                    if(checkCellShip != null) {
+                        if((checkMarginShip != null) && (checkMarginShip.id != checkCellShip.id)) { 
+                            // console.log('Too close')
+                            // console.log('checkMarginShip.id: ', checkMarginShip.id, 'checkCellShip.id: ', checkCellShip.id)
+                            
+                            checkCellShip.setPosIncorrect()
+                        }
+                    }
+                    
+                    
+                })
+            }
+        }
+
+        this.countCorrectShips()
+    }
+
+    countCorrectShips(){
+        let correctShips = 0
+        this.scene.ships.forEach(ship => {
+            //console.log("ship.posSet: ", ship.posSet, "ship.posCorrect: ", ship.posCorrect)
+            if(ship.posSet && ship.posCorrect) correctShips ++
+        })
+        console.log('Number of correct ships: ',correctShips)
+        if(correctShips >= 10) console.log('Can. Start. Game. At. Last')
+    }
+
+    resetShips(){
+        this.scene.ships.forEach(ship => {
+            if(ship.posSet){
+                ship.setPosCorrect()
+            }
+            
+        })
+    }
+    
 }
