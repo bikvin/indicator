@@ -12,9 +12,9 @@ const roomSchema = new mongoose.Schema({
                 text: String,
                 date: {type: Date, default: Date.now}
      }],
-     game: mongoose.ObjectId,
+     games: [{ type: Schema.Types.ObjectId, ref: 'battleshipGame' }],
      closed: {type: Boolean, default: false},
-     gameEnded: {type: Boolean, default: false}
+     //gameEnded: {type: Boolean, default: false}
 })
 
 

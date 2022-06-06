@@ -1,14 +1,18 @@
+//#region [ rgba(0,205,30, 0.2)]
+//#endregion
+
 const urlParams = new URLSearchParams(window.location.search);
-//console.log(urlParams)
+
 
 const roomName = window.location.pathname.split('/')[2]
 
 
 
-//createErrorMessage('message')
-
 console.log('Join room', roomName)
 
+// document.addEventListener('DOMContentLoaded', (event) => {
+//   console.log('Dom Content Loaded')
+// })
 
 
 
@@ -27,13 +31,3 @@ socket.on('userLeft', (players) => {
   })  
 
 
-
-
-
-// socket.on('userJoined', (user) => {
-//     console.log('Someone joined the room. Its ', user.username)
-// } )
-
-// socket.on('updateUsersList', (data) => {
-//     console.log(data)
-// })

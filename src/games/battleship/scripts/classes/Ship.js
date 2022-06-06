@@ -11,6 +11,9 @@ export default class Ship extends Phaser.GameObjects.Sprite {
 
         this.scene.add.existing(this);
 
+        this.setScale(options.scale)
+        this.setDepth(1)
+
         this.init()
 
     }
@@ -27,6 +30,10 @@ export default class Ship extends Phaser.GameObjects.Sprite {
         this.matrix = this.scene.gameMatrix
         
 
+    }
+
+    disableDrag(){
+        this.disableInteractive()
     }
 
     setDragAndTurn(){
@@ -77,7 +84,7 @@ export default class Ship extends Phaser.GameObjects.Sprite {
 
             this.removeOldPosFromMatrix()
             
-            this.printMatrix()
+            //this.printMatrix()
 
             this.checkPos()
 
@@ -173,7 +180,7 @@ export default class Ship extends Phaser.GameObjects.Sprite {
 
         this.matrix.check()
 
-        this.printMatrix()
+        //this.printMatrix()
         
     }
 

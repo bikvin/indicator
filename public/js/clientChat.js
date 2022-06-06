@@ -1,3 +1,5 @@
+//#region [ rgba(0,205,30, 0.2)]
+//#endregion
 
 const minimizeButton = document.querySelector('.minimize-chat-icon')
 const chatWindow = document.querySelector('.chat')
@@ -85,62 +87,9 @@ function autoscroll() {
 
 
 
-// messageForm.addEventListener('submit', async (e) => {
-
-//     e.preventDefault()
-
-//     const message = messageInput.value
-    
-
-//     if(message != ''){
-//         try{
-//             const res = await fetch('/new-message', {
-//             credentials: 'same-origin',
-//             method: 'POST',
-//             body: JSON.stringify({roomId: roomId, message: message}),
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'CSRF-Token': token // <-- is the csrf token as a header
-//                 }
-
-//             })
-
-//             messageInput.value = ''
-            
-//         }
-//         catch (err) {
-//             console.log(err) 
-//         }
-        
-//     }
-    
-
-    
-// });
-
-
-// window.addEventListener("beforeunload", function(event) {
-//      //alert('kk');
-//      try{
-//         const res = fetch('/leaveroom', {
-//             credentials: 'same-origin',
-//             method: 'POST',
-//             body: JSON.stringify({roomId: roomId}),
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'CSRF-Token': token // <-- is the csrf token as a header
-//             }
-
-//         })
-
-//     }
-//     catch (err) {
-//         console.log(err) 
-//     }
-// });
-
 
 function updateUserList(players){
+    
     let names = ''
     players.forEach((player) => {
         names += `${player.username} `

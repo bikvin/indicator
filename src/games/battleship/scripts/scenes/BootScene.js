@@ -10,15 +10,13 @@ export default class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        //console.log('boot scene')
-        //this.load.image('bg', bgPng);
-        //this.load.image('bg', 'assets/sprites/background.png');
+
         this.load.image('sea', sea);
     }
 
     create() {
         
-        this.scene.start("Preload", { seaPaddingTop: 431 });
+        this.scene.start("Preload", { seaPaddingTop: 50 });
     }
 
     
