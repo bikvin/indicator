@@ -1,0 +1,31 @@
+{
+	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
+	"saucer": {
+		"type": "fromPhysicsEditor",
+		"label": "saucer",
+		"isStatic": false,
+		"density": 0.1,
+		"restitution": 0,
+		"friction": 0.1,
+		"frictionAir": 0.01,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":-0.5, "y":21 }, { "x":8, "y":27.5 }, { "x":34, "y":35.5 }, { "x":15, "y":16.5 } ],
+					[ { "x":15, "y":16.5 }, { "x":34, "y":35.5 }, { "x":54, "y":35.5 }, { "x":74.5, "y":29 }, { "x":62, "y":20.5 }, { "x":37, "y":6.5 }, { "x":24.5, "y":8 } ],
+					[ { "x":52, "y":9.5 }, { "x":42, "y":6.5 }, { "x":37, "y":6.5 }, { "x":62, "y":20.5 } ],
+					[ { "x":75.5, "y":27 }, { "x":62, "y":20.5 }, { "x":74.5, "y":29 } ],
+					[ { "x":41, "y":-0.5 }, { "x":40, "y":-0.5 }, { "x":37, "y":6.5 }, { "x":42, "y":6.5 } ]
+				]
+			}
+		]
+	}
+}

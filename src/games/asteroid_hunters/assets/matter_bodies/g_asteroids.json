@@ -1,0 +1,159 @@
+{
+	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
+	"asteroid_gray_lg_1": {
+		"type": "fromPhysicsEditor",
+		"label": "asteroid_gray_lg_1",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":0, "y":85 }, { "x":28, "y":146 }, { "x":70, "y":169 }, { "x":167, "y":128 }, { "x":181, "y":91 }, { "x":126, "y":12 }, { "x":99, "y":0 }, { "x":36, "y":27 } ],
+					[ { "x":139, "y":158 }, { "x":167, "y":128 }, { "x":70, "y":169 } ],
+					[ { "x":51, "y":165 }, { "x":70, "y":169 }, { "x":28, "y":146 } ],
+					[ { "x":181, "y":69 }, { "x":126, "y":12 }, { "x":181, "y":91 } ]
+				]
+			}
+		]
+	},
+	"asteroid_gray_lg_2": {
+		"type": "fromPhysicsEditor",
+		"label": "asteroid_gray_lg_2",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":3, "y":101 }, { "x":58, "y":125 }, { "x":120, "y":135 }, { "x":143, "y":135 }, { "x":169, "y":48 }, { "x":42, "y":11 }, { "x":19, "y":26 }, { "x":4, "y":60 } ],
+					[ { "x":228, "y":88 }, { "x":225, "y":70 }, { "x":212, "y":55 }, { "x":199, "y":47 }, { "x":169, "y":48 }, { "x":143, "y":135 }, { "x":192, "y":124 }, { "x":214, "y":110 } ],
+					[ { "x":86, "y":0 }, { "x":42, "y":11 }, { "x":169, "y":48 } ]
+				]
+			}
+		]
+	},
+	"asteroid_gray_lg_3": {
+		"type": "fromPhysicsEditor",
+		"label": "asteroid_gray_lg_3",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":26, "y":141 }, { "x":60, "y":144 }, { "x":120, "y":129 }, { "x":109, "y":37 }, { "x":11, "y":90 }, { "x":11, "y":117 } ],
+					[ { "x":94, "y":11 }, { "x":73, "y":0 }, { "x":39, "y":7 }, { "x":5, "y":38 }, { "x":1, "y":59 }, { "x":99, "y":28 } ],
+					[ { "x":203, "y":105 }, { "x":200, "y":90 }, { "x":167, "y":49 }, { "x":109, "y":37 }, { "x":120, "y":129 }, { "x":168, "y":135 }, { "x":190, "y":123 } ],
+					[ { "x":11, "y":90 }, { "x":109, "y":37 }, { "x":99, "y":28 }, { "x":1, "y":59 } ]
+				]
+			}
+		]
+	},
+	"asteroid_gray_lg_4": {
+		"type": "fromPhysicsEditor",
+		"label": "asteroid_gray_lg_4",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":19, "y":27 }, { "x":16, "y":57 }, { "x":51, "y":129 }, { "x":76, "y":120 }, { "x":101, "y":5 }, { "x":78, "y":0 }, { "x":50, "y":3 } ],
+					[ { "x":133, "y":5 }, { "x":101, "y":5 }, { "x":76, "y":120 }, { "x":127, "y":117 }, { "x":159, "y":88 }, { "x":170, "y":57 }, { "x":160, "y":28 } ],
+					[ { "x":0, "y":85 }, { "x":6, "y":103 }, { "x":51, "y":129 }, { "x":16, "y":57 } ]
+				]
+			}
+		]
+	},
+	"asteroid_gray_sm_1": {
+		"type": "fromPhysicsEditor",
+		"label": "asteroid_gray_sm_1",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":2, "y":50 }, { "x":26, "y":59 }, { "x":44, "y":59 }, { "x":72, "y":31 }, { "x":62, "y":10 }, { "x":39, "y":0 }, { "x":15, "y":8 }, { "x":1, "y":30 } ],
+					[ { "x":67, "y":46 }, { "x":72, "y":31 }, { "x":44, "y":59 } ]
+				]
+			}
+		]
+	},
+	"asteroid_gray_sm_2": {
+		"type": "fromPhysicsEditor",
+		"label": "asteroid_gray_sm_2",
+		"isStatic": false,
+		"density": 0.1,
+		"restitution": 0,
+		"friction": 0.1,
+		"frictionAir": 0.01,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":95, "y":27 }, { "x":86, "y":18 }, { "x":60, "y":18 }, { "x":46, "y":74 }, { "x":80, "y":63 }, { "x":95, "y":39 } ],
+					[ { "x":60, "y":18 }, { "x":31, "y":0 }, { "x":19, "y":1 }, { "x":3, "y":21 }, { "x":3, "y":36 }, { "x":24, "y":73 }, { "x":46, "y":74 } ]
+				]
+			}
+		]
+	}
+}

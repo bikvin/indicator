@@ -1,0 +1,70 @@
+import Phaser from "phaser";
+import DialogWindowManager from "../entities/DialogWindowManager";
+import levelsConfig from "./levelConfig"
+import sharedUtils from "../utils/sharedUtils"
+
+export default class LevelSelectScene extends Phaser.Scene {
+    constructor(config) {
+        super("LevelSelectScene");
+        this.config = config;
+  
+        
+    }
+
+    init(data){
+
+
+        this.topOpenLevel = sharedUtils.getTopOpenLevel();
+
+        this.level = data.level || this.topOpenLevel;
+
+        if(this.level >= levelsConfig.length) this.level = levelsConfig.length-1; // if topopenlevel is set higher than last level set this.level to last level
+        
+
+        this.sharedOptions = data.sharedOptions;
+        
+    }
+
+    preload() {
+
+
+
+
+    }
+
+    create() {
+        this.createBackground();
+
+        
+
+       
+
+
+        this.dialogWindowManager = new DialogWindowManager(this,  levelsConfig);
+
+        this.createLevelSelectWindow();
+
+    }
+
+
+    
+    
+    createBackground(){
+        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1);
+    }
+
+    createLevelSelectWindow(){
+
+        this.dialogWindowManager.createWindow('levelSelect');
+    }
+
+    startGame(){
+
+        this.scene.start("PlayScene", {level: this.level, sharedOptions: this.sharedOptions});
+    }
+
+    exitScene(){
+        this.scene.start("StartScene");
+    }
+    
+} 

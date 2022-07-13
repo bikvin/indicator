@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "saucerBoom1",
+	"frame": {"x":0,"y":0,"w":16,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":19},
+	"sourceSize": {"w":16,"h":19}
+},
+{
+	"filename": "saucerBoom2",
+	"frame": {"x":16,"y":0,"w":28,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":35},
+	"sourceSize": {"w":28,"h":35}
+},
+{
+	"filename": "saucerBoom3",
+	"frame": {"x":90,"y":0,"w":47,"h":53},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":53},
+	"sourceSize": {"w":47,"h":53}
+},
+{
+	"filename": "saucerBoom4",
+	"frame": {"x":137,"y":0,"w":57,"h":57},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":57},
+	"sourceSize": {"w":57,"h":57}
+},
+{
+	"filename": "saucerBoom5",
+	"frame": {"x":0,"y":57,"w":65,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":64},
+	"sourceSize": {"w":65,"h":64}
+},
+{
+	"filename": "saucerBoom6",
+	"frame": {"x":73,"y":128,"w":75,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":71},
+	"sourceSize": {"w":75,"h":71}
+},
+{
+	"filename": "saucerBoom7",
+	"frame": {"x":65,"y":57,"w":73,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":71},
+	"sourceSize": {"w":73,"h":71}
+},
+{
+	"filename": "saucerBoom8",
+	"frame": {"x":138,"y":57,"w":73,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":71},
+	"sourceSize": {"w":73,"h":71}
+},
+{
+	"filename": "saucerBoom9",
+	"frame": {"x":0,"y":128,"w":73,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":71},
+	"sourceSize": {"w":73,"h":71}
+},
+{
+	"filename": "saucerBoom10",
+	"frame": {"x":44,"y":0,"w":46,"h":53},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":53},
+	"sourceSize": {"w":46,"h":53}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "saucer_boom.png",
+	"format": "RGBA8888",
+	"size": {"w":211,"h":199},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e7d2266e4a7a3e50e803b1cdb7d7342f:948dd3002533addabba73d46b201baaa:0eaf2f1952a3dd39bb64df5583799a22$"
+}
+}
