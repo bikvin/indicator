@@ -35,7 +35,9 @@ export default class LevelSelectScene extends Phaser.Scene {
     create() {
         this.createBackground();
 
-        
+        if(this.sys.game.device.os.desktop){
+            this.createUseArrowsLabel();
+        }
 
        
 
@@ -51,6 +53,11 @@ export default class LevelSelectScene extends Phaser.Scene {
     
     createBackground(){
         this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1);
+    }
+
+    createUseArrowsLabel(){
+        this.add.image(450, 700, 'use-arrows-icon').setOrigin(0.5).setScale(0.7);
+        this.add.text(820, 700, 'use arrows to move, space to shoot', { font: '25px Comfortaa' }).setOrigin(0.5);
     }
 
     createLevelSelectWindow(){

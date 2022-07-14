@@ -30,6 +30,7 @@ import soundIcon from './../../assets/images/sound-icon.png'
 import nosoundIcon from './../../assets/images/nosound-icon.png'
 import astCrunch from './../../assets/images/ast-crunch3.png'
 import infoIcon from './../../assets/images/info-icon.png'
+import useArrowsIcon from './../../assets/images/use-arrows.png'
 
 // matter_bodies
 import shipBody from './../../assets/matter_bodies/ship.json'
@@ -132,6 +133,8 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('nosound-icon', nosoundIcon);
         this.load.image('ast-crunch', astCrunch);
         this.load.image('info-icon', infoIcon);
+        this.load.image('use-arrows-icon', useArrowsIcon);
+        
         
         // matter_bodies
         this.load.json('ship_body', shipBody);
