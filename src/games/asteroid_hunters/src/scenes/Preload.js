@@ -54,14 +54,12 @@ import saucer_image_json from './../../assets/atlas/saucer.json'
 
 // sounds
 
-import thrustSound from './../../assets/sounds/thrusterFire.ogg'
-
-
+import thrustSound from './../../assets/sounds/thrusterFire.mp3'
 import boomSound from './../../assets/sounds/boom.mp3'
-import themeSound from './../../assets/sounds/ObservingTheStar.ogg'
+import themeSound from './../../assets/sounds/ObservingTheStar.mp3'
 import astCrushSound from './../../assets/sounds/Blink19.mp3'
-import shootSound from './../../assets/sounds/footstep_concrete_003.ogg'
-import saucerBoomSound from './../../assets/sounds/saucer_explode.ogg'
+import shootSound from './../../assets/sounds/footstep_concrete_003.mp3'
+import saucerBoomSound from './../../assets/sounds/saucer_explode.mp3'
 import collectSound from './../../assets/sounds/collect.mp3'
 import noAmmoSound from './../../assets/sounds/no-ammo.mp3'
 import astHit from './../../assets/sounds/ast-hit.mp3'
