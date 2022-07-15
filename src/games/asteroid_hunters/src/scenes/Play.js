@@ -39,7 +39,12 @@ export default class PlayScene extends Phaser.Scene {
 
     create() {
 
-        this.matter.set60Hz();
+        //console.log('playScene create')
+        console.log('this.matter', this.matter)
+        this.matter.world.autoUpdate = false;
+        this.matterTimeStep = 16.66; // set fps to 60 (1000/60 = 16.66)
+        this.timeAccumulator = 0; // this is needed in update
+
 
 
         this.levelConfig = levelsConfig[this.level];
@@ -205,12 +210,21 @@ export default class PlayScene extends Phaser.Scene {
  
     }
 
-    update() {
+    update(time, delta) {
 
-        this.player.move();
+        // this 'manual' stepping is needed to overcome different screen fps and make it all 60fps
+        this.timeAccumulator += delta;
+        while(this.timeAccumulator >= this.matterTimeStep) {
+            this.timeAccumulator -= this.matterTimeStep;
 
-      
+            this.player.move();
 
+            this.matter.world.step(this.matterTimeStep);
+        }
+
+        //console.log(delta);
+        
+    
         
 
     }
