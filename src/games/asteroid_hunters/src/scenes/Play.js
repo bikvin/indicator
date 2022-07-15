@@ -39,7 +39,7 @@ export default class PlayScene extends Phaser.Scene {
 
     create() {
 
-  
+        this.matter.set60Hz();
 
 
         this.levelConfig = levelsConfig[this.level];
