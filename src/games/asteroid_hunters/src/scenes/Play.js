@@ -40,7 +40,7 @@ export default class PlayScene extends Phaser.Scene {
     create() {
 
         //console.log('playScene create')
-        console.log('this.matter', this.matter)
+    
         this.matter.world.autoUpdate = false;
         this.matterTimeStep = 16.66; // set fps to 60 (1000/60 = 16.66)
         this.timeAccumulator = 0; // this is needed in update
@@ -213,6 +213,7 @@ export default class PlayScene extends Phaser.Scene {
     update(time, delta) {
 
         // this 'manual' stepping is needed to overcome different screen fps and make it all 60fps
+        // https://phaser.discourse.group/t/question-about-matter-js-and-its-update-loop/4824
         this.timeAccumulator += delta;
         while(this.timeAccumulator >= this.matterTimeStep) {
             this.timeAccumulator -= this.matterTimeStep;

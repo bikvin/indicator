@@ -8,7 +8,7 @@ export default class BootScene extends Phaser.Scene {
        
     }
     preload() {
-       console.log('Boot preload')
+       //console.log('Boot preload')
         this.load.image('space', space);
         //this.load.image('lb-example', lb_example);
     }
