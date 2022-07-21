@@ -1,4 +1,4 @@
-
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 const path = require('path')
@@ -24,14 +24,28 @@ module.exports = {
                 options: {
                     presets: ["@babel/preset-env"]
                 }
-            }
-        },
-        
-        {
-            test: /\.(png|svg|jpg|jpeg|gif|mp3|ogg)$/i,
-            type: 'asset/resource',
-          },
+            },
+
+            
+            },
+
+
+         
         ]
     },
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+              {
+                from: 'assets/**/*',
+    
+                context: 'src/games/asteroid_hunters/',
+              },
+            ]
+        }),
+          
+    ],
+
     devtool: "eval-source-map",
-}
+
+};

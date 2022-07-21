@@ -21,7 +21,8 @@ const START_POSITION = {
 const SHARED_CONFIG = {
   width: WIDTH,
   height: HEIGHT,
-  startPosition: START_POSITION
+  startPosition: START_POSITION,
+  publicGameFolder: 'games/asteroid_hunters/'
 };
 
 const Scenes = [BootScene, PreloadScene, StartScene, InfoScene, LevelSelectScene, PlayScene, FinalScene];
