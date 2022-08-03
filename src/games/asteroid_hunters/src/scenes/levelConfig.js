@@ -476,7 +476,7 @@ const levelConfig = [
     number: 22,
     time: 3*60*1000,
     prompt: "Too many",
-    targetText: 'Escape all asteroids.',
+    targetText: 'Escape all asteroids',
     //ammo: 10,
 
     asteroids: {
@@ -500,7 +500,7 @@ const levelConfig = [
 { //23
     number: 23,
     time: 3*60*1000,
-    prompt: "Diamonds are your best friends.",
+    prompt: "Diamonds are your best friends",
     targetText: 'Collect 7 diamonds',
 
     asteroids: {
@@ -531,7 +531,7 @@ const levelConfig = [
 { //24
     number: 24,
     time: 1.5*60*1000,
-    prompt: "The salt of the earth.",
+    prompt: "The salt of the earth",
     targetText: 'Collect 7 diamonds. Watch for time.',
 
     asteroids: {

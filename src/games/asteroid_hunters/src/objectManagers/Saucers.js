@@ -1,4 +1,5 @@
 import Saucer from "../entities/Saucer";
+import lang from "../lang/lang"
 
 const DEFAULT_TOTAL_MAX = -1; // negative == infinite
 const DEFAULT_MAX_ALIVE = 1;
@@ -75,7 +76,7 @@ export default class Saucers extends Phaser.GameObjects.Group {
 
         this.scene.bottomLabel.addItem({
             order:2,
-            name: 'Saucers',
+            name: 'saucers',
             value: string
         })
     }
@@ -83,7 +84,7 @@ export default class Saucers extends Phaser.GameObjects.Group {
     updateSaucersLabel(){
 
         const string = this.makeSaucersLabelString();
-        this.scene.bottomLabel.updateData('Saucers', string);
+        this.scene.bottomLabel.updateData('saucers', string);
     }
 
     makeSaucersLabelString(){
@@ -91,7 +92,14 @@ export default class Saucers extends Phaser.GameObjects.Group {
 
         if(this.scene.levelConfig.win && this.scene.levelConfig.win.item == 'saucer'){
 
-            string = `${this.saucersHit}/${this.scene.levelConfig.win.qty}`
+            
+
+            if(this.scene.levelConfig.win.qty === 'all'){
+                string = `${this.saucersHit}/${lang.all[this.scene.config.lang]}`
+            }else{
+                string = `${this.saucersHit}/${this.scene.levelConfig.win.qty}`
+
+            }
 
         }else{
 

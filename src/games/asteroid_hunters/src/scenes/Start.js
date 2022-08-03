@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import sharedUtils from "../utils/sharedUtils"
 import sharedOptions from "../utils/sharedOptions"
+import lang from "../lang/lang"
 
 export default class PreloadScene extends Phaser.Scene {
     constructor(config) {
@@ -60,7 +61,12 @@ export default class PreloadScene extends Phaser.Scene {
 
     createButton(){
 
-        const button = this.add.text(this.config.width/2, this.config.height/2, 'Start', { font: '80px Comfortaa' })
+        // const startText = {
+        //     ru: 'Старт',
+        //     en: 'Start'
+        // }
+
+        const button = this.add.text(this.config.width/2, this.config.height/2, lang.start[this.config.lang], { font: '80px Comfortaa' })
         .setOrigin(0.5)
         .on('pointerdown', () => {this.scene.start("LevelSelectScene", {sharedOptions: this.sharedOptions}); })
         sharedUtils.setButtonHover(button);

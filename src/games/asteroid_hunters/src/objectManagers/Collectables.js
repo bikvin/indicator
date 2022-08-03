@@ -66,7 +66,7 @@ export default class Collectables extends Phaser.GameObjects.Group{
 
         this.scene.bottomLabel.addItem({
             order:2,
-            name: 'Diamonds',
+            name: 'diamonds',
             value: string
         })
 
@@ -78,7 +78,7 @@ export default class Collectables extends Phaser.GameObjects.Group{
         //const string = `Diamonds: ${this.diamonds}`;
 
         const string = this.makeDiamondLabelString();
-        this.scene.bottomLabel.updateData('Diamonds', string);
+        this.scene.bottomLabel.updateData('diamonds', string);
 
     }
 

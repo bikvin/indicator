@@ -1,5 +1,6 @@
 import Asteroid from "../entities/Asteroid";
 import Debris from "../entities/Debris";
+import lang from "../lang/lang"
 
 const DEFAULT_TOTAL_MAX_ASTEROIDS = -1; // negative == infinite
 const DEFAULT_MAX_ALIVE_ASTEROIDS = 5;
@@ -42,7 +43,7 @@ export default class Asteroids extends Phaser.GameObjects.Group {
 
         this.scene.bottomLabel.addItem({
             order:1,
-            name: 'Asteroids',
+            name: 'asteroids',
             value: string
         })
 
@@ -51,7 +52,7 @@ export default class Asteroids extends Phaser.GameObjects.Group {
     updateAsteroidsLabel(){
 
         const string = this.makeDiamondLabelString();
-        this.scene.bottomLabel.updateData('Asteroids', string);
+        this.scene.bottomLabel.updateData('asteroids', string);
     }
 
     makeDiamondLabelString(){
@@ -59,7 +60,13 @@ export default class Asteroids extends Phaser.GameObjects.Group {
 
         if(this.scene.levelConfig.win && this.scene.levelConfig.win.item == 'asteroid'){
 
-            string = `${this.asteroidsHit}/${this.scene.levelConfig.win.qty}`
+            if(this.scene.levelConfig.win.qty === 'all'){
+                string = `${this.asteroidsHit}/${lang.all[this.scene.config.lang]}`
+            }else{
+                string = `${this.asteroidsHit}/${this.scene.levelConfig.win.qty}`
+
+            }
+
 
         }else{
 

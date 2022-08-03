@@ -1,9 +1,13 @@
+import lang from "../lang/lang"
+
 export default class DialogWindowManager {
     constructor(scene, levelsConfig) {
 
         this.scene = scene;
 
         this.levelsConfig = levelsConfig;
+
+      
 
         this.init(); 
     }
@@ -38,7 +42,8 @@ export default class DialogWindowManager {
             case 'pause':
                 
                 this.text = {
-                    header: 'pause',
+                    //header: 'pause',
+                    header: lang.pause[this.scene.config.lang],
                     headerY: this.scene.config.height/2-60, 
                 } 
                 this.buttons = [
@@ -58,7 +63,8 @@ export default class DialogWindowManager {
             case 'win':
                 
                 this.text = {
-                    header: 'Mission accomplished !',
+                    //header: 'Mission accomplished !',
+                    header: lang.missionAccomplished[this.scene.config.lang],
                     headerY: this.scene.config.height/2-60,
                 }
                 this.buttons = [
@@ -74,7 +80,8 @@ export default class DialogWindowManager {
             case 'lose':
            
                 this.text = {
-                    header: 'Mission failed !',
+                    //header: 'Mission failed !',
+                    header: lang.missionFailed[this.scene.config.lang],
                     headerY: this.scene.config.height/2-80,
                     reason: this.reason,
                     reasonY: this.scene.config.height/2-40,
@@ -101,11 +108,13 @@ export default class DialogWindowManager {
             case 'levelSelect':
 
                 this.text = {
-                    header: `Level ${this.scene.level+1}`,
+                    header: `${lang.level[this.scene.config.lang]} ${this.scene.level+1}`,
                     headerY: this.scene.config.height/2-110,
-                    prompt: this.levelConfig.prompt,
+                    //prompt: this.levelConfig.prompt,
+                    prompt: lang.levelTexts[this.scene.level].prompt[this.scene.config.lang],
                     promptY: this.scene.config.height/2-70,
-                    target: this.levelConfig.targetText,
+                    //target: this.levelConfig.targetText,
+                    target: lang.levelTexts[this.scene.level].targetText[this.scene.config.lang],
                     targetY: this.scene.config.height/2+120,
                 }
                 this.buttons = [
@@ -227,12 +236,14 @@ export default class DialogWindowManager {
     }
 
     updateLevelText(){
-        this.header.text = `Level ${this.scene.level+1}`;
+        this.header.text = `${lang.level[this.scene.config.lang]} ${this.scene.level+1}`;
         if(this.prompt) {
-            this.prompt.text = this.levelConfig.prompt;
+            //this.prompt.text = this.levelConfig.prompt;
+            this.prompt.text = lang.levelTexts[this.scene.level].prompt[this.scene.config.lang]
         }
         if(this.target) {
-            this.target.text = this.levelConfig.targetText;
+            //this.target.text = this.levelConfig.targetText;
+            this.target.text = lang.levelTexts[this.scene.level].targetText[this.scene.config.lang]
         }
   
 

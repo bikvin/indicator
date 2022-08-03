@@ -74,14 +74,14 @@ export default class Bullets extends Phaser.GameObjects.Group {
         //this.updateAmmoLabel();
         this.scene.bottomLabel.addItem({
             order:1,
-            name: 'Ammo',
+            name: 'ammo',
             value: this.ammo
         })
     }
 
     updateAmmoLabel(){
   
-        this.scene.bottomLabel.updateData('Ammo', this.ammo);
+        this.scene.bottomLabel.updateData('ammo', this.ammo);
   
     }
 

@@ -1,3 +1,5 @@
+import lang from "../lang/lang"
+
 export default class BottomLabel{
     constructor(scene){
         this.scene = scene;
@@ -17,8 +19,9 @@ export default class BottomLabel{
     buildString(data){
         let string = '';
         data.forEach((item) => {
-            if(item.name != 'Time'){
-                string += `${item.name}: ${item.value}  `;
+            if(item.name != 'time'){ // dont show time word
+                //string += `${item.name}: ${item.value}  `;
+                string += `${lang[item.name][this.scene.config.lang]}: ${item.value}  `;
             }else{
                 string += `${item.value}  `
             }

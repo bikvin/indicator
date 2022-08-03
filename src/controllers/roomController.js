@@ -1,42 +1,6 @@
 const Room = require('../models/Room')
 
-// const roomGet = async (req, res) => {
-//     res.locals.header = 'Игровая комната - Indicator Games'
-//     const csrfToken = req.csrfToken()
-//     //console.log(csrfToken)
-//     const user = JSON.parse(res.locals.user)
 
-//     try{
-
-//         let room = await Room.findOne({_id:req.params.roomId})
-
-//         if(!room.players.find(player => player == user._id)){ // if user is not already in the room add him
-//             console.log('User not in room')
-//             room.players.push(user._id);
-        
-//             try{       
-//                 await room.save();
-                
-                
-//             }catch(err){
-//                 res.status(400).send({ err })
-//             }
-//         }
-
-//         try{
-//             room = await Room.findOne({_id:req.params.roomId}).populate('players', 'username email').populate('messages.userId', 'username') // get the room again with players populated
-//         }catch(err){
-//             res.status(400).send({ err })
-//         }
-
-//         res.render('room', {players: JSON.stringify(room.players), messages: JSON.stringify(room.messages), csrfToken})
-        
-//     }catch(err){
-//         //res.status(400).send({ err })
-//         res.render('room', {error: JSON.stringify(err), csrfToken})
-//     }
-    
-// }
 
 const roomGet = async (req, res) => {
     res.locals.header = 'Игровая комната - Indicator Games'

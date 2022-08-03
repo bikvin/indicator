@@ -137,6 +137,8 @@ export default class PreloadScene extends Phaser.Scene {
 
 
          //this.load.image('space', 'assets/images/space.png');
+
+         
          this.load.image('ship', this.config.publicGameFolder + 'assets/images/ship.png');
          this.load.image('fire_particle', this.config.publicGameFolder + 'assets/images/fire_particle.png');
          this.load.image('bullet_player', this.config.publicGameFolder + 'assets/images/bullet_player.png');

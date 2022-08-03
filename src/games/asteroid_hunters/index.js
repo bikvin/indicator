@@ -16,13 +16,23 @@ const START_POSITION = {
   y: HEIGHT/2
 } 
 
+const target = document.getElementById("ast_game").getAttribute("target"); // 'vk' or undefined or some other
+let lang = 'en'
+if(target === 'vk'){
+  lang = 'ru'
+}
+
+
+//console.log(target)
 
 
 const SHARED_CONFIG = {
   width: WIDTH,
   height: HEIGHT,
   startPosition: START_POSITION,
-  publicGameFolder: 'games/asteroid_hunters/'
+  publicGameFolder: 'games/asteroid_hunters/',
+  target: target,
+  lang: lang
 };
 
 const Scenes = [BootScene, PreloadScene, StartScene, InfoScene, LevelSelectScene, PlayScene, FinalScene];
@@ -50,7 +60,6 @@ const config = {
   scene: initScenes()
 
 }
-
 
 
 new Phaser.Game(config);

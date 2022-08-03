@@ -47,7 +47,7 @@ export default class LevelTimer{
 
  
         //console.log('levelTimer update');
-        this.scene.bottomLabel.updateData('Time', string);
+        this.scene.bottomLabel.updateData('time', string);
     
         
     }
@@ -58,7 +58,7 @@ export default class LevelTimer{
         this.scene.bottomLabel.addItem({
             
                 order: 0,
-                name: 'Time',
+                name: 'time',
                 value: '0:00'
 
         });

@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import DialogWindowManager from "../entities/DialogWindowManager";
 import levelsConfig from "./levelConfig"
 import sharedUtils from "../utils/sharedUtils"
+import lang from "../lang/lang"
 
 export default class LevelSelectScene extends Phaser.Scene {
     constructor(config) {
@@ -57,7 +58,7 @@ export default class LevelSelectScene extends Phaser.Scene {
 
     createUseArrowsLabel(){
         this.add.image(450, 700, 'use-arrows-icon').setOrigin(0.5).setScale(0.7);
-        this.add.text(820, 700, 'use arrows to move, space to shoot', { font: '25px Comfortaa' }).setOrigin(0.5);
+        this.add.text(600, 700,  lang.instructions[this.config.lang], { font: '25px Comfortaa' }).setOrigin(0, 0.5);
     }
 
     createLevelSelectWindow(){
