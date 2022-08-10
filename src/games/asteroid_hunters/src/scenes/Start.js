@@ -24,6 +24,9 @@ export default class PreloadScene extends Phaser.Scene {
     }
 
     create() {
+
+        console.log("start create")
+
         this.createBackground();
         this.createButton();
         this.createLabel();

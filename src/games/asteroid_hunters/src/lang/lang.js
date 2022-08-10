@@ -36,7 +36,7 @@ const lang = {
 
     diamonds:{
         en: "Diamonds",
-        ru: "Алмазы"
+        ru: "Кристаллы"
     },
 
     missionAccomplished: {
@@ -87,7 +87,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 2 diamonds',
-                ru: 'Собери 2 алмаза'
+                ru: 'Собери 2 кристалла'
             }
         },
         { //4
@@ -107,7 +107,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 3 diamonds',
-                ru: 'Собери 3 алмаза'
+                ru: 'Собери 3 кристалла'
             }
         },
         { //6
@@ -133,11 +133,11 @@ const lang = {
         { //8
             prompt:{
                 en: "They protect their diamonds",
-                ru: "Они стерегут свои алмазы"
+                ru: "Они стерегут свои кристаллы"
             },
             targetText: {
                 en: 'Collect 3 diamonds',
-                ru: 'Собери 3 алмаза'
+                ru: 'Собери 3 кристалла'
             }
         },
         { //9
@@ -183,11 +183,11 @@ const lang = {
         { //13
             prompt:{
                 en: "Mission diamond",
-                ru: "Миссия алмаз"
+                ru: "Миссия кристалл"
             },
             targetText: {
                 en: 'Collect 3 diamonds',
-                ru: 'Собери 3 алмаза'
+                ru: 'Собери 3 кристалла'
             }
         },
         { //14
@@ -197,7 +197,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 3 diamonds',
-                ru: 'Собери 3 алмаза'
+                ru: 'Собери 3 кристалла'
             }
         },
         { //15
@@ -247,7 +247,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 5 diamonds',
-                ru: 'Собери 5 алмазов'
+                ru: 'Собери 5 кристаллов'
             }
         },
         { //20
@@ -287,7 +287,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 7 diamonds',
-                ru: 'Собери 7 алмазов'
+                ru: 'Собери 7 кристаллов'
             }
         },
         { //24
@@ -297,7 +297,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 7 diamonds. Watch for time.',
-                ru: 'Собери 7 алмазов. Следи за временем.'
+                ru: 'Собери 7 кристаллов. Следи за временем.'
             }
         },
         { //25
@@ -387,7 +387,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 7 diamonds',
-                ru: 'Собери 7 алмазов'
+                ru: 'Собери 7 кристаллов'
             }
         },
         { //34
@@ -397,7 +397,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 10 diamonds. Watch for ammo.',
-                ru: 'Собери 10 алмазов. Следи за патронами.'
+                ru: 'Собери 10 кристаллов. Следи за патронами.'
             }
         },
         { //35
@@ -417,7 +417,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 5 diamonds. Watch for time.',
-                ru: 'Собери 5 алмазов. Следи за временем.'
+                ru: 'Собери 5 кристаллов. Следи за временем.'
             }
         },
         { //37
@@ -447,7 +447,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 5 diamonds.',
-                ru: 'Собери 5 алмазов'
+                ru: 'Собери 5 кристаллов'
             }
         },
         { //40
@@ -497,7 +497,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 5 diamonds.',
-                ru: 'Собери 5 алмазов'
+                ru: 'Собери 5 кристаллов'
             }
         },
         { //45
@@ -527,7 +527,7 @@ const lang = {
             },
             targetText: {
                 en: 'Collect 10 diamonds.',
-                ru: 'Собери 10 алмазов'
+                ru: 'Собери 10 кристаллов'
             }
         },
         { //48

@@ -18,15 +18,16 @@
     "validator": "^13.1.17"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.14.2",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^6.1.1",
     "file-loader": "^6.2.0",
     "nodemon": "^2.0.6",
     "webpack": "^5.37.1",
-    "webpack-cli": "^4.7.0",
-    "copy-webpack-plugin": "^6.1.1"
+    "webpack-cli": "^4.7.0"
   },
   "scripts": {
     "dev": "env-cmd -f ./config/dev.env nodemon src/app.js",
