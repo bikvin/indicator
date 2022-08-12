@@ -42,6 +42,41 @@ export default class PreloadScene extends Phaser.Scene {
 
             this.theme.play();
         }
+
+        if(this.config.target === 'vk'){
+            this.initVkBrigge();
+
+        }
+
+
+    }
+
+    initVkBrigge(){
+        console.log("initVkBrigge")
+        const vkBridge = this.config.vkBridge;
+
+        vkBridge.send('VKWebAppInit', {}).then(() => {
+            this.getVkUser();
+          });
+
+        
+    }
+
+    getVkUser(){
+        console.log('getVkUser')
+        const vkBridge = this.config.vkBridge;
+
+        vkBridge.send("VKWebAppGetUserInfo");
+
+        vkBridge.subscribe((e) => {
+            if(e.type == 'VKWebAppGetUserInfoResult') {
+             console.log(e);
+            }
+            else if (e.type == 'VKWebAppGetUserInfoFailed'){
+                console.log('Error');
+                console.log(e);
+            }
+        });
     }
     
     createBackground(){

@@ -7,7 +7,7 @@ import LevelSelectScene from './src/scenes/LevelSelect';
 import FinalScene from './src/scenes/Final';
 import BootScene from './src/scenes/Boot';
 import InfoScene from './src/scenes/Info';
-
+import VkBridgeLib from '@vkontakte/vk-bridge';
 
 const HEIGHT = 800;
 const WIDTH = 1422;
@@ -18,8 +18,10 @@ const START_POSITION = {
 
 const target = document.getElementById("ast_game").getAttribute("target"); // 'vk' or undefined or some other
 let lang = 'en'
+let vkBridge = undefined;
 if(target === 'vk'){
-  lang = 'ru'
+  lang = 'ru',
+  vkBridge = VkBridgeLib
 }
 
 
@@ -32,7 +34,8 @@ const SHARED_CONFIG = {
   startPosition: START_POSITION,
   publicGameFolder: 'games/asteroid_hunters/',
   target: target,
-  lang: lang
+  lang: lang,
+  vkBridge: vkBridge
 };
 
 const Scenes = [BootScene, PreloadScene, StartScene, InfoScene, LevelSelectScene, PlayScene, FinalScene];
