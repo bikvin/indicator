@@ -69,7 +69,7 @@ export default class PreloadScene extends Phaser.Scene {
         vkBridge.send("VKWebAppGetUserInfo");
 
         vkBridge.subscribe((e) => {
-            console.log('event')
+            console.log('vk event')
             if(e.type == 'VKWebAppGetUserInfoResult') {
                 console.log('got user data')
              console.log(e);
