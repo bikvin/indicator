@@ -3,9 +3,16 @@
 export default class SharedUtils{
 
     
-    static getTopOpenLevel(){
+    static getTopOpenLevel(target){
+
+        let topOpenLevel
+        if(target === 'vk'){
+            topOpenLevel = 13;
+        }else{
+            topOpenLevel = parseInt(localStorage.getItem('topOpenLevel')) || 0;
+
+        }
         
-        const topOpenLevel = parseInt(localStorage.getItem('topOpenLevel')) || 0;
 
 
         return topOpenLevel;

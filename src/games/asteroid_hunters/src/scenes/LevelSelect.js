@@ -15,7 +15,7 @@ export default class LevelSelectScene extends Phaser.Scene {
     init(data){
 
 
-        this.topOpenLevel = sharedUtils.getTopOpenLevel();
+        this.topOpenLevel = sharedUtils.getTopOpenLevel(this.config.target);
 
         this.level = data.level || this.topOpenLevel;
 
