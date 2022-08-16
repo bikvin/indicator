@@ -12,7 +12,7 @@ export default class SharedUtils{
 
             try{
                 console.log('try save to db')
-                const astVkLevel = await AstVkLevel.create({vkUserId:1111, topOpenLevel: topOpenLevel })
+                //const astVkLevel = await AstVkLevel.create({vkUserId:1111, topOpenLevel: topOpenLevel })
                 //res.status(201).json({room: room._id})
             }
             catch (err){
