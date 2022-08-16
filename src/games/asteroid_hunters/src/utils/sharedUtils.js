@@ -4,7 +4,7 @@ const AstVkLevel = require('../models/AstVkLevel')
 export default class SharedUtils{
 
     
-    static async getTopOpenLevel(target){
+    static getTopOpenLevel(target){
 
         let topOpenLevel
         if(target === 'vk'){
