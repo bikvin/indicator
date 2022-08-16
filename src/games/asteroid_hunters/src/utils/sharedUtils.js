@@ -1,4 +1,5 @@
 
+const AstVkLevel = require('../models/AstVkLevel')
 
 export default class SharedUtils{
 
@@ -8,6 +9,16 @@ export default class SharedUtils{
         let topOpenLevel
         if(target === 'vk'){
             topOpenLevel = 13;
+
+            try{
+                const astVkLevel = await AstVkLevel.create({vkUserId:1111, topOpenLevel: topOpenLevel })
+                //res.status(201).json({room: room._id})
+            }
+            catch (err){
+                //res.status(400).send({ err })
+                console.error(err);
+            }
+
         }else{
             topOpenLevel = parseInt(localStorage.getItem('topOpenLevel')) || 0;
 
