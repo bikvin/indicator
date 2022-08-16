@@ -14,7 +14,7 @@ router.get('*', addBaseHeader)
 
 router.get('/',baseController.home)
 
-router.get('/test', baseController.test)
+//router.get('/test', baseController.test)
 
 //router.get('/.well-known/acme-challenge/Ew3FiKa_HyTf9jnDkc5S8Kq9ZLdhRoXnkp6YT0bB1Ow', baseController.certbot_verify)
 
