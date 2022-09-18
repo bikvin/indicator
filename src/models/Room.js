@@ -19,5 +19,6 @@ const roomSchema = new mongoose.Schema({
 
 
 const Room = mongoose.model('room', roomSchema)
+console.log('Room', Room)
 
 module.exports = Room 

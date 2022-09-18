@@ -1,4 +1,4 @@
-const AstVkLevel = require('../models/AstVkLevel')
+//const AstVkLevel = require('../games/asteroid_hunters/src/models/AstVkLevel')
 
 
 const home = (req,res) => {
@@ -10,7 +10,7 @@ const home = (req,res) => {
     
 //      try{
 //                 console.log('try save to db')
-//                 const astVkLevel = await AstVkLevel.create({vkUserId:1111, topOpenLevel: topOpenLevel })
+//                 const astVkLevel = await AstVkLevel.create({vkUserId:1111, topOpenLevel: 335 })
 //                 //res.status(201).json({room: room._id})
 //                 //AstVkLevel.create({vkUserId:1111, topOpenLevel: topOpenLevel }).then(()=>{console.log('Saved')})
 //             }
@@ -27,7 +27,7 @@ const home = (req,res) => {
 
 module.exports = {
     home,
-    test
+    //test
 
 }
 

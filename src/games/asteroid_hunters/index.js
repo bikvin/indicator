@@ -17,6 +17,7 @@ const START_POSITION = {
 } 
 
 const target = document.getElementById("ast_game").getAttribute("target"); // 'vk' or undefined or some other
+const referer = document.getElementById("ast_game").getAttribute("referer"); // 'localhost or indicator.games' 
 let lang = 'en'
 let vkBridge = undefined;
 if(target === 'vk'){
@@ -34,6 +35,7 @@ const SHARED_CONFIG = {
   startPosition: START_POSITION,
   publicGameFolder: 'games/asteroid_hunters/',
   target: target,
+  referer: referer,
   lang: lang,
   vkBridge: vkBridge
 };

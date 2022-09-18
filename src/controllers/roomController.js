@@ -20,6 +20,7 @@ const roomGet = async (req, res) => {
 const roomsGet = async (req, res) => {
     res.locals.header = 'Комнаты'
     
+    console.log('Room', Room)
     try{
         const rooms = await Room.find({}).populate('creator')
         //console.log(rooms)
