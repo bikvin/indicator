@@ -2,6 +2,24 @@
     body {margin: 0;padding: 0;}
 </style>
 
+
+<% if (user) { %>
+    <script>
+      const user = <%- user  %>  
+    </script>
+<% } else { %> 
+    <script>
+        const user = undefined  
+    </script>
+<% } %> 
+
+<script type="text/javascript">
+
+    user ? console.log('user', user) : console.log('No user')
+    
+    
+</script>
+
 <script id="ast_game" target="<%- target %>" referer="<%- referer %>" src="../games/asteroid_hunters/bundle.js">
 </script>
 

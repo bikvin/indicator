@@ -119,13 +119,15 @@ export default class Collectables extends Phaser.GameObjects.Group{
 
 
     pauseEvents(){
-        this.liveTimer.paused = true;
+        this.liveTimer.paused = true; // timer for creation-recreation of collectables
        
+       this.getChildren().forEach((collectable) => {collectable.liveTimer.paused = true;}); // timers for deactivation of collectibles
 
     }
 
     resumeEvents(){
         this.liveTimer.paused = false;
+        this.getChildren().forEach((collectable) => {collectable.liveTimer.paused = false;});
        
     }
 

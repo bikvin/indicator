@@ -8,11 +8,12 @@ import Bullets from '../objectManagers/Bullets';
 import Asteroids from "../objectManagers/Asteroids";
 import Collectables from "../objectManagers/Collectables";
 import LevelTimer from "../entities/LevelTimer";
-import levelsConfig from "./levelConfig"
+import levelsConfig from "../gameConfigs/levelConfig"
 import BottomLabel from "../entities/BottomLabel";
 import DialogWindowManager from "../entities/DialogWindowManager"
-import sharedUtils from "../utils/sharedUtils"
+//import sharedUtils from "../utils/sharedUtils"
 import AsteroidCrunch from "../entities/AsteroidCrunch"
+import topOpenLevelManager from "../utils/topOpenLevelManager"
 
 //import Ast_crush from '../anims/Ast_crush';
 
@@ -44,8 +45,9 @@ export default class PlayScene extends Phaser.Scene {
         this.matter.world.autoUpdate = false;
         this.matterTimeStep = 16.66; // set fps to 60 (1000/60 = 16.66)
         this.timeAccumulator = 0; // this is needed in update
+        this.gameStepsPaused = false;
 
-
+        this.levelWon = false;
 
         this.levelConfig = levelsConfig[this.level];
         
@@ -214,6 +216,9 @@ export default class PlayScene extends Phaser.Scene {
 
         // this 'manual' stepping is needed to overcome different screen fps and make it all 60fps
         // https://phaser.discourse.group/t/question-about-matter-js-and-its-update-loop/4824
+
+        if(this.gameStepsPaused) return;
+
         this.timeAccumulator += delta;
         while(this.timeAccumulator >= this.matterTimeStep) {
             this.timeAccumulator -= this.matterTimeStep;
@@ -241,30 +246,46 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     onWin(){
-        //console.log("onWin");
+        console.log("onWin");
+        this.levelWon = true;
+        //const topOpenLevel = await topOpenLevelManager.getTopOpenLevel(this.config.target);
+        const topOpenLevel = this.sharedOptions.topOpenLevel;
+
+       
+
+        //this.dialogWindowManager.createWindow('win');
+        this.pauseAllMovements();
 
         if(
             (
-            this.level >= sharedUtils.getTopOpenLevel() // we were playing the top open level
-            || !sharedUtils.getTopOpenLevel() // or we have no top open level set
+            this.level >= topOpenLevel // we were playing the top open level
+            || !topOpenLevel// or we have no top open level set
             ) 
             && (this.level < levelsConfig.length-1) // we weren't playing the last level in the game
         )
         {
-            //console.log("Setting new topOpenLevel")
-            sharedUtils.setTopOpenLevel(this.level+1)
+            console.log("Setting new topOpenLevel")
+            const x = topOpenLevelManager.setTopOpenLevel(this.level+1, this.config.target);
+            console.log('x', x);
+            
+            x.then((newTopOpenLevel) => {
+                console.log("onWin newTopOpenLevel", newTopOpenLevel);
+                this.sharedOptions.topOpenLevel = newTopOpenLevel;
+                //this.level = newTopOpenLevel;
+                this.dialogWindowManager.createWindow('win');   // if we set topOpenLevel to db show dialog after it is set
+            })
+            .catch(err => console.log(err))
+           
+        }
+        else{
+            this.dialogWindowManager.createWindow('win'); // if we dont set new topOpenLevel then show dialog immediately
         }
 
-        this.dialogWindowManager.createWindow('win');
-        this.pauseAllMovements();
-
-        //this.matter.pause();
+       
       
     }
 
-    // startNextLevel(){
-    //     this.scene.start("LevelSelectScene"); 
-    // }
+
 
     
 
@@ -276,6 +297,7 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     deactivateGroups(){
+        console.log('deactivateChildren');
         if(this.asteroids){
             this.asteroids.getChildren().forEach(asteroid => asteroid.deactivate())
 
@@ -347,35 +369,45 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     pauseAllMovements(){
+        console.log('pauseAllMovements')
         if(this.saucers) this.saucers.pauseEvents();
         if(this.asteroids) this.asteroids.pauseEvents();
         if(this.collectables) this.collectables.pauseEvents();
         this.player.pauseMoves();
         this.player.exhaust.emitter.setQuantity(0); // fix the bug of thrust running when scene stops
         this.player.exhaust.stopSound();
-        this.matter.pause();
+        //console.log("this.matter", this.matter);
+        //console.log("this.matter.pause();", this.matter.pause());
+        //console.log("this.matter.world;", this.matter.world);
+        //console.log("this.matter.world.pause()", this.matter.world.pause());
+        //this.matter.pause();
+        this.gameStepsPaused = true; 
         if(this.levelTimer) this.levelTimer.levelTimer.paused = true;
 
     }
 
     resumeAllMovements(){
-        this.saucers.resumeEvents();
-        this.asteroids.resumeEvents();
-        this.collectables.resumeEvents();
+        if(this.saucers) this.saucers.resumeEvents();
+        if(this.asteroids) this.asteroids.resumeEvents();
+        if(this.collectables) this.collectables.resumeEvents();
         this.player.resumeMoves();
-        this.matter.resume();
+        //this.matter.resume();
+        this.gameStepsPaused = false; 
         if(this.levelTimer) this.levelTimer.levelTimer.paused = false;
     }
 
     checkWin() {
-        //console.log('Checking win');
+        console.log('Checking win');
+
+        if(this.levelWon) return; // don't check for win if level is won already
+
         let win = false;
 
         switch (this.levelConfig.win.item) {
             case 'asteroid':
 
                 if(this.asteroids.asteroidsHit >= this.levelConfig.win.qty) {
-                    //console.log('Victory! Asteroids!');
+                    console.log('Victory! Asteroids!');
                     win = 'Victory! Asteroids!';
                 }
 
@@ -430,8 +462,9 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     nextLevel(){
+        console.log('nextLevel')
         this.deactivateGroups();
-       // console.log('nextLevel')
+        
  
 
         if(this.level+1 >= levelsConfig.length){ // if we won last level
@@ -439,6 +472,7 @@ export default class PlayScene extends Phaser.Scene {
             this.scene.start("FinalScene");
             return;
         }
+        console.log('sharedOptions', this.sharedOptions);
         this.scene.start("LevelSelectScene", {level: this.level+1, sharedOptions: this.sharedOptions});
 
     }

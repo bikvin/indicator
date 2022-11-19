@@ -1,9 +1,10 @@
 import Phaser from "phaser";
 import DialogWindowManager from "../entities/DialogWindowManager";
-import levelsConfig from "./levelConfig"
-import sharedUtils from "../utils/sharedUtils"
+import levelsConfig from "../gameConfigs/levelConfig"
+//import sharedUtils from "../utils/sharedUtils"
 import lang from "../lang/lang"
-const Level = require('../models/AstLevel')
+//import topOpenLevelManager from "../utils/topOpenLevelManager"
+//const Level = require('../models/AstLevel')
 //console.log('vkLevel', vkLevel)
 
 
@@ -18,15 +19,38 @@ export default class LevelSelectScene extends Phaser.Scene {
 
     init(data){
 
+        console.log('LevelSelect init');
 
-        this.topOpenLevel = sharedUtils.getTopOpenLevel(this.config.target);
+        // this.topOpenLevel = await sharedUtils.getTopOpenLevel(this.config.target);
 
-        this.level = data.level || this.topOpenLevel;
+        // console.log('this.topOpenLevel=',this.topOpenLevel);
+        
+        // //console.log('data', data);
+        // this.level = data.level || this.topOpenLevel;
+
+
+        // console.log("this.level = " + this.level);
+
+        // if(this.level >= levelsConfig.length) this.level = levelsConfig.length-1; // if topopenlevel is set higher than last level set this.level to last level
+        this.data = data;
+
+        this.sharedOptions = data.sharedOptions;
+
+
+        //this.topOpenLevel = await topOpenLevelManager.getTopOpenLevel(this.config.target);
+        this.topOpenLevel = this.sharedOptions.topOpenLevel;
+
+        console.log('this.topOpenLevel=',this.topOpenLevel);
+        
+        //console.log('data', data);
+        this.level = this.data.level || this.topOpenLevel;
+
+        //this.level = this.topOpenLevel;
+
+        console.log("this.level = " + this.level);
 
         if(this.level >= levelsConfig.length) this.level = levelsConfig.length-1; // if topopenlevel is set higher than last level set this.level to last level
         
-
-        this.sharedOptions = data.sharedOptions;
         
     }
 
@@ -37,7 +61,17 @@ export default class LevelSelectScene extends Phaser.Scene {
 
     }
 
+  
+
     create() {
+
+        console.log('LevelSelect Create');
+
+       // this.newInit();
+
+
+
+
         this.createBackground();
 
         if(this.sys.game.device.os.desktop){
@@ -51,7 +85,7 @@ export default class LevelSelectScene extends Phaser.Scene {
 
         this.createLevelSelectWindow();
 
-       this.testDbWrite();
+       //this.testDbWrite();
 
     }
 
@@ -86,24 +120,7 @@ export default class LevelSelectScene extends Phaser.Scene {
     // }
 
     testDbWrite(){
-        // try{
-        //     const res = await fetch('http://localhost:3000/asteroid_hunters/create_top_level', {
-        //         //credentials: 'same-origin',
-        //         method: 'POST',
-        //         //body: JSON.stringify({email, password}),
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             //'CSRF-Token': token // <-- is the csrf token as a header
-        //         }
-        //     })
-        //     const data = await res.json()
-            
-        //     console.log(data)
 
-        // }
-        // catch (err) {
-        //     console.log(err) 
-        // }
         console.log('this.config.referer', this.config.referer)
         const path = `${this.config.referer}/asteroid_hunters/create_top_level`
         console.log("path", path);

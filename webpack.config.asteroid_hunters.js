@@ -21,9 +21,7 @@ module.exports = {
             exclude: /node_modules/,
             use: {
                 loader: 'babel-loader',
-                options: {
-                    presets: ["@babel/preset-env"]
-                }
+                
             },
 
             
@@ -43,9 +41,10 @@ module.exports = {
               },
             ]
         }),
+        
           
     ],
 
-    devtool: "eval-source-map",
+    devtool: "source-map",
 
 };

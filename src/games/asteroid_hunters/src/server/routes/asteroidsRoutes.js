@@ -5,7 +5,9 @@ const router = Router();
 
 router.get('/asteroid_hunters', astController.asteroidHunters)
 
-router.post('/asteroid_hunters/create_top_level', astController.create_top_level_post)
+router.post('/asteroid_hunters/set_top_level', astController.set_top_level_post)
+
+router.get('/asteroid_hunters/get_top_level', astController.get_top_level)
 
 // router.get('/test/:parameter', gamesController.testGet)
 

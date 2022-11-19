@@ -9,7 +9,7 @@ export default class BootScene extends Phaser.Scene {
     }
     preload() {
        //console.log('Boot preload')
-       const publicGameFolder = 'games/asteroid_hunters/'
+       //const publicGameFolder = 'games/asteroid_hunters/'
         this.load.image('space', this.config.publicGameFolder + 'assets/images/space.png');
         //this.load.image('lb-example', lb_example);
     }

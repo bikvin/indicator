@@ -16,7 +16,7 @@ const START_POSITION = {
   y: HEIGHT/2
 } 
 
-const target = document.getElementById("ast_game").getAttribute("target"); // 'vk' or undefined or some other
+const target = document.getElementById("ast_game").getAttribute("target") || 'indicator'; // 'vk' or undefined or some other
 const referer = document.getElementById("ast_game").getAttribute("referer"); // 'localhost or indicator.games' 
 let lang = 'en'
 let vkBridge = undefined;
@@ -24,6 +24,7 @@ if(target === 'vk'){
   lang = 'ru',
   vkBridge = VkBridgeLib
 }
+
 
 
 //console.log(target)

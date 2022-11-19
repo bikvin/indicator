@@ -1,9 +1,9 @@
-const asteroidHunters = (req,res) => {
-    res.locals.header = 'Asteroid Hunters by Indicator Games'
-    //console.log('req', req);
-    res.render('asteroid_hunters', {target: req.query.target})
+// const asteroidHunters = (req,res) => {
+//     res.locals.header = 'Asteroid Hunters by Indicator Games'
+//     //console.log('req', req);
+//     res.render('asteroid_hunters', {target: req.query.target})
     
-}
+// }
 
 // const testGet = (req, res) => {
 //     console.log(req.query)
@@ -14,8 +14,8 @@ const asteroidHunters = (req,res) => {
 //     res.render('test')
 // }
 
-module.exports = {
-    asteroidHunters,
-    //testGet/
+// module.exports = {
+//     asteroidHunters,
+//     //testGet/
 
-}
+// }

@@ -3,5 +3,6 @@ export default class SharedUtils{
   
         this.musicOn = true;
         this.soundOn = true;
+        this.topOpenLevel = 0;
     }
 }

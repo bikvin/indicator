@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import sharedUtils from "../utils/sharedUtils"
+import topOpenLevelManager from "../utils/topOpenLevelManager"
 import sharedOptions from "../utils/sharedOptions"
 import lang from "../lang/lang"
 
@@ -21,6 +22,17 @@ export default class PreloadScene extends Phaser.Scene {
         if(!this.sharedOptions){
             this.sharedOptions = new sharedOptions();
         }
+
+        console.log("target", this.config.target);
+        topOpenLevelManager.getTopOpenLevel(this.config.target)
+        .then((topOpenLevel)=>{
+            console.log("topOpenLevel", topOpenLevel);
+            this.sharedOptions.topOpenLevel = topOpenLevel;
+            this.createButton();
+        })
+        .catch((err)=>{
+            console.log("err", err);
+        });
     }
 
     create() {
@@ -28,7 +40,7 @@ export default class PreloadScene extends Phaser.Scene {
         console.log("start create")
 
         this.createBackground();
-        this.createButton();
+        //this.createButton();
         this.createLabel();
         this.createEarth();
         this.createShip();
@@ -104,10 +116,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     createButton(){
 
-        // const startText = {
-        //     ru: 'Старт',
-        //     en: 'Start'
-        // }
+
 
         const button = this.add.text(this.config.width/2, this.config.height/2, lang.start[this.config.lang], { font: '80px Comfortaa' })
         .setOrigin(0.5)

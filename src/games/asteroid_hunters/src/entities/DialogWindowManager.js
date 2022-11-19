@@ -19,6 +19,8 @@ export default class DialogWindowManager {
 
     createWindow(type, reason = ''){
 
+        console.log('createWindow', 'type=', type, 'reason=', reason);
+
         this.type = type;
         this.reason = reason;
 
@@ -107,6 +109,10 @@ export default class DialogWindowManager {
                 break;
             case 'levelSelect':
 
+                //console.log('this.scene.level', this.scene.level);
+                //console.log('this.scene.config.lang ',this.scene.config.lang)
+
+                //console.log('lang.levelTexts[this.scene.level].prompt[this.scene.config.lang]', lang.levelTexts[this.scene.level].prompt[this.scene.config.lang])
                 this.text = {
                     header: `${lang.level[this.scene.config.lang]} ${this.scene.level+1}`,
                     headerY: this.scene.config.height/2-110,
