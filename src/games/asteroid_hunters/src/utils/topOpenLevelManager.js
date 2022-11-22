@@ -12,15 +12,15 @@ export default class topOpenLevelManager{
 
         let topOpenLevel
         console.log('target: ' + target);
-        if(target === 'vk'){
-            // if we play from vk
-            console.log('Playing from vk');
-            topOpenLevel = 13;
+        // if(target === 'vk'){
+        //     // if we play from vk
+        //     console.log('Playing from vk');
+        //     //topOpenLevel = 13;
+        //     topOpenLevel = await this.getTopOpenLevelFromDb(target, this.config.userId);
 
-
-        }
+        // }
         
-        else if(target === 'indicator'){
+        if(target === 'indicator' || target === 'vk'){
             topOpenLevel = await this.getTopOpenLevelFromDb(target, this.config.userId);
         }
         else{
@@ -41,10 +41,7 @@ export default class topOpenLevelManager{
         if(!this.config.userId) throw new Error('Error. No userId is set.'); // userId must be set in config
 
         
-        if(target === 'vk'){
-
-        }
-        else if(target === 'indicator'){
+        if(target === 'indicator' || target === 'vk'){
             try{
                 const res = await this.setTopOpenLevelToDb(level, target, this.config.userId);
                 return res;
