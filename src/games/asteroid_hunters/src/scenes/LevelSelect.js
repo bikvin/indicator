@@ -21,24 +21,14 @@ export default class LevelSelectScene extends Phaser.Scene {
 
         console.log('LevelSelect init');
 
-        // this.topOpenLevel = await sharedUtils.getTopOpenLevel(this.config.target);
-
-        // console.log('this.topOpenLevel=',this.topOpenLevel);
-        
-        // //console.log('data', data);
-        // this.level = data.level || this.topOpenLevel;
-
-
-        // console.log("this.level = " + this.level);
-
-        // if(this.level >= levelsConfig.length) this.level = levelsConfig.length-1; // if topopenlevel is set higher than last level set this.level to last level
+ 
         this.data = data;
 
-        this.sharedOptions = data.sharedOptions;
+        //this.sharedOptions = data.sharedOptions;
 
 
         //this.topOpenLevel = await topOpenLevelManager.getTopOpenLevel(this.config.target);
-        this.topOpenLevel = this.sharedOptions.topOpenLevel;
+        this.topOpenLevel = this.config.topOpenLevel;
 
         console.log('this.topOpenLevel=',this.topOpenLevel);
         
@@ -170,7 +160,7 @@ export default class LevelSelectScene extends Phaser.Scene {
 
     startGame(){
 
-        this.scene.start("PlayScene", {level: this.level, sharedOptions: this.sharedOptions});
+        this.scene.start("PlayScene", {level: this.level});
     }
 
     exitScene(){

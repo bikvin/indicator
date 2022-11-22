@@ -7,7 +7,8 @@ import LevelSelectScene from './src/scenes/LevelSelect';
 import FinalScene from './src/scenes/Final';
 import BootScene from './src/scenes/Boot';
 import InfoScene from './src/scenes/Info';
-import VkBridgeLib from '@vkontakte/vk-bridge';
+import SetupScene from './src/scenes/Setup';
+//import VkBridgeLib from '@vkontakte/vk-bridge';
 
 const HEIGHT = 800;
 const WIDTH = 1422;
@@ -19,11 +20,12 @@ const START_POSITION = {
 const target = document.getElementById("ast_game").getAttribute("target") || 'indicator'; // 'vk' or undefined or some other
 const referer = document.getElementById("ast_game").getAttribute("referer"); // 'localhost or indicator.games' 
 let lang = 'en'
-let vkBridge = undefined;
-if(target === 'vk'){
-  lang = 'ru',
-  vkBridge = VkBridgeLib
-}
+
+// let vkBridge = undefined;
+// if(target === 'vk'){
+//   lang = 'ru',
+//   vkBridge = VkBridgeLib
+// }
 
 
 
@@ -38,10 +40,10 @@ const SHARED_CONFIG = {
   target: target,
   referer: referer,
   lang: lang,
-  vkBridge: vkBridge
+
 };
 
-const Scenes = [BootScene, PreloadScene, StartScene, InfoScene, LevelSelectScene, PlayScene, FinalScene];
+const Scenes = [BootScene, PreloadScene, StartScene, InfoScene, LevelSelectScene, PlayScene, FinalScene, SetupScene];
 
 const createScene = Scene => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);

@@ -1,8 +1,14 @@
-import { v4 as uuidv4 } from 'uuid';
+
 
 export default class topOpenLevelManager{
 
-    static async getTopOpenLevel(target){
+    constructor(config){
+        console.log('topOpenLevelManager constructor');
+        this.config = config;
+      
+    }
+
+    async getTopOpenLevel(target){
 
         let topOpenLevel
         console.log('target: ' + target);
@@ -13,19 +19,9 @@ export default class topOpenLevelManager{
 
 
         }
-        else if(target === 'indicator' && user){
-            // if the user plays from indicator and is logged in
-            console.log('Playing from indicator.games and logged in')
-
-            console.log('Userr', user)
-
-            topOpenLevel = await this.getTopOpenLevelFromDb(target);
-            //console.log('topOpenLevel2', topOpenLevel);
-        }
-        else if(target === 'indicator' && !user){
-            console.log('Indicator.games. Not logged in. Found userId localstorage.')
-            const userId = this.getUserIdLocalStorage();
-            topOpenLevel = await this.getTopOpenLevelFromDb(target, userId);
+        
+        else if(target === 'indicator'){
+            topOpenLevel = await this.getTopOpenLevelFromDb(target, this.config.userId);
         }
         else{
             // if the user is on indicator and is not logged in, get the topOpenLevel from localstorage (or zero)
@@ -39,34 +35,23 @@ export default class topOpenLevelManager{
     }
 
     /// sets topOpenLevel to localstorage
-    static async setTopOpenLevel(level, target){
+    async setTopOpenLevel(level, target){
         console.log('setTopOpenLevel', 'level=', level, 'target=',target, 'user', user);
+
+        if(!this.config.userId) throw new Error('Error. No userId is set.'); // userId must be set in config
+
         
         if(target === 'vk'){
 
         }
-        else if(target === 'indicator' && user){// if the user plays from indicator and is logged in
-            console.log('Indicator. User logged in');
+        else if(target === 'indicator'){
             try{
-                const res = await this.setTopOpenLevelToDb(level, target);
+                const res = await this.setTopOpenLevelToDb(level, target, this.config.userId);
                 return res;
             }
             catch(err){
                 console.log(err);
             }
-        }
-        else if(target === 'indicator'){// if the user is on indicator and is not logged in
-            //localStorage.setItem('topOpenLevel',level);
-            //return level;
-            console.log('Indicator. No user');
-            let userIdLocalStorage = this.getUserIdLocalStorage();
-            console.log('userIdLocalStorage',userIdLocalStorage);
-            if(!userIdLocalStorage){
-                userIdLocalStorage = this.createNewUserIdLocalStorage();               
-            }
-
-            const res = await this.setTopOpenLevelToDb(level, target, userIdLocalStorage);
-            return res;
         }
         else{
             console.log('Error. No target is set');
@@ -75,7 +60,7 @@ export default class topOpenLevelManager{
         
     }
 
-    static async setTopOpenLevelToDb(level, target, userIdLocalStorage){
+    async setTopOpenLevelToDb(level, target, userIdLocalStorage){
         console.log('setTopOpenLevelToDb');
         console.log(level);
         try{
@@ -109,7 +94,7 @@ export default class topOpenLevelManager{
         }
     }
 
-    static async getTopOpenLevelFromDb(target, userIdLocalStorage){
+    async getTopOpenLevelFromDb(target, userIdLocalStorage){
 
         console.log('getTopLevelFromDB');
         const query = 'target='+target+'&userId='+userIdLocalStorage;
@@ -148,14 +133,5 @@ export default class topOpenLevelManager{
         }
     }
 
-    static getUserIdLocalStorage(){
-        const userId = localStorage.getItem('asteroidsUserId');
-        return (userId);
-    }
-
-    static createNewUserIdLocalStorage(){
-        const newUserId = uuidv4(); 
-        localStorage.setItem('asteroidsUserId',newUserId);
-        return newUserId;
-    }
+   
 }

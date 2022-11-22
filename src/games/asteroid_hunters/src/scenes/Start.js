@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import sharedUtils from "../utils/sharedUtils"
-import topOpenLevelManager from "../utils/topOpenLevelManager"
-import sharedOptions from "../utils/sharedOptions"
+//import topOpenLevelManager from "../utils/topOpenLevelManager"
+//import sharedOptions from "../utils/sharedOptions"
 import lang from "../lang/lang"
 
 export default class PreloadScene extends Phaser.Scene {
@@ -10,24 +10,28 @@ export default class PreloadScene extends Phaser.Scene {
 
        this.config = config;
        
+       
     }
 
     preload() {
 
-
+       
 
     }
 
     init(){
-        if(!this.sharedOptions){
-            this.sharedOptions = new sharedOptions();
-        }
+        // if(!this.sharedOptions){
+        //     this.sharedOptions = new sharedOptions();
+        // }
+
+        console.log('this.config', this.config);
+
 
         console.log("target", this.config.target);
-        topOpenLevelManager.getTopOpenLevel(this.config.target)
+        this.config.topOpenLevelManager.getTopOpenLevel(this.config.target)
         .then((topOpenLevel)=>{
             console.log("topOpenLevel", topOpenLevel);
-            this.sharedOptions.topOpenLevel = topOpenLevel;
+            this.config.topOpenLevel = topOpenLevel;
             this.createButton();
         })
         .catch((err)=>{
@@ -38,6 +42,8 @@ export default class PreloadScene extends Phaser.Scene {
     create() {
 
         console.log("start create")
+
+        
 
         this.createBackground();
         //this.createButton();
@@ -55,46 +61,12 @@ export default class PreloadScene extends Phaser.Scene {
             this.theme.play();
         }
 
-        if(this.config.target === 'vk'){
-            this.initVkBrigge();
-
-        }
+       
 
 
     }
 
-    initVkBrigge(){
-        console.log("initVkBrigge")
-        const vkBridge = this.config.vkBridge;
-
-        vkBridge.send('VKWebAppInit', {}).then(() => {
-            this.getVkUser();
-          });
-
-        
-    }
-
-    getVkUser(){
-        console.log('getVkUser')
-        const vkBridge = this.config.vkBridge;
-
-        vkBridge.send("VKWebAppGetUserInfo");
-
-        vkBridge.subscribe((e) => {
-            console.log('vk eventt')
-            console.log(e)
-            console.log('e.detail.type', e.type)
-            //console.log('e.data.type', e.data.type)
-            if(e.detail.type == 'VKWebAppGetUserInfoResult') {
-                console.log('got user data')
-                console.log(e);
-            }
-            else if (e.detail.type == 'VKWebAppGetUserInfoFailed'){
-                console.log('Error');
-                console.log(e);
-            }
-        });
-    }
+  
     
     createBackground(){
         this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1);
@@ -102,7 +74,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     createInfoIcon(){
         this.infoIcon = this.add.image(this.config.width - 50, this.config.height - 50, 'info-icon').setOrigin(0.5,0.5).setDepth(1).setScale(0.4)
-        .on('pointerdown', () => {this.scene.start("InfoScene", {sharedOptions: this.sharedOptions}); });
+        .on('pointerdown', () => {this.scene.start("InfoScene"); });
         sharedUtils.setButtonHover(this.infoIcon, 0.4, 0.5);
     }
 
@@ -120,7 +92,7 @@ export default class PreloadScene extends Phaser.Scene {
 
         const button = this.add.text(this.config.width/2, this.config.height/2, lang.start[this.config.lang], { font: '80px Comfortaa' })
         .setOrigin(0.5)
-        .on('pointerdown', () => {this.scene.start("LevelSelectScene", {sharedOptions: this.sharedOptions}); })
+        .on('pointerdown', () => {this.scene.start("LevelSelectScene"); })
         sharedUtils.setButtonHover(button);
         
         
@@ -145,19 +117,15 @@ export default class PreloadScene extends Phaser.Scene {
 
 
         let soundTexture
-        (this.sharedOptions.soundOn) ? soundTexture = 'sound-icon' : soundTexture = 'nosound-icon'
+        (this.config.soundOn) ? soundTexture = 'sound-icon' : soundTexture = 'nosound-icon'
         this.soundIcon = this.add.image(this.config.width-200, 70, soundTexture).setOrigin(0.5,0.5).setDepth(1).setScale(0.6)
         .on('pointerdown', this.toggleSound.bind(this));
         sharedUtils.setButtonHover(this.soundIcon, 0.6, 0.7);
 
 
-        // if(this.sharedOptions.musicOn){
-        //     const musicTexture = 'music-icon'
-        // }else{
-        //     const musicTexture = 'nomusic-icon'
-        // }
+       
         let musicTexture
-        (this.sharedOptions.musicOn) ? musicTexture = 'music-icon' : musicTexture = 'nomusic-icon'
+        (this.config.musicOn) ? musicTexture = 'music-icon' : musicTexture = 'nomusic-icon'
 
         this.musicIcon = this.add.image(this.config.width-100, 70, musicTexture).setOrigin(0.5,0.5).setDepth(1).setScale(0.5)
         .on('pointerdown', this.toggleMusic.bind(this));
@@ -168,24 +136,24 @@ export default class PreloadScene extends Phaser.Scene {
 
     toggleSound(){
 
-        if(this.sharedOptions.soundOn){
+        if(this.config.soundOn){
             this.soundIcon.setTexture('nosound-icon');
         }else{
             this.soundIcon.setTexture('sound-icon')
         }
-        this.sharedOptions.soundOn = !this.sharedOptions.soundOn;
+        this.config.soundOn = !this.config.soundOn;
     }
 
     toggleMusic(){
 
-        if(this.sharedOptions.musicOn){
+        if(this.config.musicOn){
             this.musicIcon.setTexture('nomusic-icon');
             this.theme.pause();
         }else{
             this.musicIcon.setTexture('music-icon')
             this.theme.resume();
         }
-        this.sharedOptions.musicOn = !this.sharedOptions.musicOn;
+        this.config.musicOn = !this.config.musicOn;
     }
 
     

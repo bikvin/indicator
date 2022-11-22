@@ -13,7 +13,7 @@ import BottomLabel from "../entities/BottomLabel";
 import DialogWindowManager from "../entities/DialogWindowManager"
 //import sharedUtils from "../utils/sharedUtils"
 import AsteroidCrunch from "../entities/AsteroidCrunch"
-import topOpenLevelManager from "../utils/topOpenLevelManager"
+//import topOpenLevelManager from "../utils/topOpenLevelManager"
 
 //import Ast_crush from '../anims/Ast_crush';
 
@@ -30,7 +30,7 @@ export default class PlayScene extends Phaser.Scene {
     init(data){
 
         this.level = data.level;
-        this.sharedOptions = data.sharedOptions;
+        //this.sharedOptions = data.sharedOptions;
         this.paused = false;
         this.muteSounds();
     }
@@ -158,7 +158,7 @@ export default class PlayScene extends Phaser.Scene {
 
         for (var key in this.sounds) {
 
-            this.sounds[key].setMute(!this.sharedOptions.soundOn);
+            this.sounds[key].setMute(!this.config.soundOn);
         }
 
     }
@@ -249,7 +249,7 @@ export default class PlayScene extends Phaser.Scene {
         console.log("onWin");
         this.levelWon = true;
         //const topOpenLevel = await topOpenLevelManager.getTopOpenLevel(this.config.target);
-        const topOpenLevel = this.sharedOptions.topOpenLevel;
+        const topOpenLevel = this.config.topOpenLevel;
 
        
 
@@ -265,12 +265,10 @@ export default class PlayScene extends Phaser.Scene {
         )
         {
             console.log("Setting new topOpenLevel")
-            const x = topOpenLevelManager.setTopOpenLevel(this.level+1, this.config.target);
-            console.log('x', x);
-            
-            x.then((newTopOpenLevel) => {
+            this.config.topOpenLevelManager.setTopOpenLevel(this.level+1, this.config.target)
+            .then((newTopOpenLevel) => {
                 console.log("onWin newTopOpenLevel", newTopOpenLevel);
-                this.sharedOptions.topOpenLevel = newTopOpenLevel;
+                this.config.topOpenLevel = newTopOpenLevel;
                 //this.level = newTopOpenLevel;
                 this.dialogWindowManager.createWindow('win');   // if we set topOpenLevel to db show dialog after it is set
             })
@@ -472,14 +470,14 @@ export default class PlayScene extends Phaser.Scene {
             this.scene.start("FinalScene");
             return;
         }
-        console.log('sharedOptions', this.sharedOptions);
-        this.scene.start("LevelSelectScene", {level: this.level+1, sharedOptions: this.sharedOptions});
+        //console.log('sharedOptions', this.sharedOptions);
+        this.scene.start("LevelSelectScene", {level: this.level+1});
 
     }
 
     exitScene(){
         this.deactivateGroups();
-        this.scene.start("LevelSelectScene", {level: this.level, sharedOptions: this.sharedOptions});
+        this.scene.start("LevelSelectScene", {level: this.level});
         //this.scene.start("LevelSelectScene");
 
     }
