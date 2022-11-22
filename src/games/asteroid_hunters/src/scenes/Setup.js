@@ -42,9 +42,11 @@ export default class SetupScene extends Phaser.Scene {
 
         this.setUserId();
 
+
+    }
+
+    nextScene(){
         this.scene.start("StartScene");
-
-
     }
 
     setLang(){// default lang is 'en'. For vk change it to 'ru'
@@ -66,6 +68,8 @@ export default class SetupScene extends Phaser.Scene {
                 console.log('this.config.userId from localstorage ' + this.config.userId);
             }        
             
+            this.nextScene();
+
         }
         else if(this.config.target === 'vk'){ 
                 this.initVkBrigge();
@@ -123,6 +127,10 @@ export default class SetupScene extends Phaser.Scene {
             if(e.detail.type == 'VKWebAppGetUserInfoResult') {
                 console.log('got user data')
                 console.log(e);
+                this.config.userId = e.detail.data.id;
+                console.log('this.config.userId is', this.config.userId);
+                this.nextScene();
+
             }
             else if (e.detail.type == 'VKWebAppGetUserInfoFailed'){
                 console.log('Error');
