@@ -24,13 +24,13 @@ export default class PreloadScene extends Phaser.Scene {
         //     this.sharedOptions = new sharedOptions();
         // }
 
-        console.log('this.config', this.config);
+        //console.log('this.config', this.config);
 
 
-        console.log("target", this.config.target);
+        //console.log("target", this.config.target);
         this.config.topOpenLevelManager.getTopOpenLevel(this.config.target)
         .then((topOpenLevel)=>{
-            console.log("topOpenLevel", topOpenLevel);
+            //console.log("topOpenLevel", topOpenLevel);
             this.config.topOpenLevel = topOpenLevel;
             this.createButton();
         })
@@ -41,7 +41,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     create() {
 
-        console.log("start create")
+        //console.log("start create")
 
         
 

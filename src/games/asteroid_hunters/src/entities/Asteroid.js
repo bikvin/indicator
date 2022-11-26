@@ -46,8 +46,16 @@ export default class Asteroid extends MovingObject {
     }
 
     setProperties(){
-        this.MIN_SCALE = 0.5;
-        this.MAX_SCALE = 1;
+
+        this.MIN_SCALE = 0.5 * this.scene.config.scaleMultiplier;
+        this.MAX_SCALE = 1* this.scene.config.scaleMultiplier;
+
+        // this.MIN_SCALE = 0.5 * window.devicePixelRatio;
+        // this.MAX_SCALE = 1 * window.devicePixelRatio;
+
+        //console.log('this', this);
+        // this.MIN_SCALE = 0.5 * window.devicePixelRatio;
+        // this.MAX_SCALE = 0.5 * window.devicePixelRatio;
 
      
     }
@@ -130,8 +138,11 @@ export default class Asteroid extends MovingObject {
         this.proportion = Phaser.Math.FloatBetween(this.MIN_SCALE, this.MAX_SCALE);
 
         this.setScale(this.proportion);
+
+        // console.log(' window.devicePixelRatio',  window.devicePixelRatio)
+        // this.setScale(this.proportion );
        
-        this.setLives()
+        this.setLives();
 
         this.angle = Phaser.Math.Between(MIN_ANGLE,MAX_ANGLE);
 
@@ -146,6 +157,7 @@ export default class Asteroid extends MovingObject {
     
     setLives(){
         this.lives = Math.round(((this.scale - this.MIN_SCALE))/((this.MAX_SCALE - this.MIN_SCALE))*(MAX_LIVES-MIN_LIVES)) + MIN_LIVES
+        //console.log('this.lives', this.lives)
     }
 
     setStartPosition(){

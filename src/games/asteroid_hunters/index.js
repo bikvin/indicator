@@ -10,8 +10,16 @@ import InfoScene from './src/scenes/Info';
 import SetupScene from './src/scenes/Setup';
 //import VkBridgeLib from '@vkontakte/vk-bridge';
 
-const HEIGHT = 800;
-const WIDTH = 1422;
+
+const scaleMultiplier = 1;
+
+// const HEIGHT = 800 * scaleMultiplier;
+// const WIDTH = 1422 * scaleMultiplier;
+// const HEIGHT = window.innerHeight * window.devicePixelRatio;
+// const WIDTH = window.innerWidth * window.devicePixelRatio;
+const HEIGHT = window.innerHeight;
+const WIDTH = window.innerWidth;
+
 const START_POSITION = {
   x: WIDTH/2,
   y: HEIGHT/2
@@ -26,6 +34,10 @@ let lang = 'en'
 //   lang = 'ru',
 //   vkBridge = VkBridgeLib
 // }
+console.log('window.innerWidth', window.innerWidth);
+console.log('window.innerHeight ',window.innerHeight);
+console.log('window.devicePixelRatio', window.devicePixelRatio);
+
 
 
 
@@ -40,6 +52,7 @@ const SHARED_CONFIG = {
   target: target,
   referer: referer,
   lang: lang,
+  scaleMultiplier: scaleMultiplier,
 
 };
 

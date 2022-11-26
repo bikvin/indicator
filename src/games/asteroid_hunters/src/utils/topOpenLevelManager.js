@@ -3,7 +3,7 @@
 export default class topOpenLevelManager{
 
     constructor(config){
-        console.log('topOpenLevelManager constructor');
+        //console.log('topOpenLevelManager constructor');
         this.config = config;
       
     }
@@ -11,7 +11,7 @@ export default class topOpenLevelManager{
     async getTopOpenLevel(target){
 
         let topOpenLevel
-        console.log('target: ' + target);
+        //console.log('target: ' + target);
         // if(target === 'vk'){
         //     // if we play from vk
         //     console.log('Playing from vk');
@@ -36,7 +36,7 @@ export default class topOpenLevelManager{
 
     /// sets topOpenLevel to localstorage
     async setTopOpenLevel(level, target){
-        console.log('setTopOpenLevel', 'level=', level, 'target=',target, 'user', user);
+        //console.log('setTopOpenLevel', 'level=', level, 'target=',target, 'user', user);
 
         if(!this.config.userId) throw new Error('Error. No userId is set.'); // userId must be set in config
 
@@ -58,8 +58,8 @@ export default class topOpenLevelManager{
     }
 
     async setTopOpenLevelToDb(level, target, userIdLocalStorage){
-        console.log('setTopOpenLevelToDb');
-        console.log(level);
+        //console.log('setTopOpenLevelToDb');
+        //console.log(level);
         try{
             const res = await fetch('/asteroid_hunters/set_top_level', {
                 credentials: 'same-origin',
@@ -76,13 +76,13 @@ export default class topOpenLevelManager{
             })
             const data = await res.json()
             
-            console.log('data ',data)
+            //console.log('data ',data)
 
             if(data.errors) {
                 console.log(data.errors);
             }
             if(data.topOpenLevel){
-                console.log(' setTopOpenLevelToDb data.topOpenLevel', data.topOpenLevel);
+                //console.log(' setTopOpenLevelToDb data.topOpenLevel', data.topOpenLevel);
                 return data.topOpenLevel;
             }
         }
@@ -93,7 +93,7 @@ export default class topOpenLevelManager{
 
     async getTopOpenLevelFromDb(target, userIdLocalStorage){
 
-        console.log('getTopLevelFromDB');
+        //console.log('getTopLevelFromDB');
         const query = 'target='+target+'&userId='+userIdLocalStorage;
         try{
             const res = await fetch('/asteroid_hunters/get_top_level?'+query, {
@@ -110,11 +110,11 @@ export default class topOpenLevelManager{
             const data = await res.json();
 
             
-            console.log('getTopLevelFromDB data', data);
+            //console.log('getTopLevelFromDB data', data);
 
             
             if(typeof data.topOpenLevel != 'undefined') {
-                console.log('data.topOpenLevel2', data.topOpenLevel);
+                //console.log('data.topOpenLevel2', data.topOpenLevel);
                 return data.topOpenLevel;
             }
             else if(data.errors) {

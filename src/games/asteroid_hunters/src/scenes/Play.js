@@ -66,6 +66,8 @@ export default class PlayScene extends Phaser.Scene {
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.player = this.createPlayer(); 
+        console.log('this.player = ' + this.player);
+        console.log('this.player.ship=' + this.player.ship);
 
         const saucersConf = this.levelConfig.saucers;
 
@@ -325,6 +327,7 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     createPlayer() {
+        console.log('PlayScene createPlayer');
         return new Player(this, this.config.startPosition.x, this.config.startPosition.y);
 
     }

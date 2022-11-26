@@ -21,8 +21,8 @@ export default class Debris extends Asteroid {
     }
 
     setProperties(){
-        this.MIN_SCALE = 0.2;
-        this.MAX_SCALE = 0.3;
+        this.MIN_SCALE = 0.2 * this.scene.config.scaleMultiplier;
+        this.MAX_SCALE = 0.3 * this.scene.config.scaleMultiplier;
 
         this.MIN_VELOCITY = 0.5;
         this.MAX_VELOCITY = 1;

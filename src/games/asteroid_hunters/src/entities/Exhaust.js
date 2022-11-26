@@ -1,9 +1,10 @@
 import Phaser from "phaser";
 
-const OFFSET_FROM_SHIP = -35;
+const OFFSET_FROM_SHIP = 0;
 
 export default class Exhaust {
     constructor(player, scene){
+        console.log('exhaust constructor');
         this.player = player;
         this.scene = scene;
 
@@ -13,10 +14,14 @@ export default class Exhaust {
     init(){
         const particles = this.scene.add.particles('fire_particle');
 
+        console.log('init exhaust');
+
         this.emitter = particles.createEmitter({
           blendMode: 'ADD',
-          scale: { start: 0.6, end: 1.3 },
-          lifespan: 120,
+          scale: { start: 0.6*this.scene.config.scaleMultiplier, end: 1.3*this.scene.config.scaleMultiplier},
+          //scale: { start: 6, end: 13},
+          //lifespan: 120,
+          lifespan: 120*this.scene.config.scaleMultiplier,
           speed: { min: 400, max: 600 },
           angle: 90,
           quantity: 0,
@@ -29,7 +34,7 @@ export default class Exhaust {
         this.emitter.setFrequency(10,1);
 
         //this.thrust_sound = this.scene.sound.add('thrust', { loop: true, volume: 0.1 });
-
+        //this.circle = this.scene.add.circle(200, 400, 5, 0xff0000);
     
     }
 
@@ -54,10 +59,17 @@ export default class Exhaust {
         
         // find the position of start of emitter relative to ship center
         const vec = new Phaser.Math.Vector2();
-        vec.setToPolar(Phaser.Math.DegToRad(this.player.ship.angle+90),this.player.ship.height/2+OFFSET_FROM_SHIP);
+        vec.setToPolar(Phaser.Math.DegToRad(this.player.ship.angle+90),this.player.ship.height*this.player.ship.scale/2 + OFFSET_FROM_SHIP*this.player.ship.scale);
+        //console.log('this.player.ship.height', this.player.ship.height);
+        //console.log('this.player.ship.scale', this.player.ship.scale);
+        
+        const x = this.player.ship.x+vec.x;
+        const y = this.player.ship.y+vec.y;
         
         // set emitter start position
-        this.emitter.setPosition(this.player.ship.x+vec.x, this.player.ship.y+vec.y);
+        this.emitter.setPosition(x, y);
+
+        //this.circle.setPosition(x, y);
 
         this.emitter.setAngle(this.getAngle());
     }

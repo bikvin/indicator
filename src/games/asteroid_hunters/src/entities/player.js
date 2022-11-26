@@ -1,4 +1,4 @@
-import Exhaust from './exhaust';
+import Exhaust from './Exhaust';
 import Boom from '../anims/Boom';
 
 const TURN_SPEED = 3;
@@ -9,6 +9,8 @@ const SHIP_DRAG=0.001;
 
 class Player {
     constructor(scene, x, y) {
+
+        console.log('Player constructor');
 
         this.scene = scene;
 
@@ -29,7 +31,15 @@ class Player {
 
       init(){
 
-        this.ship.setScale(0.5);
+        console.log('player init')
+
+        this.ship.setScale(0.5 * this.scene.config.scaleMultiplier);
+
+        //this.ship.setScale(0.5);
+        // console.log('this.ship', this.ship);
+        //this.ship.setScale(6);
+
+        //this.ship.scale = 2;
 
         this.ship.isPlayer = true;
 
