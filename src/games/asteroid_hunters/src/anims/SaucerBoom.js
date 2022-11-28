@@ -5,6 +5,8 @@ export default class SaucerBoom extends Phaser.GameObjects.Sprite{
     }
     
     constructor(data) {
+
+        const SIZE_MULTIPLIER = 2;
         
         super(data.scene, data.x, data.y, 'saucer_boom', 'saucerBoom1');
         this.scene.add.existing(this);
@@ -23,6 +25,8 @@ export default class SaucerBoom extends Phaser.GameObjects.Sprite{
             frameRate:10,
             repeat: 0
         });
+
+        this.setScale(SIZE_MULTIPLIER * this.scene.config.scaleMultiplier);
 
         this.play('saucerBoom');
 

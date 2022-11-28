@@ -24,7 +24,7 @@ export default class SetupScene extends Phaser.Scene {
     }
 
     createBackground(){
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1);
+        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setDisplaySize(window.innerHeight* window.devicePixelRatio,window.innerWidth* window.devicePixelRatio);
     }
 
    

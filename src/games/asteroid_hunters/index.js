@@ -10,20 +10,37 @@ import InfoScene from './src/scenes/Info';
 import SetupScene from './src/scenes/Setup';
 //import VkBridgeLib from '@vkontakte/vk-bridge';
 
+const widthMultiplier =window.innerWidth*window.devicePixelRatio/1422;//some assets can be scaled separately for width and height (to be more presice but scewed)
+const heightMultiplier =window.innerHeight*window.devicePixelRatio/800;
 
-const scaleMultiplier = 1;
+const scaleMultiplier = (widthMultiplier+heightMultiplier)/2; // most assets are scaled with this one to leave their shape the same
 
 // const HEIGHT = 800 * scaleMultiplier;
 // const WIDTH = 1422 * scaleMultiplier;
-// const HEIGHT = window.innerHeight * window.devicePixelRatio;
-// const WIDTH = window.innerWidth * window.devicePixelRatio;
-const HEIGHT = window.innerHeight;
-const WIDTH = window.innerWidth;
+const HEIGHT = window.innerHeight * window.devicePixelRatio;
+const WIDTH = window.innerWidth * window.devicePixelRatio; 
+// const HEIGHT = window.innerHeight;
+// const WIDTH = window.innerWidth;
 
 const START_POSITION = {
   x: WIDTH/2,
   y: HEIGHT/2
 } 
+
+/*----------------------------------------------------------------
+
+Высота должна быть иннерХайт * пикселРатио
+Ширина должна быть иннерВидз * пикселРатио
+
+Размеры объектов должны быть такими по отношению к 1422*800 как и были.
+
+Ширина-мультиплаер: иннерВидз * пикселРатио/1422
+Высота-мультиплаер: иннерХайт * пикселРатио/800
+
+Средний мультиплаер = Ширина-мультиплаер/Высота-мультиплаер
+
+*/
+
 
 const target = document.getElementById("ast_game").getAttribute("target") || 'indicator'; // 'vk' or undefined or some other
 const referer = document.getElementById("ast_game").getAttribute("referer"); // 'localhost or indicator.games' 
@@ -53,6 +70,8 @@ const SHARED_CONFIG = {
   referer: referer,
   lang: lang,
   scaleMultiplier: scaleMultiplier,
+  widthMultiplier: widthMultiplier,
+  heightMultiplier: heightMultiplier
 
 };
 

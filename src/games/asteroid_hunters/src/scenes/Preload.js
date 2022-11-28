@@ -35,7 +35,7 @@ export default class PreloadScene extends Phaser.Scene {
     }
 
     createBackground(){
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1);
+        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setDisplaySize(window.innerHeight* window.devicePixelRatio,window.innerWidth* window.devicePixelRatio);
     }
 
     preloadAssets(){
@@ -62,7 +62,7 @@ export default class PreloadScene extends Phaser.Scene {
          this.load.image('forward-icon', this.config.publicGameFolder + 'assets/images/forward-icon.png');
          this.load.image('angles-icon', this.config.publicGameFolder + 'assets/images/angles-icon.png');
          this.load.image('title', this.config.publicGameFolder + 'assets/images/title.png');
-         this.load.image('earth', this.config.publicGameFolder + 'assets/images/earth.png');
+         this.load.image('earth-ship', this.config.publicGameFolder + 'assets/images/earth-ship.png');
          this.load.image('lock-icon', this.config.publicGameFolder + 'assets/images/lock-icon.png');
          this.load.image('end-title', this.config.publicGameFolder + 'assets/images/end-title.png');
          this.load.image('music-icon', this.config.publicGameFolder + 'assets/images/music-icon.png');
@@ -132,6 +132,8 @@ export default class PreloadScene extends Phaser.Scene {
         console.log('Preload Create');
 
         this.scene.start("SetupScene");
+     
+
 
 
     }

@@ -5,13 +5,13 @@ export default class LoadingBar {
             boxColor: 0x73FBF3,
             barColor: 0x73FBF3,
             textColor: '#73FBF3',
-            x: this.scene.config.width / 2 - 325,
-            y: this.scene.config.height / 2-35,
-            width: 650,
-            height: 70,
-            lineThickness: 7,
-            cornerRadius: 35,
-            emptyThickness: 4,
+            x: this.scene.config.width / 2 - 325*this.scene.config.scaleMultiplier,
+            y: this.scene.config.height / 2-35* this.scene.config.scaleMultiplier,
+            width: 650*this.scene.config.scaleMultiplier,
+            height: 70*this.scene.config.scaleMultiplier,
+            lineThickness: 7*this.scene.config.scaleMultiplier,
+            cornerRadius: 35*this.scene.config.scaleMultiplier,
+            emptyThickness: 4*this.scene.config.scaleMultiplier,
             transparency: 0.8
         };
 
@@ -81,6 +81,6 @@ export default class LoadingBar {
     }
 
     addLabel(){
-        this.label = this.scene.add.text(this.scene.config.width/2, this.scene.config.height/2-70, 'Loading', { font: '30px Arial', color: this.style.textColor}).setDepth(2).setOrigin(0.5);
+        this.label = this.scene.add.text(this.scene.config.width/2, this.scene.config.height/2-70* this.scene.config.scaleMultiplier, 'Loading', { font: '30px Arial', color: this.style.textColor}).setDepth(2).setOrigin(0.5).setScale(this.scene.config.scaleMultiplier);
     }
 }

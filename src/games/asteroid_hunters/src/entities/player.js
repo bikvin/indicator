@@ -80,7 +80,7 @@ class Player {
         this.velocityVec.x += this.accelerationXY.x + this.dragXY.x;
         this.velocityVec.y += this.accelerationXY.y + this.dragXY.y;
 
-        this.velocityVec.limit(MAX_SPEED);
+        this.velocityVec.limit(MAX_SPEED* this.scene.config.scaleMultiplier);
 
         return {x: this.velocityVec.x, y: this.velocityVec.y};
       }
@@ -96,7 +96,7 @@ class Player {
 
         if (gasPressed) {
           const accelerationVec = new Phaser.Math.Vector2();
-          return accelerationVec.setToPolar(this.ship.rotation  - Math.PI/2, SHIP_ACCELERATION);
+          return accelerationVec.setToPolar(this.ship.rotation  - Math.PI/2, SHIP_ACCELERATION* this.scene.config.scaleMultiplier);
           
         }
 
@@ -106,7 +106,7 @@ class Player {
 
       get dragXY(){
         if(this.velocityVec.x != 0 || this.velocityVec.y != 0){
-          const dragVec = new Phaser.Math.Vector2(this.velocityVec.x, this.velocityVec.y).negate().scale(SHIP_DRAG)
+          const dragVec = new Phaser.Math.Vector2(this.velocityVec.x, this.velocityVec.y).negate().scale(SHIP_DRAG* this.scene.config.scaleMultiplier);
 
           return dragVec
 

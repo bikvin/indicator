@@ -25,9 +25,9 @@ export default class AsteroidCrunch {
 
         this.emitter = particles.createEmitter({
             blendMode: 'NORMAL',
-            scale: { start: SCALE, end: SCALE },
-            lifespan: { min: LIFESPAN_MIN, max: LIFESPAN_MAX },
-            speed: SPEED,
+            scale: { start: SCALE*this.scene.config.scaleMultiplier, end: SCALE*this.scene.config.scaleMultiplier },
+            lifespan: { min: LIFESPAN_MIN*this.scene.config.scaleMultiplier, max: LIFESPAN_MAX*this.scene.config.scaleMultiplier },
+            speed: SPEED*this.scene.config.scaleMultiplier,
             angle: { min: -ANGLE_DIFFERENCE, max: ANGLE_DIFFERENCE },
             quantity: this.minQuantity,
             x: 200,

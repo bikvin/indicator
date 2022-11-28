@@ -323,8 +323,9 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     createBackground(){
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1);
-    }
+        // this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setScale(this.config.widthMultiplier, this.config.heightMultiplier);
+        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setDisplaySize(window.innerHeight* window.devicePixelRatio,window.innerWidth* window.devicePixelRatio);
+    }   
 
     createPlayer() {
         console.log('PlayScene createPlayer');
@@ -333,13 +334,13 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     createPauseButton(){
-        this.pauseButton = this.add.image(this.config.width-50, 50, 'pause-icon').setOrigin(0.5).setScale(0.6);
+        this.pauseButton = this.add.image(this.config.width-50*this.config.scaleMultiplier, 50*this.config.scaleMultiplier, 'pause-icon').setOrigin(0.5).setScale(0.6*this.config.scaleMultiplier);
 
         this.pauseButton
             .setDepth(2)
             .setInteractive({ cursor: 'pointer' })
-            .on('pointerover', () => {this.pauseButton.setScale(0.7)})
-            .on('pointerout', () => {this.pauseButton.setScale(0.6);})
+            .on('pointerover', () => {this.pauseButton.setScale(0.7*this.config.scaleMultiplier)})
+            .on('pointerout', () => {this.pauseButton.setScale(0.6*this.config.scaleMultiplier);})
             .on('pointerdown', this.pauseGame.bind(this) )
     }
 

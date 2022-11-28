@@ -83,12 +83,12 @@ export default class LevelSelectScene extends Phaser.Scene {
     
     
     createBackground(){
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1);
+        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setDisplaySize(window.innerHeight* window.devicePixelRatio,window.innerWidth* window.devicePixelRatio);
     }
 
     createUseArrowsLabel(){
-        this.add.image(450, 700, 'use-arrows-icon').setOrigin(0.5).setScale(0.7);
-        this.add.text(600, 700,  lang.instructions[this.config.lang], { font: '25px Comfortaa' }).setOrigin(0, 0.5);
+        this.add.image(450*this.config.scaleMultiplier, 700*this.config.scaleMultiplier, 'use-arrows-icon').setOrigin(0.5).setScale(0.7*this.config.scaleMultiplier);
+        this.add.text(600*this.config.scaleMultiplier, 700*this.config.scaleMultiplier,  lang.instructions[this.config.lang], { font: '25px Comfortaa' }).setOrigin(0, 0.5).setScale(this.config.scaleMultiplier);
     }
 
     createLevelSelectWindow(){

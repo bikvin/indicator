@@ -24,6 +24,8 @@ export default class Boom extends Phaser.GameObjects.Sprite{
             repeat: 0
         });
 
+        this.setScale(this.scene.config.scaleMultiplier);
+
         this.play('boom');
 
 

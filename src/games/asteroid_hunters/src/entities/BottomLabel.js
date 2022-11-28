@@ -10,8 +10,10 @@ export default class BottomLabel{
        
         this.data = [];
 
+        const fontString = `${27* this.scene.config.scaleMultiplier}px Comfortaa`
+
         const string = this.buildString(this.data);
-        this.label = this.scene.add.text(290, this.scene.config.height-40, string, { font: '27px Comfortaa' }).setOrigin(0).setDepth(3);
+        this.label = this.scene.add.text(290* this.scene.config.scaleMultiplier, this.scene.config.height-40* this.scene.config.scaleMultiplier, string, { font: fontString }).setOrigin(0).setDepth(3);
     }
 
 

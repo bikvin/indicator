@@ -14,9 +14,9 @@ export default class SaucerExhaust {
 
         this.emitter = particles.createEmitter({
             blendMode: 'ADD',
-            scale: { start: 0.15, end: 0.4 },
-            lifespan: { min: 800, max: 1200 },
-            speed: 100,
+            scale: { start: 0.15* this.scene.config.scaleMultiplier, end: 0.4* this.scene.config.scaleMultiplier},
+            lifespan: { min: 800* this.scene.config.scaleMultiplier, max: 1200* this.scene.config.scaleMultiplier},
+            speed: 100* this.scene.config.scaleMultiplier,
             angle: { min: -10, max: 10 },
             quantity: 0,
             x: 200,

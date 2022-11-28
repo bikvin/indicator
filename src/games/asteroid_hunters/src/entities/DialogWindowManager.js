@@ -46,7 +46,7 @@ export default class DialogWindowManager {
                 this.text = {
                     //header: 'pause',
                     header: lang.pause[this.scene.config.lang],
-                    headerY: this.scene.config.height/2-60, 
+                    headerY: this.scene.config.height/2-60* this.scene.config.scaleMultiplier, 
                 } 
                 this.buttons = [
                     {
@@ -67,7 +67,7 @@ export default class DialogWindowManager {
                 this.text = {
                     //header: 'Mission accomplished !',
                     header: lang.missionAccomplished[this.scene.config.lang],
-                    headerY: this.scene.config.height/2-60,
+                    headerY: this.scene.config.height/2-60* this.scene.config.scaleMultiplier,
                 }
                 this.buttons = [
                     {                      
@@ -84,9 +84,9 @@ export default class DialogWindowManager {
                 this.text = {
                     //header: 'Mission failed !',
                     header: lang.missionFailed[this.scene.config.lang],
-                    headerY: this.scene.config.height/2-80,
+                    headerY: this.scene.config.height/2-80* this.scene.config.scaleMultiplier,
                     reason: this.reason,
-                    reasonY: this.scene.config.height/2-40,
+                    reasonY: this.scene.config.height/2-40* this.scene.config.scaleMultiplier,
                 }
                 this.buttons = [
                     {
@@ -115,13 +115,13 @@ export default class DialogWindowManager {
                 //console.log('lang.levelTexts[this.scene.level].prompt[this.scene.config.lang]', lang.levelTexts[this.scene.level].prompt[this.scene.config.lang])
                 this.text = {
                     header: `${lang.level[this.scene.config.lang]} ${this.scene.level+1}`,
-                    headerY: this.scene.config.height/2-110,
+                    headerY: this.scene.config.height/2-110* this.scene.config.scaleMultiplier,
                     //prompt: this.levelConfig.prompt,
                     prompt: lang.levelTexts[this.scene.level].prompt[this.scene.config.lang],
-                    promptY: this.scene.config.height/2-70,
+                    promptY: this.scene.config.height/2-70* this.scene.config.scaleMultiplier,
                     //target: this.levelConfig.targetText,
                     target: lang.levelTexts[this.scene.level].targetText[this.scene.config.lang],
-                    targetY: this.scene.config.height/2+120,
+                    targetY: this.scene.config.height/2+120* this.scene.config.scaleMultiplier,
                 }
                 this.buttons = [
                     {
@@ -163,7 +163,7 @@ export default class DialogWindowManager {
     createOverlay(scale = 1){
 
 
-        this.overlay = this.scene.add.image(this.scene.config.width/2, this.scene.config.height/2, 'label').setOrigin(0.5).setAlpha(0.9).setScale(scale);
+        this.overlay = this.scene.add.image(this.scene.config.width/2, this.scene.config.height/2, 'label').setOrigin(0.5).setAlpha(0.9).setScale(scale * this.scene.config.scaleMultiplier);
 
         this.overlay.setDepth(2)
     }
@@ -177,7 +177,7 @@ export default class DialogWindowManager {
         this.icons = [];
 
 
-        let xPos = this.scene.config.width/2 - (iconWidthAverage/2+iconDistance/2)*(buttons.length-1);
+        let xPos = this.scene.config.width/2 - (iconWidthAverage/2+iconDistance/2)*(buttons.length-1)* this.scene.config.scaleMultiplier;
 
         
         buttons.forEach((button) => {
@@ -186,14 +186,14 @@ export default class DialogWindowManager {
            // console.log('number of buttons', buttons.length);
 
 
-            const icon = this.scene.add.image(xPos, this.scene.config.height/2 + 30, button.icon).setOrigin(0.5).setScale(button.iconScale).setDepth(2);
+            const icon = this.scene.add.image(xPos, this.scene.config.height/2 + 30* this.scene.config.scaleMultiplier, button.icon).setOrigin(0.5).setScale(button.iconScale* this.scene.config.scaleMultiplier).setDepth(2);
 
             if(!button.locked){
                 this.setButtonFeatures(icon, button.iconScale, button.callback);
             }
             
 
-            xPos += iconWidthAverage+iconDistance;
+            xPos += (iconWidthAverage+iconDistance)* this.scene.config.scaleMultiplier;
             this.icons.push( icon );
 
         }, this)
@@ -201,11 +201,11 @@ export default class DialogWindowManager {
 
         if(overlayOptions.arrows){
             //console.log('arrows here')
-            const rightXPos = this.scene.config.width/2 + this.overlay.width/2 * overlayOptions.scale - 50;
-            const leftXPos = this.scene.config.width/2 - this.overlay.width/2 * overlayOptions.scale+50;
+            const rightXPos = this.scene.config.width/2 + (this.overlay.width/2 * overlayOptions.scale - 50)* this.scene.config.scaleMultiplier;
+            const leftXPos = this.scene.config.width/2 - (this.overlay.width/2 * overlayOptions.scale-50)* this.scene.config.scaleMultiplier;
 
-            const rightArrow = this.scene.add.image(rightXPos, this.scene.config.height/2, 'angles-icon').setOrigin(1, 0.5).setScale(overlayOptions.arrowScale).setAlpha(0.7).setDepth(2);
-            const leftArrow = this.scene.add.image(leftXPos, this.scene.config.height/2, 'angles-icon').setOrigin(1, 0.5).setScale(overlayOptions.arrowScale).setAlpha(0.7).setAngle(180).setDepth(2);
+            const rightArrow = this.scene.add.image(rightXPos, this.scene.config.height/2, 'angles-icon').setOrigin(1, 0.5).setScale(overlayOptions.arrowScale* this.scene.config.scaleMultiplier).setAlpha(0.7).setDepth(2);
+            const leftArrow = this.scene.add.image(leftXPos, this.scene.config.height/2, 'angles-icon').setOrigin(1, 0.5).setScale(overlayOptions.arrowScale* this.scene.config.scaleMultiplier).setAlpha(0.7).setAngle(180).setDepth(2);
 
             this.setButtonFeatures(rightArrow, overlayOptions.arrowScale, () => {this.nextLevel()});
             this.setButtonFeatures(leftArrow, overlayOptions.arrowScale, () => {this.prevLevel()});
@@ -215,8 +215,8 @@ export default class DialogWindowManager {
     setButtonFeatures(button, scale, callback){
         button       
         .setInteractive({ cursor: 'pointer' })
-        .on('pointerover', () => {button.setScale( scale*1.1 );})
-        .on('pointerout', () => {button.setScale( scale );})
+        .on('pointerover', () => {button.setScale( scale*1.1 * this.scene.config.scaleMultiplier);})
+        .on('pointerout', () => {button.setScale( scale * this.scene.config.scaleMultiplier);})
         .on('pointerdown', callback )
     }
 
@@ -226,18 +226,19 @@ export default class DialogWindowManager {
         //console.log('headerText', headerText)
 
 
-        this.header = this.scene.add.text(this.scene.config.width/2, text.headerY, text.header, { font: '30px Comfortaa' }).setDepth(2).setOrigin(0.5);
+
+        this.header = this.scene.add.text(this.scene.config.width/2, text.headerY, text.header, { font: `${30* this.scene.config.scaleMultiplier}px Comfortaa` }).setDepth(2).setOrigin(0.5);
 
         if(text.prompt) {
-            this.prompt = this.scene.add.text(this.scene.config.width/2, text.promptY, text.prompt, { font: '40px Comfortaa' }).setDepth(2).setOrigin(0.5);
+            this.prompt = this.scene.add.text(this.scene.config.width/2, text.promptY, text.prompt, { font: `${40* this.scene.config.scaleMultiplier}px Comfortaa` }).setDepth(2).setOrigin(0.5);
         }
 
         if(text.target) {
-            this.target = this.scene.add.text(this.scene.config.width/2, text.targetY, text.target, { font: '30px Comfortaa' }).setDepth(2).setOrigin(0.5);
+            this.target = this.scene.add.text(this.scene.config.width/2, text.targetY, text.target, { font: `${30* this.scene.config.scaleMultiplier}px Comfortaa` }).setDepth(2).setOrigin(0.5);
         }
 
         if(text.reason) {
-            this.reason = this.scene.add.text(this.scene.config.width/2, text.reasonY, text.reason, { font: '25px Comfortaa' }).setDepth(2).setOrigin(0.5);
+            this.reason = this.scene.add.text(this.scene.config.width/2, text.reasonY, text.reason, { font: `${25* this.scene.config.scaleMultiplier}px Comfortaa` }).setDepth(2).setOrigin(0.5);
         }
     }
 

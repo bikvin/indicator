@@ -30,7 +30,9 @@ export default class Collectable extends MovingObject{
         //console.log("activate collectable")
         this.setTexture(type);
 
-        this.setCircle(PHYSICAL_BODY_RADIUS , {friction:0, frictionAir:0});
+        this.setScale(this.scene.config.scaleMultiplier);
+
+        this.setCircle(PHYSICAL_BODY_RADIUS * this.scene.config.scaleMultiplier, {friction:0, frictionAir:0});
         this.x  = x;
         this.y = y;
 

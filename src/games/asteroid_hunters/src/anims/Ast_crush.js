@@ -6,6 +6,7 @@ export default class Ast_crush extends Phaser.GameObjects.Sprite{
     
     constructor(data) {
         
+        const SIZE_MULTIPLIER = 2;
    
         super(data.scene, data.x, data.y, 'crush_ast', '1');
         this.scene.add.existing(this);
@@ -25,7 +26,7 @@ export default class Ast_crush extends Phaser.GameObjects.Sprite{
             repeat: 0
         });
 
-        this.setScale(data.proportion) // get scale(proportion) from asteroid and apply it to explosion as well
+        this.setScale(data.proportion * SIZE_MULTIPLIER); // get scale(proportion) from asteroid and apply it to explosion as well (and increase by size multiplier)
 
         this.play('crush_ast');
 

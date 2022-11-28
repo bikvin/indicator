@@ -9,13 +9,13 @@ export default class TouchButtons {
 
         this.scene.input.addPointer(3)
 
-        this.leftButton = this.scene.add.image(50, this.scene.config.height - 200, 'left_right_button').setAngle(180).setDepth(2).setScale(1.2);
+        this.leftButton = this.scene.add.image(50*this.scene.config.scaleMultiplier, this.scene.config.height - 200* this.scene.config.scaleMultiplier, 'left_right_button').setAngle(180).setDepth(2).setScale(1.2*this.scene.config.scaleMultiplier);
 
-        this.rightButton = this.scene.add.image(230, this.scene.config.height - 60, 'left_right_button').setDepth(2).setScale(1.2);
+        this.rightButton = this.scene.add.image(230* this.scene.config.scaleMultiplier, this.scene.config.height - 60* this.scene.config.scaleMultiplier, 'left_right_button').setDepth(2).setScale(1.2* this.scene.config.scaleMultiplier);
 
-        this.gasButton = this.scene.add.image(this.scene.config.width - 80, this.scene.config.height - 230, 'gas_button').setAngle(-90).setDepth(2).setScale(1.2);
+        this.gasButton = this.scene.add.image(this.scene.config.width - 80* this.scene.config.scaleMultiplier, this.scene.config.height - 230* this.scene.config.scaleMultiplier, 'gas_button').setAngle(-90).setDepth(2).setScale(1.2* this.scene.config.scaleMultiplier);
 
-        this.shootButton = this.scene.add.image(this.scene.config.width - 230, this.scene.config.height - 70, 'shoot_button').setScale(1).setDepth(2);
+        this.shootButton = this.scene.add.image(this.scene.config.width - 230* this.scene.config.scaleMultiplier, this.scene.config.height - 70* this.scene.config.scaleMultiplier, 'shoot_button').setScale(1* this.scene.config.scaleMultiplier).setDepth(2);
 
         this.controlButtons = [this.leftButton, this.rightButton, this.gasButton, this.shootButton];
 

@@ -76,7 +76,7 @@ export default class Asteroid extends MovingObject {
         this.scene.sounds.astCrush.play();
         this.deactivate();
         
-        if(this.proportion > LARGE_AST_THRESHOLD){
+        if(this.proportion > LARGE_AST_THRESHOLD * this.scene.config.scaleMultiplier){
         
             this.scene.asteroids.createDebris(this.x, this.y, Math.max(this.width, this.height))
         }
@@ -124,7 +124,7 @@ export default class Asteroid extends MovingObject {
 
         // get asteroid speed
        
-        const speed = Phaser.Math.FloatBetween(this.MIN_VELOCITY, this.MAX_VELOCITY);
+        const speed = Phaser.Math.FloatBetween(this.MIN_VELOCITY * this.scene.config.scaleMultiplier, this.MAX_VELOCITY * this.scene.config.scaleMultiplier);
       
 
         // set vectors x y as x y velocity

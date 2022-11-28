@@ -30,9 +30,9 @@ export default class Saucer extends MovingObject {
     }
 
     setProperties(){
-        this.speed = 1;
-        this.minVelocity = 1;
-        this.maxVelocity = 1;
+        this.speed = 1* this.scene.config.scaleMultiplier;
+        this.minVelocity = 1* this.scene.config.scaleMultiplier;
+        this.maxVelocity = 1* this.scene.config.scaleMultiplier;
     }
 
     activate(shootDelay, lives){
@@ -48,7 +48,7 @@ export default class Saucer extends MovingObject {
         this.startPosition = this.getStartPosition();
         this.x = this.startPosition.x;
         this.y = this.startPosition.y;
-        this.rayLength = 150;
+        this.rayLength = 150* this.scene.config.scaleMultiplier;
 
 
         // set texture
@@ -67,6 +67,7 @@ export default class Saucer extends MovingObject {
         // Make random point on the setAngle
         this.setRandomPoint()
 
+        this.setScale(this.scene.config.scaleMultiplier);
 
         // get saucer speed
         this.speed = Phaser.Math.FloatBetween(this.minVelocity, this.maxVelocity);
@@ -177,8 +178,8 @@ export default class Saucer extends MovingObject {
         // dont shoot if saucer is out of screen
         if(this.x<0 || this.y<0 || this.x > this.scene.config.width || this.y > this.scene.config.height) return;
 
-        const x = this.scene.player.ship.x + Phaser.Math.Between(SHOOT_MARGIN_MIN, SHOOT_MARGIN_MAX);
-        const y = this.scene.player.ship.y + Phaser.Math.Between(SHOOT_MARGIN_MIN, SHOOT_MARGIN_MAX);;
+        const x = this.scene.player.ship.x + Phaser.Math.Between(SHOOT_MARGIN_MIN* this.scene.config.scaleMultiplier, SHOOT_MARGIN_MAX* this.scene.config.scaleMultiplier);
+        const y = this.scene.player.ship.y + Phaser.Math.Between(SHOOT_MARGIN_MIN* this.scene.config.scaleMultiplier, SHOOT_MARGIN_MAX* this.scene.config.scaleMultiplier);;
 
         const intersectedObjects = this.scene.matter.intersectRay(this.x,this.y,x,y,1,this.ast_debr_sauc)
 
@@ -213,7 +214,7 @@ export default class Saucer extends MovingObject {
     kill(){
         this.scene.saucers.saucersHit++;
         console.log('saucers hit', this.scene.saucers.saucersHit)
-        if(this.scene.sharedOptions.soundOn) this.scene.sounds.saucerBoom.play();
+        if(this.scene.config.soundOn) this.scene.sounds.saucerBoom.play();
         this.deactivate();
         
         SaucerBoom.generate(this.scene, this.x, this.y); // animation

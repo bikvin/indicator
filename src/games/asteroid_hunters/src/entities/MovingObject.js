@@ -3,7 +3,7 @@ export default class MovingObject extends Phaser.Physics.Matter.Sprite {
         super(scene.matter.world, 0, 0, undefined, undefined)
         scene.add.existing(this)
 
-        this.startOffset = startOffset
+        this.startOffset = startOffset * this.scene.config.scaleMultiplier;
     }
 
     deactivate(){
