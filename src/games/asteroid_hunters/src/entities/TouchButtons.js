@@ -22,7 +22,7 @@ export default class TouchButtons {
 
         this.controlButtons = [this.leftButton, this.rightButton, this.gasButton, this.shootButton];
 
-        const shape = new Phaser.Geom.Circle(this.leftButton.width/2, this.leftButton.height/2, this.leftButton.width);
+        //const shape = new Phaser.Geom.Circle(this.leftButton.width/2, this.leftButton.height/2, this.leftButton.width);
 
     
 
