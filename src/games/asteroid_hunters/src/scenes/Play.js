@@ -128,7 +128,7 @@ export default class PlayScene extends Phaser.Scene {
 
         this.asteroidCrunch = new AsteroidCrunch(this);
 
-
+        console.log('this.config', this.config);
 
         if(this.config.target === 'vk') setTimeout(this.downloadVKAd, 5000); /// after 5 sec try to download vk ad to client
     }
@@ -511,6 +511,7 @@ export default class PlayScene extends Phaser.Scene {
 
     downloadVKAd(){
 
+        console.log('this.config', this.config);
         const vkBridge = this.config.vkBridge;
 
         vkBridge.send('VKWebAppCheckNativeAds', {
