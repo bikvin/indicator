@@ -127,6 +127,10 @@ export default class PlayScene extends Phaser.Scene {
         this.createPauseButton();
 
         this.asteroidCrunch = new AsteroidCrunch(this);
+
+
+
+        if(this.config.target === 'vk') setTimeout(this.downloadVKAd, 5000); /// after 5 sec try to download vk ad to client
     }
 
     
@@ -467,6 +471,9 @@ export default class PlayScene extends Phaser.Scene {
         console.log('nextLevel')
         this.deactivateGroups();
         
+        if(this.config.target === 'vk'){
+            this.showVKAd();
+        }
  
 
         if(this.level+1 >= levelsConfig.length){ // if we won last level
@@ -484,6 +491,41 @@ export default class PlayScene extends Phaser.Scene {
         this.scene.start("LevelSelectScene", {level: this.level});
         //this.scene.start("LevelSelectScene");
 
+    }
+
+    showVkAd(){
+        
+        console.log('showVkAd')
+        const vkBridge = this.config.vkBridge;
+
+        vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
+        .then((data) => {
+          if (data.result)
+            console.log('Реклама показана');
+          else
+            console.log('Ошибка при показе');
+        })
+        .catch((error) => { console.log(error); /* Ошибка */ });
+        
+    }
+
+    downloadVKAd(){
+
+        const vkBridge = this.config.vkBridge;
+
+        vkBridge.send('VKWebAppCheckNativeAds', {
+            ad_format: 'reward' /* Тип рекламы */ 
+            })
+            .then((data) => { 
+              if (data.result) { 
+                console.log('Предзагруженные материалы есть');
+                // Предзагруженные материалы есть
+              } else {
+                console.log('Материалов нет');
+                // Материалов нет
+              }    
+            })
+            .catch((error) => { console.log(error); });
     }
 
     
