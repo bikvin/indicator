@@ -131,6 +131,16 @@ export default class PlayScene extends Phaser.Scene {
         console.log('this.config', this.config);
 
         if(this.config.target === 'vk') setTimeout(() => {this.downloadVKAd()}, 5000); /// after 5 sec try to download vk ad to client
+
+        this.debugArray = ['Debug'];
+
+        this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
+
+
+
+
+
+       
     }
 
 
@@ -141,10 +151,16 @@ export default class PlayScene extends Phaser.Scene {
 
         vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
         .then((data) => {
-          if (data.result)
+          if (data.result){
             console.log('Реклама показана');
-          else
+            this.debugArray.push('Реклама показана');
+            this.debugText.text = this.debugArray;
+        }
+          else{
             console.log('Ошибка при показе');
+            this.debugArray.push('Ошибка при показе');
+            this.debugText.text = this.debugArray;
+        }
         })
         .catch((error) => { console.log(error); /* Ошибка */ });
         
@@ -165,9 +181,14 @@ export default class PlayScene extends Phaser.Scene {
             .then((data) => { 
               if (data.result) { 
                 console.log('Предзагруженные материалы есть');
+                this.debugArray.push('Предзагруженные материалы есть');
+                this.debugText.text = this.debugArray;
+                
                 // Предзагруженные материалы есть
               } else {
                 console.log('Материалов нет');
+                this.debugArray.push('Материалов нет');
+                this.debugText.text = this.debugArray;
                 // Материалов нет
               }    
             })
