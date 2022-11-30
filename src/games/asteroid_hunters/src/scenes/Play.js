@@ -192,7 +192,11 @@ export default class PlayScene extends Phaser.Scene {
                 // Материалов нет
               }    
             })
-            .catch((error) => { console.log(error); });
+            .catch((error) => { 
+                console.log(error);
+                this.debugArray.push('error'); 
+                this.debugArray.push(error);
+                this.debugText.text = this.debugArray;});
     }
 
     
