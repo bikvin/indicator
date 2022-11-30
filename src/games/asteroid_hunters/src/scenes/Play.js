@@ -513,6 +513,8 @@ export default class PlayScene extends Phaser.Scene {
 
         debugger;
 
+        console.log('this', this);
+
         console.log('this.config', this.config);
         const vkBridge = this.config.vkBridge;
 
