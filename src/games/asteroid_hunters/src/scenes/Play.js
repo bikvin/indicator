@@ -130,7 +130,48 @@ export default class PlayScene extends Phaser.Scene {
 
         console.log('this.config', this.config);
 
-        if(this.config.target === 'vk') setTimeout(this.downloadVKAd, 5000); /// after 5 sec try to download vk ad to client
+        if(this.config.target === 'vk') setTimeout(() => {this.downloadVKAd}, 5000); /// after 5 sec try to download vk ad to client
+    }
+
+
+    showVkAd(){
+        
+        console.log('showVkAd')
+        const vkBridge = this.config.vkBridge;
+
+        vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
+        .then((data) => {
+          if (data.result)
+            console.log('Реклама показана');
+          else
+            console.log('Ошибка при показе');
+        })
+        .catch((error) => { console.log(error); /* Ошибка */ });
+        
+    }
+
+    downloadVKAd(){
+
+        console.log('showVkAd');
+
+        console.log('this', this);
+
+        console.log('this.config', this.config);
+        const vkBridge = this.config.vkBridge;
+
+        vkBridge.send('VKWebAppCheckNativeAds', {
+            ad_format: 'reward' /* Тип рекламы */ 
+            })
+            .then((data) => { 
+              if (data.result) { 
+                console.log('Предзагруженные материалы есть');
+                // Предзагруженные материалы есть
+              } else {
+                console.log('Материалов нет');
+                // Материалов нет
+              }    
+            })
+            .catch((error) => { console.log(error); });
     }
 
     
@@ -493,45 +534,7 @@ export default class PlayScene extends Phaser.Scene {
 
     }
 
-    showVkAd(){
-        
-        console.log('showVkAd')
-        const vkBridge = this.config.vkBridge;
-
-        vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
-        .then((data) => {
-          if (data.result)
-            console.log('Реклама показана');
-          else
-            console.log('Ошибка при показе');
-        })
-        .catch((error) => { console.log(error); /* Ошибка */ });
-        
-    }
-
-    downloadVKAd(){
-
-        debugger;
-
-        console.log('this', this);
-
-        console.log('this.config', this.config);
-        const vkBridge = this.config.vkBridge;
-
-        vkBridge.send('VKWebAppCheckNativeAds', {
-            ad_format: 'reward' /* Тип рекламы */ 
-            })
-            .then((data) => { 
-              if (data.result) { 
-                console.log('Предзагруженные материалы есть');
-                // Предзагруженные материалы есть
-              } else {
-                console.log('Материалов нет');
-                // Материалов нет
-              }    
-            })
-            .catch((error) => { console.log(error); });
-    }
+    
 
     
 } 
