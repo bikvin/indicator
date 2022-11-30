@@ -176,7 +176,7 @@ export default class PlayScene extends Phaser.Scene {
         const vkBridge = this.config.vkBridge;
 
         vkBridge.send('VKWebAppCheckNativeAds', {
-            ad_format: 'reward' /* Тип рекламы */ 
+            ad_format: 'interstitial' /* Тип рекламы */ 
             })
             .then((data) => { 
               if (data.result) { 
