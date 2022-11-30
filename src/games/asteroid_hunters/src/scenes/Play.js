@@ -152,7 +152,7 @@ export default class PlayScene extends Phaser.Scene {
 
     downloadVKAd(){
 
-        console.log('showVkAd');
+        console.log('downloadVkAd');
 
         console.log('this', this);
 
@@ -513,7 +513,7 @@ export default class PlayScene extends Phaser.Scene {
         this.deactivateGroups();
         
         if(this.config.target === 'vk'){
-            this.showVKAd();
+            this.showVkAd();
         }
  
 
