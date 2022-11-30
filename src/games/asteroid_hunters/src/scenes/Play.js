@@ -511,6 +511,8 @@ export default class PlayScene extends Phaser.Scene {
 
     downloadVKAd(){
 
+        debugger;
+
         console.log('this.config', this.config);
         const vkBridge = this.config.vkBridge;
 
