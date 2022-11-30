@@ -169,6 +169,8 @@ export default class PlayScene extends Phaser.Scene {
     downloadVKAd(){
 
         console.log('downloadVkAd');
+        this.debugArray.push('downloadVkAd');
+        this.debugText.text = this.debugArray;
 
         console.log('this', this);
 
