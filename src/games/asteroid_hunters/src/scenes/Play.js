@@ -177,28 +177,48 @@ export default class PlayScene extends Phaser.Scene {
         console.log('this.config', this.config);
         const vkBridge = this.config.vkBridge;
 
-        vkBridge.send('VKWebAppCheckNativeAds', {
-            ad_format: 'interstitial' /* Тип рекламы */ 
-            })
-            .then((data) => { 
-              if (data.result) { 
-                console.log('Предзагруженные материалы есть');
-                this.debugArray.push('Предзагруженные материалы есть');
-                this.debugText.text = this.debugArray;
+        // vkBridge.send('VKWebAppCheckNativeAds', {
+        //     ad_format: 'interstitial' /* Тип рекламы */ 
+        //     })
+        //     .then((data) => { 
+        //       if (data.result) { 
+        //         console.log('Предзагруженные материалы есть');
+        //         this.debugArray.push('Предзагруженные материалы есть');
+        //         this.debugText.text = this.debugArray;
                 
-                // Предзагруженные материалы есть
-              } else {
-                console.log('Материалов нет');
-                this.debugArray.push('Материалов нет');
-                this.debugText.text = this.debugArray;
-                // Материалов нет
-              }    
-            })
-            .catch((error) => { 
-                console.log(error);
-                this.debugArray.push('error'); 
-                this.debugArray.push(error);
-                this.debugText.text = this.debugArray;});
+        //         // Предзагруженные материалы есть
+        //       } else {
+        //         console.log('Материалов нет');
+        //         this.debugArray.push('Материалов нет');
+        //         this.debugText.text = this.debugArray;
+        //         // Материалов нет
+        //       }    
+        //     })
+        //     .catch((error) => { 
+        //         console.log(error);
+        //         this.debugArray.push('error'); 
+        //         this.debugArray.push(error);
+        //         this.debugText.text = this.debugArray;
+        //     });
+
+            vkBridge.send('VKWebAppCheckNativeAds', {
+                ad_format: 'interstitial' /* Тип рекламы */ 
+                })
+                .then((data) => { 
+                  if (data.result) { 
+                    // Предзагруженные материалы есть
+                    console.log('Материалов нет');
+                    this.debugArray.push('Материалов нет');
+                    this.debugText.text = this.debugArray;
+                  } else {
+                    // Материалов нет
+                  }    
+                })
+                .catch((error) => { 
+                    console.log(error);
+                    this.debugArray.push('error'); 
+                    this.debugArray.push(error);
+                    this.debugText.text = this.debugArray; });
     }
 
     
