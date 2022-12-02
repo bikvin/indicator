@@ -382,6 +382,10 @@ export default class PlayScene extends Phaser.Scene {
     
 
     restartScene(){
+
+        if(this.config.target === 'vk'){
+            this.showVkAd();
+        }
         
         this.deactivateGroups();
 
