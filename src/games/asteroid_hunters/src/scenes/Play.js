@@ -13,6 +13,7 @@ import BottomLabel from "../entities/BottomLabel";
 import DialogWindowManager from "../entities/DialogWindowManager"
 //import sharedUtils from "../utils/sharedUtils"
 import AsteroidCrunch from "../entities/AsteroidCrunch"
+import AdManager  from "../utils/adManager";
 //import topOpenLevelManager from "../utils/topOpenLevelManager"
 
 //import Ast_crush from '../anims/Ast_crush';
@@ -25,9 +26,13 @@ export default class PlayScene extends Phaser.Scene {
     constructor(config) {
         super("PlayScene");
         this.config = config;
+
+        this.adManager = new AdManager(this);
     }
 
     init(data){
+
+        console.log('playScene create');
 
         this.level = data.level;
         //this.sharedOptions = data.sharedOptions;
@@ -40,7 +45,7 @@ export default class PlayScene extends Phaser.Scene {
 
     create() {
 
-        //console.log('playScene create')
+        console.log('playScene create')
     
         this.matter.world.autoUpdate = false;
         this.matterTimeStep = 16.66; // set fps to 60 (1000/60 = 16.66)
@@ -130,7 +135,7 @@ export default class PlayScene extends Phaser.Scene {
 
         console.log('this.config', this.config);
 
-        if(this.config.target === 'vk') setTimeout(() => {this.downloadVKAd()}, 5000); /// after 5 sec try to download vk ad to client
+        if(this.config.target === 'vk') setTimeout(() => {this.adManager.downloadVKAd();}, 5000); /// after 5 sec try to download vk ad to client
 
         this.debugArray = ['Debug'];
 
@@ -144,82 +149,60 @@ export default class PlayScene extends Phaser.Scene {
     }
 
 
-    showVkAd(){
+    // showVkAd(){
         
-        console.log('showVkAd')
-        const vkBridge = this.config.vkBridge;
+    //     console.log('showVkAd')
+    //     const vkBridge = this.config.vkBridge;
 
-        vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
-        .then((data) => {
-          if (data.result){
-            console.log('Реклама показана');
-            this.debugArray.push('Реклама показана');
-            this.debugText.text = this.debugArray;
-        }
-          else{
-            console.log('Ошибка при показе');
-            this.debugArray.push('Ошибка при показе');
-            this.debugText.text = this.debugArray;
-        }
-        })
-        .catch((error) => { console.log(error); /* Ошибка */ });
+    //     vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
+    //     .then((data) => {
+    //       if (data.result){
+    //         console.log('Реклама показана');
+    //         this.debugArray.push('Реклама показана');
+    //         this.debugText.text = this.debugArray;
+    //     }
+    //       else{
+    //         console.log('Ошибка при показе');
+    //         this.debugArray.push('Ошибка при показе');
+    //         this.debugText.text = this.debugArray;
+    //     }
+    //     })
+    //     .catch((error) => { console.log(error); /* Ошибка */ });
         
-    }
+    // }
 
-    downloadVKAd(){
+    // downloadVKAd(){
 
-        console.log('downloadVkAd');
-        this.debugArray.push('downloadVkAd');
-        this.debugText.text = this.debugArray;
+    //     console.log('downloadVkAd');
+    //     this.debugArray.push('downloadVkAd');
+    //     this.debugText.text = this.debugArray;
 
-        console.log('this', this);
+    //     console.log('this', this);
 
-        console.log('this.config', this.config);
-        const vkBridge = this.config.vkBridge;
+    //     console.log('this.config', this.config);
+    //     const vkBridge = this.config.vkBridge;
 
-        // vkBridge.send('VKWebAppCheckNativeAds', {
-        //     ad_format: 'interstitial' /* Тип рекламы */ 
-        //     })
-        //     .then((data) => { 
-        //       if (data.result) { 
-        //         console.log('Предзагруженные материалы есть');
-        //         this.debugArray.push('Предзагруженные материалы есть');
-        //         this.debugText.text = this.debugArray;
-                
-        //         // Предзагруженные материалы есть
-        //       } else {
-        //         console.log('Материалов нет');
-        //         this.debugArray.push('Материалов нет');
-        //         this.debugText.text = this.debugArray;
-        //         // Материалов нет
-        //       }    
-        //     })
-        //     .catch((error) => { 
-        //         console.log(error);
-        //         this.debugArray.push('error'); 
-        //         this.debugArray.push(error);
-        //         this.debugText.text = this.debugArray;
-        //     });
+    
 
-            vkBridge.send('VKWebAppCheckNativeAds', {
-                ad_format: 'interstitial' /* Тип рекламы */ 
-                })
-                .then((data) => { 
-                  if (data.result) { 
-                    // Предзагруженные материалы есть
-                    console.log('Материалов нет');
-                    this.debugArray.push('Материалов нет');
-                    this.debugText.text = this.debugArray;
-                  } else {
-                    // Материалов нет
-                  }    
-                })
-                .catch((error) => { 
-                    console.log(error);
-                    this.debugArray.push('error'); 
-                    this.debugArray.push(error);
-                    this.debugText.text = this.debugArray; });
-    }
+    //         vkBridge.send('VKWebAppCheckNativeAds', {
+    //             ad_format: 'interstitial' /* Тип рекламы */ 
+    //             })
+    //             .then((data) => { 
+    //               if (data.result) { 
+    //                 // Предзагруженные материалы есть
+    //                 console.log('Материалов нет');
+    //                 this.debugArray.push('Материалов нет');
+    //                 this.debugText.text = this.debugArray;
+    //               } else {
+    //                 // Материалов нет
+    //               }    
+    //             })
+    //             .catch((error) => { 
+    //                 console.log(error);
+    //                 this.debugArray.push('error'); 
+    //                 this.debugArray.push(error);
+    //                 this.debugText.text = this.debugArray; });
+    // }
 
     
   
@@ -384,7 +367,7 @@ export default class PlayScene extends Phaser.Scene {
     restartScene(){
 
         if(this.config.target === 'vk'){
-            this.showVkAd();
+            this.adManager.showVkAd();
         }
         
         this.deactivateGroups();
@@ -564,7 +547,7 @@ export default class PlayScene extends Phaser.Scene {
         this.deactivateGroups();
         
         if(this.config.target === 'vk'){
-            this.showVkAd();
+            this.adManager.showVkAd();
         }
  
 
