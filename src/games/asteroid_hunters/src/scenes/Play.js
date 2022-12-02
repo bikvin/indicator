@@ -137,77 +137,15 @@ export default class PlayScene extends Phaser.Scene {
 
         if(this.config.target === 'vk') setTimeout(() => {this.adManager.downloadVKAd();}, 5000); /// after 5 sec try to download vk ad to client
 
-        this.debugArray = ['Debug'];
+        // this.debugArray = ['Debug'];
 
-        this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
-
-
-
+        // this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
 
 
        
     }
 
 
-    // showVkAd(){
-        
-    //     console.log('showVkAd')
-    //     const vkBridge = this.config.vkBridge;
-
-    //     vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
-    //     .then((data) => {
-    //       if (data.result){
-    //         console.log('Реклама показана');
-    //         this.debugArray.push('Реклама показана');
-    //         this.debugText.text = this.debugArray;
-    //     }
-    //       else{
-    //         console.log('Ошибка при показе');
-    //         this.debugArray.push('Ошибка при показе');
-    //         this.debugText.text = this.debugArray;
-    //     }
-    //     })
-    //     .catch((error) => { console.log(error); /* Ошибка */ });
-        
-    // }
-
-    // downloadVKAd(){
-
-    //     console.log('downloadVkAd');
-    //     this.debugArray.push('downloadVkAd');
-    //     this.debugText.text = this.debugArray;
-
-    //     console.log('this', this);
-
-    //     console.log('this.config', this.config);
-    //     const vkBridge = this.config.vkBridge;
-
-    
-
-    //         vkBridge.send('VKWebAppCheckNativeAds', {
-    //             ad_format: 'interstitial' /* Тип рекламы */ 
-    //             })
-    //             .then((data) => { 
-    //               if (data.result) { 
-    //                 // Предзагруженные материалы есть
-    //                 console.log('Материалов нет');
-    //                 this.debugArray.push('Материалов нет');
-    //                 this.debugText.text = this.debugArray;
-    //               } else {
-    //                 // Материалов нет
-    //               }    
-    //             })
-    //             .catch((error) => { 
-    //                 console.log(error);
-    //                 this.debugArray.push('error'); 
-    //                 this.debugArray.push(error);
-    //                 this.debugText.text = this.debugArray; });
-    // }
-
-    
-  
-
-    
 
     createSounds() {
         this.sounds = {
@@ -225,9 +163,7 @@ export default class PlayScene extends Phaser.Scene {
         
         this.muteSounds();
         
-        // if(sharedUtils.musicOn){
-        //     this.sounds.theme.play();
-        // }
+ 
         
     }
 

@@ -9,20 +9,20 @@ export default class AdManager{
 
     showVkAd(){
         
-        console.log('showVkAd')
+        //console.log('showVkAd')
         const vkBridge = this.config.vkBridge;
 
         vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
         .then((data) => {
           if (data.result){
             console.log('Реклама показана');
-            this.scene.debugArray.push('Реклама показана');
-            this.scene.debugText.text = this.scene.debugArray;
+            // this.scene.debugArray.push('Реклама показана');
+            // this.scene.debugText.text = this.scene.debugArray;
         }
           else{
             console.log('Ошибка при показе');
-            this.scene.debugArray.push('Ошибка при показе');
-            this.scene.debugText.text = this.scene.debugArray;
+            // this.scene.debugArray.push('Ошибка при показе');
+            // this.scene.debugText.text = this.scene.debugArray;
         }
         })
         .catch((error) => { console.log(error); /* Ошибка */ });
@@ -32,12 +32,10 @@ export default class AdManager{
     downloadVKAd(){
 
         console.log('downloadVkAd');
-        this.scene.debugArray.push('downloadVkAd');
-        this.scene.debugText.text = this.scene.debugArray;
+        // this.scene.debugArray.push('downloadVkAd');
+        // this.scene.debugText.text = this.scene.debugArray;
 
-        console.log('this', this);
 
-        console.log('this.config', this.config);
         const vkBridge = this.config.vkBridge;
 
     
@@ -48,17 +46,19 @@ export default class AdManager{
                 .then((data) => { 
                   if (data.result) { 
                     // Предзагруженные материалы есть
-                    console.log('Материалов нет');
-                    this.scene.debugArray.push('Материалов нет');
-                    this.scene.debugText.text = this.scene.debugArray;
+                    console.log('Предзагруженные материалы есть');
+                    // this.scene.debugArray.push('Материалов нет');
+                    // this.scene.debugText.text = this.scene.debugArray;
                   } else {
                     // Материалов нет
+                    console.log('Материалов нет');
                   }    
                 })
                 .catch((error) => { 
                     console.log(error);
-                    this.scene.debugArray.push('error'); 
-                    this.scene.debugArray.push(error);
-                    this.scene.debugText.text = this.scene.debugArray; });
+                    // this.scene.debugArray.push('error'); 
+                    // this.scene.debugArray.push(error);
+                    // this.scene.debugText.text = this.scene.debugArray;
+                 });
     }
 }
