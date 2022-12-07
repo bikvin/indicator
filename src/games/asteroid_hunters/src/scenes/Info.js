@@ -112,7 +112,7 @@ export default class InfoScene extends Phaser.Scene {
                     }
                 }) 
             }
-            this.Yoffset += 130*this.config.scaleMultiplier;
+            this.Yoffset += 100*this.config.scaleMultiplier;
         })
     }
 

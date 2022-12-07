@@ -579,7 +579,7 @@ const lang = {
         {
             title: {
                 en: 'Images by:',
-                ru: 'Авторы иллюстраций'
+                ru: 'Авторы иллюстраций:'
             },
             names: ['Kenney', 'iimages', 'VectorShowStudi', 'WinWin_artlab', 'lilu330', 'In-Finity', 'ararat_art', 'klyaksun', 'vikivector', 'ezagatin']
         },
