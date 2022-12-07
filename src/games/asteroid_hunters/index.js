@@ -46,11 +46,7 @@ const target = document.getElementById("ast_game").getAttribute("target") || 'in
 const referer = document.getElementById("ast_game").getAttribute("referer"); // 'localhost or indicator.games' 
 let lang = 'en'
 
-// let vkBridge = undefined;
-// if(target === 'vk'){
-//   lang = 'ru',
-//   vkBridge = VkBridgeLib
-// }
+
 console.log('window.innerWidth', window.innerWidth);
 console.log('window.innerHeight ',window.innerHeight);
 console.log('window.devicePixelRatio', window.devicePixelRatio);

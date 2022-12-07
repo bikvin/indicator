@@ -14,6 +14,8 @@ import DialogWindowManager from "../entities/DialogWindowManager"
 //import sharedUtils from "../utils/sharedUtils"
 import AsteroidCrunch from "../entities/AsteroidCrunch"
 import AdManager  from "../utils/adManager";
+import sharedUtils from "../utils/sharedUtils";
+import lang from "../lang/lang";
 //import topOpenLevelManager from "../utils/topOpenLevelManager"
 
 //import Ast_crush from '../anims/Ast_crush';
@@ -67,7 +69,7 @@ export default class PlayScene extends Phaser.Scene {
         this.bottomLabel = new BottomLabel(this);
         //this.musicOn = false;
 
-        this.createBackground();
+        sharedUtils.createBackground(this);
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.player = this.createPlayer(); 
@@ -141,8 +143,12 @@ export default class PlayScene extends Phaser.Scene {
 
         // this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
 
+        if(this.sys.game.device.os.desktop){
+            sharedUtils.createInstructions(this, lang);
+        }
 
-       
+
+        
     }
 
 
@@ -337,16 +343,15 @@ export default class PlayScene extends Phaser.Scene {
         if(this.levelTimer) this.levelTimer.stop();
     }
 
-    createBackground(){
-        // this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setScale(this.config.widthMultiplier, this.config.heightMultiplier);
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setDisplaySize(window.innerHeight* window.devicePixelRatio,window.innerWidth* window.devicePixelRatio);
-    }   
+ 
 
     createPlayer() {
         console.log('PlayScene createPlayer');
         return new Player(this, this.config.startPosition.x, this.config.startPosition.y);
 
     }
+
+
 
     createPauseButton(){
         this.pauseButton = this.add.image(this.config.width-50*this.config.scaleMultiplier, 50*this.config.scaleMultiplier, 'pause-icon').setOrigin(0.5).setScale(0.6*this.config.scaleMultiplier);

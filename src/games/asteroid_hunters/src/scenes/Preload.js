@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import LoadingBar from '../utils/LoadingBar'
+import LoadingBar from '../utils/LoadingBar';
+import sharedUtils from "../utils/sharedUtils";
 
 
 
@@ -29,14 +30,13 @@ export default class PreloadScene extends Phaser.Scene {
     preload() {
 
         //console.log('Preload Preload');
-        this.createBackground();
+
+        sharedUtils.createBackground(this);
         this.loadingBar = new LoadingBar(this);
         this.preloadAssets();
     }
 
-    createBackground(){
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setDisplaySize(window.innerHeight* window.devicePixelRatio,window.innerWidth* window.devicePixelRatio);
-    }
+
 
     preloadAssets(){
         // images

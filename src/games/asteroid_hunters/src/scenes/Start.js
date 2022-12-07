@@ -47,7 +47,8 @@ export default class StartScene extends Phaser.Scene {
 
         
 
-        this.createBackground();
+
+        sharedUtils.createBackground(this);
         //this.createButton();
         this.createLabel();
         this.createEarth();
@@ -69,10 +70,7 @@ export default class StartScene extends Phaser.Scene {
     }
 
   
-    
-    createBackground(){
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setDisplaySize(window.innerHeight* window.devicePixelRatio,window.innerWidth* window.devicePixelRatio);
-    }
+ 
 
     createInfoIcon(){
         this.infoIcon = this.add.image(this.config.width - 50*this.config.scaleMultiplier, this.config.height - 50*this.config.scaleMultiplier, 'info-icon').setOrigin(0.5,0.5).setDepth(1).setScale(0.4*this.config.scaleMultiplier)

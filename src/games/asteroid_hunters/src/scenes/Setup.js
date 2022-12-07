@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import TopOpenLevelManager from "../utils/topOpenLevelManager"
 import { v4 as uuidv4 } from 'uuid';
 import VkBridgeLib from '@vkontakte/vk-bridge';
+import sharedUtils from "../utils/sharedUtils";
 
 
 export default class SetupScene extends Phaser.Scene {
@@ -18,13 +19,10 @@ export default class SetupScene extends Phaser.Scene {
     preload() {
 
         //console.log('Preload Preload');
-        this.createBackground();
+        sharedUtils.createBackground(this);
+        
         
     
-    }
-
-    createBackground(){
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setDisplaySize(window.innerHeight* window.devicePixelRatio,window.innerWidth* window.devicePixelRatio);
     }
 
    
@@ -47,6 +45,7 @@ export default class SetupScene extends Phaser.Scene {
 
     nextScene(){
         this.scene.start("StartScene");
+        //this.scene.start("FinalScene");
     }
 
     setLang(){// default lang is 'en'. For vk change it to 'ru'

@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import sharedUtils from "../utils/sharedUtils"
 
 export default class FinalScene extends Phaser.Scene {
     constructor(config) {
@@ -16,15 +17,12 @@ export default class FinalScene extends Phaser.Scene {
     }
 
     create() {
-        this.createBackground();
+        sharedUtils.createBackground(this);
         this.createButton();
         this.createLabel();
 
     }
     
-    createBackground(){
-        this.add.image(0, 0, 'space').setAngle(90).setOrigin(0,1).setScale(this.config.scaleMultiplier);
-    }
 
     createLabel(){
         this.add.image(this.config.width/2, 350*this.config.scaleMultiplier, 'end-title').setOrigin(0.5,0.5).setDepth(1).setScale(this.config.scaleMultiplier);

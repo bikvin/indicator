@@ -560,7 +560,50 @@ const lang = {
                 ru: 'Уничтожь все тарелки'
             }
         },
+    ],
+    creditsData: [
+        {
+            title: {
+                en: 'Indicator Games',
+                ru: 'Indicator Games'
+            }
+        },
+        {
+            title: {
+                en: 'Created by:',
+                ru: 'Автор:'
+            },
+            names: ['Ivan Kraev'],
+            contact: 'ivan.a.kraev@gmail.com'
+        },
+        {
+            title: {
+                en: 'Images by:',
+                ru: 'Авторы иллюстраций'
+            },
+            names: ['Kenney', 'iimages', 'VectorShowStudi', 'WinWin_artlab', 'lilu330', 'In-Finity', 'ararat_art', 'klyaksun', 'vikivector', 'ezagatin']
+        },
+        {
+            title: {
+                en: 'Sounds by:',
+                ru: 'Авторы звуковых эффектов:'
+        },
+            names: ['Kenney', 'yd', ]
+        },
+        {
+            title: {
+                en:'Inspired by original Asteroids by Atari and Asteroids game by Minimal',
+                ru: 'Основано на оригинальной игре Asteroids от Atari и игре Asteroids от Minimal'
+            }
+        },
+        {
+            title: {
+                en: 'Made with Phaser 3',
+                ru:'Сделано на Phaser 3'
+            }
+        }
     ]
+    
 }
 
 export default lang
