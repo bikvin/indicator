@@ -78,7 +78,7 @@ export default class InfoScene extends Phaser.Scene {
                     text: datum.title[this.config.lang],
                     origin: { x: 0.5, y: 0 },
                     style: {
-                        font: `${30 * this.config.scaleMultiplier}px Comfortaa`,
+                        font: `${25 * this.config.scaleMultiplier}px Comfortaa`,
                         wordWrap: { width: this.config.width-100*this.config.scaleMultiplier, useAdvancedWrap: true }
                     }
                 }) 
@@ -89,11 +89,11 @@ export default class InfoScene extends Phaser.Scene {
 
                 this.make.text({
                     x: this.config.width/2,
-                    y: 140*this.config.scaleMultiplier + this.Yoffset,
+                    y: 130*this.config.scaleMultiplier + this.Yoffset,
                     text: datum.names.join(', '),
                     origin: { x: 0.5, y: 0 },
                     style: {
-                        font: `${25 * this.config.scaleMultiplier}px Comfortaa`,
+                        font: `${20 * this.config.scaleMultiplier}px Comfortaa`,
                         wordWrap: { width: this.config.width-100*this.config.scaleMultiplier, useAdvancedWrap: true }
                     }
                 }) 
@@ -103,7 +103,7 @@ export default class InfoScene extends Phaser.Scene {
 
                 this.make.text({
                     x: this.config.width/2,
-                    y: 180*this.config.scaleMultiplier + this.Yoffset,
+                    y: 150*this.config.scaleMultiplier + this.Yoffset,
                     text: datum.contact,
                     origin: { x: 0.5, y: 0 },
                     style: {
@@ -112,7 +112,7 @@ export default class InfoScene extends Phaser.Scene {
                     }
                 }) 
             }
-            this.Yoffset += 100*this.config.scaleMultiplier;
+            this.Yoffset += 90*this.config.scaleMultiplier;
         })
     }
 

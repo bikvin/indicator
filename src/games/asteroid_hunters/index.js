@@ -44,7 +44,7 @@ const START_POSITION = {
 
 const target = document.getElementById("ast_game").getAttribute("target") || 'indicator'; // 'vk' or undefined or some other
 const referer = document.getElementById("ast_game").getAttribute("referer"); // 'localhost or indicator.games' 
-let lang = 'en'
+let lang = 'ru'
 
 
 console.log('window.innerWidth', window.innerWidth);
