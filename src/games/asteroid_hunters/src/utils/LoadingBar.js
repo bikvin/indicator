@@ -81,6 +81,6 @@ export default class LoadingBar {
     }
 
     addLabel(){
-        this.label = this.scene.add.text(this.scene.config.width/2, this.scene.config.height/2-70* this.scene.config.scaleMultiplier, 'Loading', { font: '30px Arial', color: this.style.textColor}).setDepth(2).setOrigin(0.5).setScale(this.scene.config.scaleMultiplier);
+        this.label = this.scene.add.text(this.scene.config.width/2, this.scene.config.height/2-70* this.scene.config.scaleMultiplier, 'Loading', { font: '30px Comfortaa', color: this.style.textColor}).setDepth(2).setOrigin(0.5).setScale(this.scene.config.scaleMultiplier);
     }
 }

@@ -122,21 +122,25 @@ export default class PreloadScene extends Phaser.Scene {
 
         var config = {
             google: {
-                families: ['Pattaya', 'Comfortaa']
-            }
+                //families: ['Pattaya', 'Comfortaa']
+                families: ['Comfortaa']
+            },
+            testString: 'ф-f'
         };
         this.load.rexWebFont(config);
+
+        // this.load.on('webfontactive', function (fileObj, familyName) {
+        //     console.log('font-active: ' + familyName)
+        // });
     }
 
     create() {
         console.log('Preload Create');
 
         this.scene.start("SetupScene");
-     
-
-
 
     }
+
 
     
 } 
