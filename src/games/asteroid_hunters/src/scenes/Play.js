@@ -13,7 +13,7 @@ import BottomLabel from "../entities/BottomLabel";
 import DialogWindowManager from "../entities/DialogWindowManager"
 //import sharedUtils from "../utils/sharedUtils"
 import AsteroidCrunch from "../entities/AsteroidCrunch"
-import AdManager  from "../utils/adManager";
+import VkFunctions  from "../utils/VkFunctions";
 import sharedUtils from "../utils/sharedUtils";
 import lang from "../lang/lang";
 //import topOpenLevelManager from "../utils/topOpenLevelManager"
@@ -29,7 +29,7 @@ export default class PlayScene extends Phaser.Scene {
         super("PlayScene");
         this.config = config;
 
-        this.adManager = new AdManager(this);
+        if(this.config.target === 'vk')  this.vkFunctions = new VkFunctions(this);
     }
 
     init(data){
@@ -137,7 +137,7 @@ export default class PlayScene extends Phaser.Scene {
 
         console.log('this.config', this.config);
 
-        if(this.config.target === 'vk') setTimeout(() => {this.adManager.downloadVKAd();}, 5000); /// after 5 sec try to download vk ad to client
+        if(this.config.target === 'vk') setTimeout(() => {this.vkFunctions.downloadVKAd();}, 5000); /// after 5 sec try to download vk ad to client
 
         // this.debugArray = ['Debug'];
 
@@ -309,7 +309,7 @@ export default class PlayScene extends Phaser.Scene {
     restartScene(){
 
         if(this.config.target === 'vk'){
-            this.adManager.showVkAd();
+            this.vkFunctions.showVkAd();
         }
         
         this.deactivateGroups();
@@ -488,7 +488,7 @@ export default class PlayScene extends Phaser.Scene {
         this.deactivateGroups();
         
         if(this.config.target === 'vk'){
-            this.adManager.showVkAd();
+            this.vkFunctions.showVkAd();
         }
  
 

@@ -3,6 +3,7 @@ import sharedUtils from "../utils/sharedUtils"
 //import topOpenLevelManager from "../utils/topOpenLevelManager"
 //import sharedOptions from "../utils/sharedOptions"
 import lang from "../lang/lang"
+import VkFunctions  from "../utils/VkFunctions";
 
 export default class StartScene extends Phaser.Scene {
     constructor(config) {
@@ -12,7 +13,7 @@ export default class StartScene extends Phaser.Scene {
 
        this.config = config;
        
-       
+       if(this.config.target === 'vk')  this.vkFunctions = new VkFunctions(this);
     }
 
     preload() {
@@ -64,7 +65,9 @@ export default class StartScene extends Phaser.Scene {
             this.theme.play();
         }
 
-       
+        if(this.config.target === 'vk') this.createVkButtons();
+
+        this.createVkButtons();
 
 
     }
@@ -96,6 +99,32 @@ export default class StartScene extends Phaser.Scene {
         sharedUtils.setButtonHover(button, this.config.scaleMultiplier, this.config.scaleMultiplier*1.1);
         
         
+    }
+
+    createVkButtons(){
+        const addToFavoritebutton = this.add.text(this.config.width-40*this.config.scaleMultiplier, this.config.height/2+60*this.config.scaleMultiplier, 'Добавить\n в избранное', { font: '30px Comfortaa', align: 'right'  }).setScale(this.config.scaleMultiplier)
+        .setOrigin(1,0)
+        .on('pointerdown', () => {
+            console.log('add to favorites'); 
+            this.vkFunctions.addToFavorites();
+        })
+        sharedUtils.setButtonHover(addToFavoritebutton, this.config.scaleMultiplier, this.config.scaleMultiplier*1.1);
+
+        const shareButton = this.add.text(this.config.width-40*this.config.scaleMultiplier, this.config.height/2+180*this.config.scaleMultiplier, 'Поделиться', { font: '30px Comfortaa', align: 'right'  }).setScale(this.config.scaleMultiplier)
+        .setOrigin(1,0)
+        .on('pointerdown', () => {
+            console.log('add to wall');
+            this.vkFunctions.share();
+        })
+        sharedUtils.setButtonHover(shareButton, this.config.scaleMultiplier, this.config.scaleMultiplier*1.1);
+
+        const inviteFriendsButton = this.add.text(this.config.width-40*this.config.scaleMultiplier, this.config.height/2+260*this.config.scaleMultiplier, 'Пригласить друзей', { font: '30px Comfortaa', align: 'right'  }).setScale(this.config.scaleMultiplier)
+        .setOrigin(1,0)
+        .on('pointerdown', () => {
+            console.log('invite friends');
+            this.vkFunctions.inviteFriends();
+        })
+        sharedUtils.setButtonHover(inviteFriendsButton, this.config.scaleMultiplier, this.config.scaleMultiplier*1.1);
     }
 
     // createShip(){

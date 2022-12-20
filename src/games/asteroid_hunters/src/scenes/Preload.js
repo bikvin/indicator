@@ -125,7 +125,7 @@ export default class PreloadScene extends Phaser.Scene {
                 //families: ['Pattaya', 'Comfortaa']
                 families: ['Comfortaa']
             },
-            testString: 'ф-f'
+            testString: 'ф-f'// this one is needed for the font preload plugin to check if the font is loaded for this string (both russian and english)
         };
         this.load.rexWebFont(config);
 

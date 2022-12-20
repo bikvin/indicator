@@ -1,4 +1,4 @@
-export default class AdManager{
+export default class VkFunctions{
 
     constructor(scene){
         //console.log('topOpenLevelManager constructor');
@@ -60,5 +60,45 @@ export default class AdManager{
                     // this.scene.debugArray.push(error);
                     // this.scene.debugText.text = this.scene.debugArray;
                  });
+    }
+
+    addToFavorites() {
+
+      const vkBridge = this.config.vkBridge;
+
+      vkBridge.send('VKWebAppAddToFavorites')
+      .then((data) => { 
+        if (data.result) {
+          // Мини-приложение или игра добавлены в избранное
+          console.log('Мини-приложение или игра добавлены в избранное');
+          console.log(data.result);
+        }
+      })
+      .catch((error) => {
+        // Ошибка
+        console.log('Ошибка', error);
+      });
+    }
+
+    share(){
+      bridge.send('VKWebAppShowWallPostBox', {
+        message: 'Hello!',
+        attachments: 'https://habr.com'
+        })
+        .then((data) => { 
+          if (data.post_id) {
+            // Запись размещена
+          }
+        })
+        .catch((error) => {
+          // Ошибка
+          console.log(error);
+        });
+    }
+
+    inviteFriends(){
+      this.config.vkBridge.send("VKWebAppShowInviteBox", {})
+         .then(data => console.log(data.success))  
+        .catch(error => console.log(error));
     }
 }
