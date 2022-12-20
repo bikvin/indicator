@@ -100,21 +100,37 @@ export default class VkFunctions{
 
     inviteFriends(){
 
-      this.config.vkBridge.send('VKWebAppCheckAllowedScopes', {
-        scopes: 'friends,notify'
+
+      this.config.vkBridge.send('VKWebAppGetAuthToken', { 
+        app_id: 51396350, 
+        scope: 'friends'
         })
         .then((data) => { 
-          if (data.result) {
-            // Права доступа получены
-            this.config.vkBridge.send("VKWebAppShowInviteBox", {})
-            .then(data => console.log(data.success))  
-            .catch(error => console.log(error));
+          if (data.access_token) {
+            // Ключ доступа пользователя получен
+            this.config.vkBridge.send('VKWebAppCheckAllowedScopes', {
+              scopes: 'friends,notify'
+              })
+              .then((data) => { 
+                if (data.result) {
+                  // Права доступа получены
+                  this.config.vkBridge.send("VKWebAppShowInviteBox", {})
+                  .then(data => console.log(data.success))  
+                  .catch(error => console.log(error));
+                }
+              })
+              .catch((error) => {
+                // Ошибка
+                console.log(error);
+              });
           }
         })
         .catch((error) => {
           // Ошибка
           console.log(error);
         });
+
+      
 
       // this.config.vkBridge.send("VKWebAppShowInviteBox", {})
       //    .then(data => console.log(data.success))  
