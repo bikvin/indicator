@@ -81,7 +81,7 @@ export default class VkFunctions{
     }
 
     share(){
-      bridge.send('VKWebAppShowWallPostBox', {
+      this.config.vkBridge.send('VKWebAppShowWallPostBox', {
         message: 'Hello!',
         attachments: 'https://habr.com'
         })
@@ -97,8 +97,25 @@ export default class VkFunctions{
     }
 
     inviteFriends(){
-      this.config.vkBridge.send("VKWebAppShowInviteBox", {})
-         .then(data => console.log(data.success))  
-        .catch(error => console.log(error));
+
+      this.config.vkBridge.send('VKWebAppCheckAllowedScopes', {
+        scopes: 'friends,notify'
+        })
+        .then((data) => { 
+          if (data.result) {
+            // Права доступа получены
+            this.config.vkBridge.send("VKWebAppShowInviteBox", {})
+            .then(data => console.log(data.success))  
+            .catch(error => console.log(error));
+          }
+        })
+        .catch((error) => {
+          // Ошибка
+          console.log(error);
+        });
+
+      // this.config.vkBridge.send("VKWebAppShowInviteBox", {})
+      //    .then(data => console.log(data.success))  
+      //   .catch(error => console.log(error));
     }
 }
