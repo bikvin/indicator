@@ -103,7 +103,7 @@ export default class StartScene extends Phaser.Scene {
 
     createVkButtons(){
         const addToFavoritebutton = this.add.text(this.config.width-40*this.config.scaleMultiplier, this.config.height/2+60*this.config.scaleMultiplier, 'Добавить\n в избранное', { font: '30px Comfortaa', align: 'right'  }).setScale(this.config.scaleMultiplier)
-        .setOrigin(1,0)
+        .setOrigin(0.5)
         .on('pointerdown', () => {
             console.log('add to favorites'); 
             this.vkFunctions.addToFavorites();

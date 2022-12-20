@@ -37,8 +37,8 @@
     "dev": "env-cmd -f ./config/dev.env nodemon src/app.js",
     "start": "node src/app.js",
     "webpack-battleship": "webpack --config webpack.config.battleship.js --mode development --watch",
-    "webpack-asteroid-hunters": "webpack --config webpack.config.asteroid_hunters.js --mode development --watch",
-    "webpack-asteroid-hunters-production": "webpack --config webpack.config.asteroid_hunters.js --mode production --watch",
+    "webpack-asteroid-hunters-dev": "webpack --config webpack.config.asteroid_hunters.js --mode development --watch",
+    "webpack-asteroid-hunters-prod": "webpack --config webpack.config.asteroid_hunters.js --mode production --watch",
     "webpack-production": "webpack --mode production"
   },
   "keywords": [],
