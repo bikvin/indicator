@@ -82,17 +82,19 @@ export default class VkFunctions{
 
     share(){
       this.config.vkBridge.send('VKWebAppShowWallPostBox', {
-        message: 'Hello!',
-        attachments: 'https://habr.com'
+        message: 'Играю в Asteroid Hunters',
+        attachments: 'https://vk.com/app51396350_145581'
         })
         .then((data) => { 
           if (data.post_id) {
             // Запись размещена
+            console.log('Запись размещена', data.post_id);
           }
         })
-        .catch((error) => {
+        .catch((error) => { 
           // Ошибка
-          console.log(error);
+          console.log('Ошибка размещения записи', error);
+        
         });
     }
 
