@@ -1,4 +1,5 @@
 import lang from "../lang/lang"
+import sharedUtils from "../utils/sharedUtils";
 
 export default class DialogWindowManager {
     constructor(scene, levelsConfig) {
@@ -7,7 +8,6 @@ export default class DialogWindowManager {
 
         this.levelsConfig = levelsConfig;
 
-      
 
         this.init(); 
     }
@@ -35,6 +35,13 @@ export default class DialogWindowManager {
         this.createOverlay(this.overlayOptions.scale);
         this.createButtons(this.buttons, this.overlayOptions);
         this.createText(this.text);
+
+        if(type === 'win' && this.scene.config.target === 'vk') this.createVkButtons();
+
+        //if(type === 'win') this.createVkButtons();
+
+       
+
     }
 
     setWindowData(type){
@@ -240,6 +247,32 @@ export default class DialogWindowManager {
         if(text.reason) {
             this.reason = this.scene.add.text(this.scene.config.width/2, text.reasonY, text.reason, { font: `${25* this.scene.config.scaleMultiplier}px Comfortaa` }).setDepth(2).setOrigin(0.5);
         }
+    }
+
+
+    createVkButtons(){
+
+        const shareMessage = `Я прошел ${this.scene.level+1} уровень в Asteroid Hunters`;
+        console.log(shareMessage);
+
+
+        const shareButton = this.scene.add.text(this.scene.config.width/2-50*this.scene.config.scaleMultiplier, this.scene.config.height/2+200*this.scene.config.scaleMultiplier, 'Поделиться', { font: '30px Comfortaa', align: 'center'  }).setScale(this.scene.config.scaleMultiplier)
+        .setOrigin(1,0.5)
+        .setDepth(2)
+        .on('pointerdown', () => {
+            console.log('add to wall', shareMessage);
+            this.scene.vkFunctions.share(shareMessage);
+        });
+        sharedUtils.setButtonHover(shareButton, this.scene.config.scaleMultiplier, this.scene.config.scaleMultiplier*1.1);
+
+        const inviteFriendsButton = this.scene.add.text(this.scene.config.width/2+50*this.scene.config.scaleMultiplier, this.scene.config.height/2+200*this.scene.config.scaleMultiplier, 'Пригласить\nдрузей', { font: '30px Comfortaa', align: 'center'  }).setScale(this.scene.config.scaleMultiplier)
+        .setOrigin(0,0.5)
+        .setDepth(2)
+        .on('pointerdown', () => {
+            console.log('invite friends');
+            this.scene.vkFunctions.inviteFriends();
+        });
+        sharedUtils.setButtonHover(inviteFriendsButton, this.scene.config.scaleMultiplier, this.scene.config.scaleMultiplier*1.1);
     }
 
     updateLevelText(){

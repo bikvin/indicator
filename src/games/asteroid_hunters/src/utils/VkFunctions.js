@@ -80,9 +80,9 @@ export default class VkFunctions{
       });
     }
 
-    share(){
+    share(message = 'Играю в Asteroid Hunters'){
       this.config.vkBridge.send('VKWebAppShowWallPostBox', {
-        message: 'Играю в Asteroid Hunters',
+        message: message,
         attachments: 'https://vk.com/app51396350_145581'
         })
         .then((data) => { 

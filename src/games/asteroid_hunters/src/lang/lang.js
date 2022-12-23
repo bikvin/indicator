@@ -59,6 +59,21 @@ const lang = {
         ru: "все"
     },
 
+    youWon: {
+        en: "You won!",
+        ru: "Это победа!"
+    },
+
+    startAgain: {
+        en: "Start Again",
+        ru: "Начать Заново"
+    },
+
+    loading: {
+        en: "Loading...",
+        ru: "Загрузка..."
+    },
+
     levelTexts: [
         { //1
             prompt:{
@@ -561,6 +576,8 @@ const lang = {
             }
         },
     ],
+    
+
     creditsData: [
         {
             title: {

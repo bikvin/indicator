@@ -424,6 +424,7 @@ export default class PlayScene extends Phaser.Scene {
         if(this.levelWon) return; // don't check for win if level is won already
 
         let win = false;
+        //let win = true;
 
         switch (this.levelConfig.win.item) {
             case 'asteroid':
