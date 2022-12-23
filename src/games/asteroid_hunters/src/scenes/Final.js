@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import sharedUtils from "../utils/sharedUtils"
 import lang from "../lang/lang"
+import VkFunctions  from "../utils/VkFunctions";
 
 export default class FinalScene extends Phaser.Scene {
     constructor(config) {
