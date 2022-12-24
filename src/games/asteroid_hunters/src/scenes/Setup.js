@@ -142,7 +142,8 @@ export default class SetupScene extends Phaser.Scene {
               if (data.id) {
                 console.log('got user data');
                 console.log(data);
-                this.nextScene();
+                //this.nextScene();
+                this.getUserAgent();
                 // Данные пользователя получены
               }
             })
@@ -150,6 +151,21 @@ export default class SetupScene extends Phaser.Scene {
               // Ошибка
               console.log(error);
             });
+    }
+
+    getUserAgent(){
+        this.config.vkBridge.send('VKWebAppGetClientVersion')
+        .then((data) => { 
+            if (data.platform) {
+            // Данные пользователя получены
+                console.log(data);
+                this.nextScene();
+            }
+        })
+        .catch((error) => {
+            // Ошибка
+            console.log(error);
+        });
     }
 
     
