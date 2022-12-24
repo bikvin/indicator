@@ -103,7 +103,7 @@ export default class VkFunctions{
 
       this.config.vkBridge.send('VKWebAppGetAuthToken', { 
         app_id: 51396350, 
-        scope: 'friends'
+        scope: 'friends,notify'
         })
         .then((data) => { 
           if (data.access_token) {
@@ -135,5 +135,19 @@ export default class VkFunctions{
       // this.config.vkBridge.send("VKWebAppShowInviteBox", {})
       //    .then(data => console.log(data.success))  
       //   .catch(error => console.log(error));
+    }
+
+
+    addToHomeScreen() {
+      // bridge.send('VKWebAppAddToHomeScreenInfo')
+      // .then((data) => { 
+      //   if (data.is_added_to_home_screen) {
+      //     // Информация получена
+      //   }
+      // })
+      // .catch((error) => {
+      //   // Ошибка
+      //   console.log(error);
+      // });
     }
 }

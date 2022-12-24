@@ -116,26 +116,39 @@ export default class SetupScene extends Phaser.Scene {
         console.log('getVkUser')
         const vkBridge = this.config.vkBridge;
 
-        vkBridge.send("VKWebAppGetUserInfo");
+        // vkBridge.send("VKWebAppGetUserInfo");
 
-        vkBridge.subscribe((e) => {
-            console.log('vk eventt')
-            console.log(e)
-            console.log('e.detail.type', e.type)
-            //console.log('e.data.type', e.data.type)
-            if(e.detail.type == 'VKWebAppGetUserInfoResult') {
-                console.log('got user data')
-                console.log(e);
-                this.config.userId = e.detail.data.id;
-                console.log('this.config.userId is', this.config.userId);
-                this.nextScene();
+        // vkBridge.subscribe((e) => {
+        //     console.log('vk eventt')
+        //     console.log(e)
+        //     console.log('e.detail.type', e.type)
+        //     //console.log('e.data.type', e.data.type)
+        //     if(e.detail.type == 'VKWebAppGetUserInfoResult') {
+        //         console.log('got user data')
+        //         console.log(e);
+        //         this.config.userId = e.detail.data.id;
+        //         console.log('this.config.userId is', this.config.userId);
+        //         this.nextScene();
 
-            }
-            else if (e.detail.type == 'VKWebAppGetUserInfoFailed'){
-                console.log('Error');
-                console.log(e);
-            }
-        });
+        //     }
+        //     else if (e.detail.type == 'VKWebAppGetUserInfoFailed'){
+        //         console.log('Error');
+        //         console.log(e);
+        //     }
+        // });
+
+        vkBridge.send('VKWebAppGetUserInfo')
+            .then((data) => { 
+              if (data.id) {
+                console.log('got user data');
+                console.log(data.id);
+                // Данные пользователя получены
+              }
+            })
+            .catch((error) => {
+              // Ошибка
+              console.log(error);
+            });
     }
 
     
