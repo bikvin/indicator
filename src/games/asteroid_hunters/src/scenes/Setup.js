@@ -141,7 +141,8 @@ export default class SetupScene extends Phaser.Scene {
             .then((data) => { 
               if (data.id) {
                 console.log('got user data');
-                console.log(data.id);
+                console.log(data);
+                this.nextScene();
                 // Данные пользователя получены
               }
             })
