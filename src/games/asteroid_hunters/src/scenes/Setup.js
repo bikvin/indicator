@@ -3,6 +3,7 @@ import TopOpenLevelManager from "../utils/topOpenLevelManager"
 import { v4 as uuidv4 } from 'uuid';
 import VkBridgeLib from '@vkontakte/vk-bridge';
 import sharedUtils from "../utils/sharedUtils";
+import { TopologyDescriptionChangedEvent } from "mongodb";
 
 
 export default class SetupScene extends Phaser.Scene {
@@ -39,6 +40,10 @@ export default class SetupScene extends Phaser.Scene {
         this.setLang();
 
         this.setUserId();
+
+        // this.debugArray = ['Debug'];
+
+        // this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
 
 
     }
@@ -116,26 +121,7 @@ export default class SetupScene extends Phaser.Scene {
         console.log('getVkUser')
         const vkBridge = this.config.vkBridge;
 
-        // vkBridge.send("VKWebAppGetUserInfo");
 
-        // vkBridge.subscribe((e) => {
-        //     console.log('vk eventt')
-        //     console.log(e)
-        //     console.log('e.detail.type', e.type)
-        //     //console.log('e.data.type', e.data.type)
-        //     if(e.detail.type == 'VKWebAppGetUserInfoResult') {
-        //         console.log('got user data')
-        //         console.log(e);
-        //         this.config.userId = e.detail.data.id;
-        //         console.log('this.config.userId is', this.config.userId);
-        //         this.nextScene();
-
-        //     }
-        //     else if (e.detail.type == 'VKWebAppGetUserInfoFailed'){
-        //         console.log('Error');
-        //         console.log(e);
-        //     }
-        // });
 
         vkBridge.send('VKWebAppGetUserInfo')
             .then((data) => { 
@@ -159,12 +145,40 @@ export default class SetupScene extends Phaser.Scene {
             if (data.platform) {
             // Данные пользователя получены
                 console.log(data);
-                this.nextScene();
+                this.config.platform = data.platform;
+
+                if(data.platform === 'android') {
+                    this.checkHomeScreenAdd();
+                }else{
+                    this.nextScene();
+                }
+                
             }
         })
         .catch((error) => {
             // Ошибка
             console.log(error);
+        });
+    }
+
+
+    checkHomeScreenAdd(){
+        this.config.vkBridge.send('VKWebAppAddToHomeScreenInfo')
+        .then((data) => { 
+            if (data.is_added_to_home_screen) {
+            // Информация получена
+                console.log('Got home screen info');
+                console.log(data);
+                this.debugArray.push('Got home screen info');
+                this.debugText.text = data;
+                //this.nextScene();
+            }
+        })
+        .catch((error) => {
+            // Ошибка
+            console.log(error);
+            this.debugArray.push('error');
+            this.debugText.text = error;
         });
     }
 
