@@ -171,7 +171,7 @@ export default class SetupScene extends Phaser.Scene {
                 console.log('Got home screen info');
                 console.log(data);
                 this.debugArray.push('Got home screen info');
-                this.debugText.text = data;
+                this.debugText.text = data.is_added_to_home_screen;
                 //this.nextScene();
             }
         })
