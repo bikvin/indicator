@@ -3,7 +3,7 @@ import TopOpenLevelManager from "../utils/topOpenLevelManager"
 import { v4 as uuidv4 } from 'uuid';
 import VkBridgeLib from '@vkontakte/vk-bridge';
 import sharedUtils from "../utils/sharedUtils";
-import { TopologyDescriptionChangedEvent } from "mongodb";
+//import { TopologyDescriptionChangedEvent } from "mongodb";
 
 
 export default class SetupScene extends Phaser.Scene {
@@ -41,9 +41,9 @@ export default class SetupScene extends Phaser.Scene {
 
         this.setUserId();
 
-        // this.debugArray = ['Debug'];
+        this.debugArray = ['Debug'];
 
-        // this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
+        this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
 
 
     }
@@ -152,6 +152,7 @@ export default class SetupScene extends Phaser.Scene {
                 }else{
                     this.nextScene();
                 }
+                //this.nextScene();
                 
             }
         })
