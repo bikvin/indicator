@@ -41,9 +41,9 @@ export default class SetupScene extends Phaser.Scene {
 
         this.setUserId();
 
-        this.debugArray = ['Debug'];
+        // this.debugArray = ['Debug'];
 
-        this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
+        // this.debugText = this.add.text(50, 50, this.debugArray, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', color: '#e8eb34'}).setScale(3);
 
 
     }
@@ -128,8 +128,8 @@ export default class SetupScene extends Phaser.Scene {
               if (data.id) {
                 console.log('got user data');
                 console.log(data);
-                //this.nextScene();
-                this.getUserAgent();
+                this.nextScene();
+                //this.getUserAgent();
                 // Данные пользователя получены
               }
             })
