@@ -19,7 +19,7 @@ export default class DialogWindowManager {
 
     createWindow(type, reason = ''){
 
-        console.log('createWindow', 'type=', type, 'reason=', reason);
+        //console.log('createWindow', 'type=', type, 'reason=', reason);
 
         this.type = type;
         this.reason = reason;
@@ -257,14 +257,14 @@ export default class DialogWindowManager {
     createVkButtons(){
 
         const shareMessage = `Я прошел ${this.scene.level+1} уровень в Asteroid Hunters`;
-        console.log(shareMessage);
+        //console.log(shareMessage);
 
 
         const shareButton = this.scene.add.text(this.scene.config.width/2-50*this.scene.config.scaleMultiplier, this.scene.config.height/2+200*this.scene.config.scaleMultiplier, 'Поделиться', { font: '30px Comfortaa', align: 'center'  }).setScale(this.scene.config.scaleMultiplier)
         .setOrigin(1,0.5)
         .setDepth(2)
         .on('pointerdown', () => {
-            console.log('add to wall', shareMessage);
+            //console.log('add to wall', shareMessage);
             this.scene.vkFunctions.share(shareMessage);
         });
         sharedUtils.setButtonHover(shareButton, this.scene.config.scaleMultiplier, this.scene.config.scaleMultiplier*1.1);
@@ -273,7 +273,7 @@ export default class DialogWindowManager {
         .setOrigin(0,0.5)
         .setDepth(2)
         .on('pointerdown', () => {
-            console.log('invite friends');
+            //console.log('invite friends');
             this.scene.vkFunctions.inviteFriends();
         });
         sharedUtils.setButtonHover(inviteFriendsButton, this.scene.config.scaleMultiplier, this.scene.config.scaleMultiplier*1.1);

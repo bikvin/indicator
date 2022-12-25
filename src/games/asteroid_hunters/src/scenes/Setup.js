@@ -37,7 +37,7 @@ export default class SetupScene extends Phaser.Scene {
 
         this.setupSoundParams();
 
-        this.setLang();
+        //this.setLang();
 
         this.setUserId();
 
@@ -53,11 +53,11 @@ export default class SetupScene extends Phaser.Scene {
         //this.scene.start("FinalScene");
     }
 
-    setLang(){// default lang is 'en'. For vk change it to 'ru'
-        if(this.config.target === 'vk'){
-            this.config.lang = 'ru';
-        }
-    }
+    // setLang(){// default lang is 'en'. For vk change it to 'ru'
+    //     if(this.config.target === 'vk'){
+    //         this.config.lang = 'ru';
+    //     }
+    // }
 
     setUserId(){
         

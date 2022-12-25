@@ -44,13 +44,18 @@ const START_POSITION = {
 
 const target = document.getElementById("ast_game").getAttribute("target") || 'indicator'; // 'vk' or undefined or some other
 const referer = document.getElementById("ast_game").getAttribute("referer"); // 'localhost or indicator.games' 
-let lang = 'en'
-//let lang = 'ru'
+let lang;
+if(this.config.target === 'vk'){
+  lang = 'ru';
+}else{
+  lang = 'en';
+}
 
 
-console.log('window.innerWidth', window.innerWidth);
-console.log('window.innerHeight ',window.innerHeight);
-console.log('window.devicePixelRatio', window.devicePixelRatio);
+
+//console.log('window.innerWidth', window.innerWidth);
+//console.log('window.innerHeight ',window.innerHeight);
+//console.log('window.devicePixelRatio', window.devicePixelRatio);
 
 
 

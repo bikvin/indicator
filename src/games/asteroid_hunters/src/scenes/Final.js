@@ -7,7 +7,7 @@ export default class FinalScene extends Phaser.Scene {
     constructor(config) {
         super("FinalScene");
 
-        console.log(this.confing);
+        //console.log(this.confing);
   
        this.config = config;
 
@@ -59,14 +59,14 @@ export default class FinalScene extends Phaser.Scene {
     createVkButtons(){
 
         const shareMessage = `Я прошел Asteroid Hunters целиком!`;
-        console.log(shareMessage);
+        //console.log(shareMessage);
 
 
         const shareButton = this.add.text(this.config.width/2, 750*this.config.scaleMultiplier, 'Поделиться', { font: '30px Comfortaa', align: 'center'  }).setScale(this.config.scaleMultiplier)
         .setOrigin(0.5,0.5)
         .setDepth(2)
         .on('pointerdown', () => {
-            console.log('add to wall', shareMessage);
+            //console.log('add to wall', shareMessage);
             this.vkFunctions.share(shareMessage);
         });
         sharedUtils.setButtonHover(shareButton, this.config.scaleMultiplier, this.config.scaleMultiplier*1.1);

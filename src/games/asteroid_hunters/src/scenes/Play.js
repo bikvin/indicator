@@ -318,7 +318,7 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     deactivateGroups(){
-        console.log('deactivateChildren');
+        //console.log('deactivateChildren');
         if(this.asteroids){
             this.asteroids.getChildren().forEach(asteroid => asteroid.deactivate())
 
@@ -346,7 +346,7 @@ export default class PlayScene extends Phaser.Scene {
  
 
     createPlayer() {
-        console.log('PlayScene createPlayer');
+        //console.log('PlayScene createPlayer');
         return new Player(this, this.config.startPosition.x, this.config.startPosition.y);
 
     }
@@ -391,7 +391,7 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     pauseAllMovements(){
-        console.log('pauseAllMovements')
+        //console.log('pauseAllMovements')
         if(this.saucers) this.saucers.pauseEvents();
         if(this.asteroids) this.asteroids.pauseEvents();
         if(this.collectables) this.collectables.pauseEvents();
@@ -419,7 +419,7 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     checkWin() {
-        console.log('Checking win');
+       // console.log('Checking win');
 
         if(this.levelWon) return; // don't check for win if level is won already
 
