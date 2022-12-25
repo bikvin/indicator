@@ -45,7 +45,7 @@ const START_POSITION = {
 const target = document.getElementById("ast_game").getAttribute("target") || 'indicator'; // 'vk' or undefined or some other
 const referer = document.getElementById("ast_game").getAttribute("referer"); // 'localhost or indicator.games' 
 let lang;
-if(this.config.target === 'vk'){
+if(target === 'vk'){
   lang = 'ru';
 }else{
   lang = 'en';
