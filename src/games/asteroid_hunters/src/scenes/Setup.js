@@ -76,7 +76,7 @@ export default class SetupScene extends Phaser.Scene {
 
         }
         else if(this.config.target === 'vk'){ 
-                this.initVkBrigge();
+                this.initVkBridge();
     
         }
     }
@@ -105,8 +105,8 @@ export default class SetupScene extends Phaser.Scene {
 
 
 
-    initVkBrigge(){
-        console.log("initVkBrigge")
+    initVkBridge(){
+        console.log("initVkBridge")
        
         this.config.vkBridge = VkBridgeLib; // make VkBridgeLib available from config to access from other scenes
         const vkBridge = this.config.vkBridge;
@@ -128,6 +128,8 @@ export default class SetupScene extends Phaser.Scene {
               if (data.id) {
                 console.log('got user data');
                 console.log(data);
+                this.config.userId = data.id;
+                console.log('this.config.userId is', this.config.userId);
                 this.nextScene();
                 //this.getUserAgent();
                 // Данные пользователя получены
