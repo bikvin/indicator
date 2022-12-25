@@ -67,7 +67,7 @@ export default class StartScene extends Phaser.Scene {
 
         if(this.config.target === 'vk') this.createVkButtons();
 
-        this.createVkButtons();
+        //this.createVkButtons();
 
        
 
@@ -127,16 +127,9 @@ export default class StartScene extends Phaser.Scene {
         })
         sharedUtils.setButtonHover(inviteFriendsButton, this.config.scaleMultiplier, this.config.scaleMultiplier*1.1);
 
-        if(this.config.platform === 'vk' || this.config.platform === 'web'){
-            const addToHomeScreenButton = this.add.text(30*this.config.scaleMultiplier, this.config.height-50*this.config.scaleMultiplier, 'Да', { font: '30px Comfortaa', align: 'left'  }).setScale(this.config.scaleMultiplier)
-            .setOrigin(0,0.5)
-            .on('pointerdown', () => {
-            console.log('invite friends');
-            this.vkFunctions.inviteFriends();
-        })
-        sharedUtils.setButtonHover(inviteFriendsButton, this.config.scaleMultiplier, this.config.scaleMultiplier*1.1);
+
         }
-    }
+    
 
     // createShip(){
     //     this.add.image(315*this.config.widthMultiplier, 705*this.config.heightMultiplier, 'ship').setOrigin(0.5,1).setScale(0.5*this.config.scaleMultiplier).setAngle(-35);

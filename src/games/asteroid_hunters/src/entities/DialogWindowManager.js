@@ -214,8 +214,12 @@ export default class DialogWindowManager {
             const rightArrow = this.scene.add.image(rightXPos, this.scene.config.height/2, 'angles-icon').setOrigin(1, 0.5).setScale(overlayOptions.arrowScale* this.scene.config.scaleMultiplier).setAlpha(0.7).setDepth(2);
             const leftArrow = this.scene.add.image(leftXPos, this.scene.config.height/2, 'angles-icon').setOrigin(1, 0.5).setScale(overlayOptions.arrowScale* this.scene.config.scaleMultiplier).setAlpha(0.7).setAngle(180).setDepth(2);
 
+
             this.setButtonFeatures(rightArrow, overlayOptions.arrowScale, () => {this.nextLevel()});
             this.setButtonFeatures(leftArrow, overlayOptions.arrowScale, () => {this.prevLevel()});
+
+            this.icons.push( rightArrow );
+            this.icons.push( leftArrow );
         }
     }
 

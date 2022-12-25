@@ -139,49 +139,49 @@ export default class SetupScene extends Phaser.Scene {
             });
     }
 
-    getUserAgent(){
-        this.config.vkBridge.send('VKWebAppGetClientVersion')
-        .then((data) => { 
-            if (data.platform) {
-            // Данные пользователя получены
-                console.log(data);
-                this.config.platform = data.platform;
+    // getUserAgent(){
+    //     this.config.vkBridge.send('VKWebAppGetClientVersion')
+    //     .then((data) => { 
+    //         if (data.platform) {
+    //         // Данные пользователя получены
+    //             console.log(data);
+    //             this.config.platform = data.platform;
 
-                if(data.platform === 'android') {
-                    this.checkHomeScreenAdd();
-                }else{
-                    this.nextScene();
-                }
-                //this.nextScene();
+    //             if(data.platform === 'android') {
+    //                 this.checkHomeScreenAdd();
+    //             }else{
+    //                 this.nextScene();
+    //             }
+    //             //this.nextScene();
                 
-            }
-        })
-        .catch((error) => {
-            // Ошибка
-            console.log(error);
-        });
-    }
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         // Ошибка
+    //         console.log(error);
+    //     });
+    // }
 
 
-    checkHomeScreenAdd(){
-        this.config.vkBridge.send('VKWebAppAddToHomeScreenInfo')
-        .then((data) => { 
-            if (data.is_added_to_home_screen) {
-            // Информация получена
-                console.log('Got home screen info');
-                console.log(data);
-                this.debugArray.push('Got home screen info');
-                this.debugText.text = data.is_added_to_home_screen;
-                //this.nextScene();
-            }
-        })
-        .catch((error) => {
-            // Ошибка
-            console.log(error);
-            this.debugArray.push('error');
-            this.debugText.text = error;
-        });
-    }
+    // checkHomeScreenAdd(){
+    //     this.config.vkBridge.send('VKWebAppAddToHomeScreenInfo')
+    //     .then((data) => { 
+    //         if (data.is_added_to_home_screen) {
+    //         // Информация получена
+    //             console.log('Got home screen info');
+    //             console.log(data);
+    //             this.debugArray.push('Got home screen info');
+    //             this.debugText.text = data.is_added_to_home_screen;
+    //             //this.nextScene();
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         // Ошибка
+    //         console.log(error);
+    //         this.debugArray.push('error');
+    //         this.debugText.text = error;
+    //     });
+    // }
 
     
 } 

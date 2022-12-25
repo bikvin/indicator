@@ -65,7 +65,6 @@ const SHARED_CONFIG = {
   publicGameFolder: 'games/asteroid_hunters/',
   target: target,
   referer: referer,
-  platform: '',
   lang: lang,
   scaleMultiplier: scaleMultiplier,
   widthMultiplier: widthMultiplier,

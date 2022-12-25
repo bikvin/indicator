@@ -138,16 +138,16 @@ export default class VkFunctions{
     }
 
 
-    addToHomeScreen() {
-      // bridge.send('VKWebAppAddToHomeScreenInfo')
-      // .then((data) => { 
-      //   if (data.is_added_to_home_screen) {
-      //     // Информация получена
-      //   }
-      // })
-      // .catch((error) => {
-      //   // Ошибка
-      //   console.log(error);
-      // });
-    }
+    // addToHomeScreen() {
+    //   // bridge.send('VKWebAppAddToHomeScreenInfo')
+    //   // .then((data) => { 
+    //   //   if (data.is_added_to_home_screen) {
+    //   //     // Информация получена
+    //   //   }
+    //   // })
+    //   // .catch((error) => {
+    //   //   // Ошибка
+    //   //   console.log(error);
+    //   // });
+    // }
 }
