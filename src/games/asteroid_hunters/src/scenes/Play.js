@@ -154,16 +154,19 @@ export default class PlayScene extends Phaser.Scene {
 
 
     createSounds() {
+
+        const volume = 1;
+
         this.sounds = {
-            boom: this.sound.add('boom', {volume: 0.1}),
-            theme: this.sound.add('theme', {volume: 0.00001, loop: true}),
-            astCrush: this.sound.add('astCrush', {volume: 0.1}),
-            shoot: this.sound.add('shoot', {volume: 0.1}),
-            saucerBoom: this.sound.add('saucer_boom', {volume: 0.1}),
-            collect: this.sound.add('collect', {volume: 0.1}),
-            noAmmo: this.sound.add('no-ammo', {volume: 0.05}),
-            astHit: this.sound.add('ast-hit', {volume: 0.1}),
-            thrust: this.sound.add('thrust', { loop: true, volume: 0.1 })
+            boom: this.sound.add('boom', {volume: volume/2}),
+            theme: this.sound.add('theme', {volume: volume, loop: true}),
+            astCrush: this.sound.add('astCrush', {volume: volume/2}),
+            shoot: this.sound.add('shoot', {volume: volume/2}),
+            saucerBoom: this.sound.add('saucer_boom', {volume: volume/2}),
+            collect: this.sound.add('collect', {volume: volume/2}),
+            noAmmo: this.sound.add('no-ammo', {volume: volume/4}),
+            astHit: this.sound.add('ast-hit', {volume: volume/2}),
+            thrust: this.sound.add('thrust', { loop: true, volume: volume/2 })
             
         };
         
