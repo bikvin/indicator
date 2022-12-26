@@ -24,8 +24,8 @@ export default class SharedUtils{
         const delayTime = 4000;
         const dissapearTime = 3000;
 
-        const instImage = scene.add.image(450*scene.config.scaleMultiplier, 700*scene.config.scaleMultiplier, 'use-arrows-icon').setOrigin(0.5).setScale(0.7*scene.config.scaleMultiplier);
-        const instText = scene.add.text(600*scene.config.scaleMultiplier, 700*scene.config.scaleMultiplier,  lang.instructions[scene.config.lang], { font: '25px Comfortaa' }).setOrigin(0, 0.5).setScale(scene.config.scaleMultiplier);
+        const instImage = scene.add.image(450*scene.config.scaleMultiplier, 600*scene.config.scaleMultiplier, 'use-arrows-icon').setOrigin(0.5).setScale(0.7*scene.config.scaleMultiplier);
+        const instText = scene.add.text(600*scene.config.scaleMultiplier, 600*scene.config.scaleMultiplier,  lang.instructions[scene.config.lang], { font: '25px Comfortaa' }).setOrigin(0, 0.5).setScale(scene.config.scaleMultiplier);
 
         scene.tweens.add({
             targets: [instText, instImage],
